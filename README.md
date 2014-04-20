@@ -10,7 +10,9 @@ Learning and evolutionary systems.
  
 == 1. PREREQUISITES ==
 
-Project template used from Michael Safyan's cpp-project-template (http://code.google.com/p/cpp-project-template/).
+Project template adapted from Michael Safyan's cpp-project-template (http://code.google.com/p/cpp-project-template/). 
+Unlike the original template, boost's unit test framework is used instead of UnitTest++, QT is not necessary, and the project
+can be used to build both a family of libraries and applications. 
 
  This project requires:
   * Cross-platform Make (CMake) v2.6.2+
