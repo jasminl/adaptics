@@ -20,7 +20,18 @@
 *.out
 *.app
 
+# Folders
+bin/
+
 # Docs
 
 docs/*
 build/*
+
+# Settings
+
+.project
+.cproject
+.metadata
+.settings
+
