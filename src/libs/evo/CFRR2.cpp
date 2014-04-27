@@ -4,6 +4,9 @@
 
 using namespace std;
 
+namespace evo
+{
+
 CFRR2::CFRR2(int NbBldBlck, int dnalength, int BldBlckSze)
 : RoyalRoad(NbBldBlck, BldBlckSze), _dna_length(dnalength), _start_tag({true, true})
 {}
@@ -55,4 +58,6 @@ void CFRR2::find_block(const char* individual, int position)
 		if ((j == _bld_blck_size) && (_fitness[i] == 0))
 			_fitness[i] = 1;
 	}
+}
+
 }

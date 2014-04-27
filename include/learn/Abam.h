@@ -2,6 +2,9 @@
 
 #include <vector>
 
+namespace learn
+{
+
 /**
  * Operators
  */
@@ -159,4 +162,6 @@ inline
 const std::vector<double>& Abam::output_layer()
 {
 	return _output;
+}
+
 }

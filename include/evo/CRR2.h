@@ -2,6 +2,9 @@
 
 #include "RoyalRoad.h"
 
+namespace evo
+{
+
 /**
  * A fixed representation Royal Road functions
  */
@@ -29,3 +32,5 @@ public:
 private:
 	int _neutral_blck;		//!<Number of neutral blocks (skipped by evaluation function)
 };
+
+}

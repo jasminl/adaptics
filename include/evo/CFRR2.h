@@ -3,6 +3,9 @@
 #include <vector>
 #include "RoyalRoad.h"
 
+namespace evo
+{
+
 /**
  * A floating representation version of CRR2
  */
@@ -45,3 +48,5 @@ private:
 	int _dna_length;				//!<The sequence length
 	std::vector<bool> _start_tag;	//!<Contains start tag for building blocks
 };
+
+}

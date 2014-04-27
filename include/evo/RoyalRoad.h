@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 
+namespace evo
+{
+
 /**
 * Base class for royal road functions
 */
@@ -99,3 +102,5 @@ protected:
 	int _size;									//!<Number of units in m_fit
 	std::vector<std::vector<bool>> _rr_value;	//!<Contains the royal road function values
 };
+
+}

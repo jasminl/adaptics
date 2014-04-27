@@ -3,6 +3,7 @@
 #include "learn/Abam.h"
 
 using namespace std;
+using namespace learn;
 
 int main(int argc, char *argv[], char *envp[])
 {

@@ -7,6 +7,9 @@
 
 using namespace std;
 
+namespace learn
+{
+
 double Ops::sigmoid(double value)
 {
 	return -1 + 2.0 / (1 + exp(-10 * value));
@@ -134,4 +137,6 @@ double Abam::test(const std::vector<double>& external_input, const std::vector<d
 		error += fabs(Ops::sigmoid(_output[i]) - Ops::sigmoid(expected_output[i]));
 
 	return error;
+}
+
 }

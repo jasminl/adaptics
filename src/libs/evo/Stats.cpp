@@ -3,6 +3,9 @@
 
 using namespace std;
 
+namespace evo
+{
+
 Stats::Stats()
 : _sum(0), _average(0.0), _stdev(0.0)
 {}
@@ -21,4 +24,6 @@ void Stats::compute_stats(const vector<float>& fitness)
 		ssquare += pow((fitness[i] - _average), 2);
 
 	_stdev = float(sqrt(ssquare/(fitness.size() - 1)));
+}
+
 }

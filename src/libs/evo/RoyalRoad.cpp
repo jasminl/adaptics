@@ -8,6 +8,9 @@
 
 using namespace std;
 
+namespace evo
+{
+
 RoyalRoad::RoyalRoad(int nb_building_blocks, int building_block_size)
 : _nb_blocks(nb_building_blocks), _bld_blck_size(building_block_size)
 {
@@ -123,4 +126,6 @@ int RoyalRoad::fndupblck()
 		partsum += _fitness[i];
 
 	return partsum;
+}
+
 }

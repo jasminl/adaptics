@@ -3,6 +3,9 @@
 
 using namespace std;
 
+namespace evo
+{
+
 CRR2::CRR2(int nb_building_blocks, int nb_neut_blocks, int building_block_size)
 : RoyalRoad(nb_building_blocks, building_block_size), _neutral_blck(nb_neut_blocks)
 {}
@@ -27,4 +30,6 @@ int CRR2::cmp_blcks(const char* individual)
 	}
 
 	return fndupblck(); //checks for upper level building blocks
+}
+
 }

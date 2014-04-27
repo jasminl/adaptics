@@ -6,6 +6,9 @@
 #include "CFRR2.h"
 #include "Stats.h"
 
+namespace evo
+{
+
 /**
  * Constants for population
  */
@@ -131,3 +134,5 @@ protected:
 	std::vector<std::vector<char>> _future_pop;		//!<The next generation (necessary for crossover)
 	std::vector<float> _pop_fitness;				//!<Array of population fitness
 };
+
+}

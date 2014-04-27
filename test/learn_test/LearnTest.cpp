@@ -5,6 +5,7 @@
 #include "learn/Abam.h"
 
 using namespace std;
+using namespace learn;
 
 BOOST_AUTO_TEST_SUITE (test_suite_learn)
 

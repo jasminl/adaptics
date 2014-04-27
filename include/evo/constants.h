@@ -1,5 +1,8 @@
 #pragma once
 
+namespace evo
+{
+
 /*Maximum number of iterations before construction of different individuals. If individuals and blocks are not different after 
 MAX_ITERATIONS trials, the program ends. */
 #define MAX_ITERATIONS 50	
@@ -31,3 +34,5 @@ MAX_ITERATIONS trials, the program ends. */
 #define CONTINUE 10210209
 
 #define OPTIMAL_INDIV 987987986
+
+}

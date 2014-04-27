@@ -6,6 +6,9 @@
 
 using namespace std;
 
+namespace evo
+{
+
 Population::Population(int pop_size, int nb_building_blocks, int nb_neutral_blocks,
 	float mutation_rate, float cross_over_rate, int building_block_size, int rr_type)
 : _pop_size(pop_size), _nb_building_blocks(nb_building_blocks), _nb_neut_blocks(nb_neutral_blocks),
@@ -251,4 +254,6 @@ void Population::mutate(int individual)
 tuple<int, float, float> Population::stats() const
 {
 	return tuple<int, float, float>{m_stats._sum, m_stats._average, m_stats._stdev};
+}
+
 }

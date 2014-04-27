@@ -3,6 +3,7 @@
 #include "evo/Logger.h"
 
 using namespace std;
+using namespace evo;
 
 int main(int argc, char *argv[])
 {

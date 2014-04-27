@@ -2,6 +2,9 @@
 
 #include <vector>
 
+namespace evo
+{
+
 /**
  * Stores statistics for a given generation
  */
@@ -19,3 +22,5 @@ struct Stats
 	float _average;	//!<Average fitness
 	float _stdev;	//!<Standard deviation of fitness
 };
+
+}
