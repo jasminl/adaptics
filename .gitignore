@@ -21,7 +21,7 @@
 *.app
 
 # Folders
-bin/
+bin/*
 
 # Docs
 
