@@ -1,0 +1,32 @@
+#!/usr/bin/python
+
+'''
+Created on April 27, 2014
+
+@author: Jasmin Leveille
+
+This script runs the adaptics test suite (unit, integration and system)
+'''
+
+import os
+import argparse
+
+def main():
+	parser = argparse.ArgumentParser(description='Run adaptics test suites')
+	subparsers = parser.add_subparsers(help='Different types of test suites')
+	parser.add_argument('root_path', action='store', help='The root path to all tests')
+	all_parser = subparsers.add_parser('all', help='Runs all tests on default input')
+	all_parser.set_defaults(action='all')
+	ns = parser.parse_args()
+
+	assert os.path.isdir(ns.root_path)
+
+	if ns.action == 'all':
+		for file in os.listdir(ns.root_path):
+			if file.endswith(".cpp"):
+				cmd = os.path.splitext(file)[0]
+				print 'Running test suite ' + cmd
+				os.system(cmd)
+
+if __name__ == '__main__': main()
+else: pass
