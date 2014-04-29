@@ -5,7 +5,7 @@ SET(learn_test_source_files LearnTest.cpp)
 
 link_directories(${MAINFOLDER}/lib)
 
-ADD_EXECUTABLE(learntest ${learn_test_source_files})
+ADD_EXECUTABLE(LearnTest ${learn_test_source_files})
 
 SET (project_LIBS ${Boost_LIBRARIES} ${Log4Cxx_LIBRARIES})
-TARGET_LINK_LIBRARIES(learntest ${project_LIBS} learn.so)
+TARGET_LINK_LIBRARIES(LearnTest ${project_LIBS} learn.so)
