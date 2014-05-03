@@ -26,7 +26,9 @@ SET (CMAKE_VERBOSE_MAKEFILE 0) # Use 1 for debugging, 0 for release
 #
 # Compiler flags
 #
-SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=gnu++0x -O3 -g -ftree-vectorizer-verbose=6 -march=native -ffast-math")
+SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=gnu++0x -O3 -g")
+
+# TODO arrange flags for different configurations -ftree-vectorizer-verbose=6 -march=native -ffast-math
 
 #
 # Project Output Paths
@@ -55,8 +57,6 @@ FIND_PACKAGE (Log4Cxx REQUIRED)
 INCLUDE_DIRECTORIES(${Log4Cxx_INCLUDE_DIRS})
 LINK_DIRECTORIES(${Log4Cxx_LIBRARY_DIRS})
 
-#TODO Add boost unit test module
-
 #
 # Configure Files
 #
@@ -81,6 +81,7 @@ ENDFOREACH (CONFIGINPUT ${CONFIGINPUTS})
 #
 # Add Build Targets
 #
+ADD_SUBDIRECTORY(${MAINFOLDER}/thirdparty)
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(test)
 

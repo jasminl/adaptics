@@ -1,1 +1,3 @@
 04/13/14 Initial commit with royalroadapp and evo library. 
+04/29/14 thirdparty/src contains code for random number generation (Gaussian and Mersenne Twister)
+05/02/14 Removed path in royalroadapp, added Evolution Strategies base components in evo lib

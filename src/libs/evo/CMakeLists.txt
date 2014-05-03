@@ -7,10 +7,13 @@ CRR2.cpp
 Logger.cpp
 Population.cpp
 RoyalRoad.cpp
-Stats.cpp)
+Stats.cpp
+ESDna.h)
 
 link_directories(${MAINFOLDER}/lib)
 SET (project_LIBS ${Boost_LIBRARIES} ${Log4Cxx_LIBRARIES})
+
+include_directories(${MAINFOLDER}/thirdparty/include/boxmuller)
 
 ADD_LIBRARY(evo SHARED ${evo_source_files})
 TARGET_LINK_LIBRARIES(evo ${project_LIBS})
