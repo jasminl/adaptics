@@ -67,11 +67,11 @@ double Abam::backward(const std::vector<double>&  external_input)
 
 	double sum = 0;
 
-	for (int i = 0; i < _input.size(); i++)
+	for (int i = 0; i < (int)_input.size(); i++)
 	{
 		_input[i] -= _dt * _input[i];
 
-		for (int j = 0; j < _output.size(); j++)
+		for (int j = 0; j < (int)_output.size(); j++)
 			_input[i] += _dt * _weight[j * _input.size() + i] * Ops::sigmoid(_output[j]);
 
 		if(!external_input.empty())	//Clamp external input vector
@@ -84,9 +84,9 @@ double Abam::backward(const std::vector<double>&  external_input)
 
 void Abam::update_weights(const std::vector<double>& input, const std::vector<double>& output)
 {
-	for (int i = 0; i < output.size(); i++)
+	for (int i = 0; i < (int) output.size(); i++)
 	{
-		for (int j = 0; j < input.size(); j++)
+		for (int j = 0; j < (int) input.size(); j++)
 		{
 			_weight[i * input.size() + j] += _dt
 					* (-_weight[i * input.size() + j]
