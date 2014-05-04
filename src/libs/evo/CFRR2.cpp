@@ -1,6 +1,5 @@
 #include "evo/CFRR2.h"
 #include <string.h>
-#include "evo/constants.h"
 
 using namespace std;
 
@@ -21,8 +20,8 @@ int CFRR2::cmp_blcks(const char* individual)
 	{
 		blckpos = find_tag(individual, strpos); //finds the start tag
 
-		if (strpos == NOTFOUND)
-			return NOTFOUND;
+		if (strpos == not_found)
+			return not_found;
 
 		find_block(individual, blckpos); //finds occurence of bld blcks
 		++strpos;
@@ -42,7 +41,7 @@ int CFRR2::find_tag(const char* individual, int& position)
 		}
 	}
 
-	return NOTFOUND; //means the start tag is not in the sequence from
+	return not_found; //means the start tag is not in the sequence from
 					 //position to the end
 }
 

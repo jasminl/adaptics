@@ -4,7 +4,6 @@
 #include <cmath>
 #include <sstream>
 #include <stdexcept>
-#include "evo/constants.h"
 
 using namespace std;
 
@@ -48,14 +47,14 @@ void RoyalRoad::generate_rr()
 		sgl_blck(i);
 
 	int rep = 0;
-	while (rep != DIFFERENT2)
+	while (rep != different)
 	{
 		rep = compare_seq();
 
-		if (rep == DIFFERENT2)
+		if (rep == different)
 			break;
 
-		if (NOTCONVERGE2 == rep)
+		if (not_converge == rep)
 		{
 			stringstream msg;
 			msg<<"Cannot generate " << _nb_blocks	<< " different building blocks." << endl;
@@ -76,8 +75,8 @@ int RoyalRoad::compare_seq()
 {
 	static int iterations = 0;
 
-	if (iterations > MAX_ITERATIONS2)
-		return NOTCONVERGE2; //means the algorithm does not converge
+	if (iterations > max_iterations)
+		return not_converge; //means the algorithm does not converge
 
 	for (int i = 0; i < _nb_blocks - 1; i++)
 	{
@@ -97,7 +96,7 @@ int RoyalRoad::compare_seq()
 		}
 	}
 
-	return DIFFERENT2; //means every individual is different
+	return different; //means every individual is different
 }
 
 int RoyalRoad::fndupblck()

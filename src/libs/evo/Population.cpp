@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include <cmath>
 #include <string.h>
-#include "evo/constants.h"
 
 using namespace std;
 
@@ -53,7 +52,7 @@ void Population::rnd_alloc()
 			_pop[i][j] = char(rand() % 2);
 
 	int rep;
-	while(DIFFERENT != (rep = compare_seq()))
+	while(different != (rep = compare_seq()))
 		sgl_alloc(rep);
 }
 
@@ -70,7 +69,7 @@ int Population::compare_seq()
 {
 	static int iterations = 0;	//to know how many times the function was called
 
-	if(iterations > MAX_ITERATIONS)
+	if(iterations > max_iterations)
 		throw runtime_error("Population::compare_seq: algorithm does not converge\n");
 
 	for(int i = 0; i < _pop_size - 1; i++)
@@ -87,7 +86,7 @@ int Population::compare_seq()
 				return j; //Need to change individual j
 		}
 	}
-	return DIFFERENT;	//means every individual is different
+	return different;	//means every individual is different
 }
 
 void Population::cross_over(int first, int second, int offspring, int cross)
@@ -182,8 +181,8 @@ int Population::compute_pop_fitness()
 	//determines if an optimal individual was found: stops the experiment
 	for(int i = 0; i < _pop_size; i++)
 	{
-		if(OPTIMUM == _pop_fitness[i])
-			return OPTIMAL_INDIV;	//means we have found an optimal individual
+		if(optimum_31 == _pop_fitness[i])
+			return optim_indiv;	//means we have found an optimal individual
 	}
 
 	m_stats.compute_stats(_pop_fitness);
@@ -193,13 +192,13 @@ int Population::compute_pop_fitness()
 	{
 		_pop_fitness[i] = 1 + ((_pop_fitness[i] - m_stats._average)/(2 * m_stats._stdev));
 
-		if(_pop_fitness[i] > nsPOP::sigma_clip)
-			_pop_fitness[i] = nsPOP::sigma_clip;
+		if(_pop_fitness[i] > sigma_clip)
+			_pop_fitness[i] = sigma_clip;
 		else if(_pop_fitness[i] < 0.0)
-			_pop_fitness[i] = float(nsPOP::scaling_fitness);
+			_pop_fitness[i] = float(scaling_fitness);
 	}
 
-	return CONTINUE;
+	return continue_iterating;
 }
 
 int Population::generation()
@@ -208,8 +207,8 @@ int Population::generation()
 		for(int k = 0; k < _gen_length; k++)
 			_future_pop[j][k] = 0;
 
-	if(OPTIMAL_INDIV == compute_pop_fitness())
-		return OPTIMAL_INDIV;
+	if(optim_indiv == compute_pop_fitness())
+		return optim_indiv;
 
 	int ofspnb = 0;	//number of offspring produced
 
@@ -234,7 +233,7 @@ int Population::generation()
 	//transfer from m_futpop to m_pop
 	_pop = _future_pop;
 
-	return CONTINUE;
+	return continue_iterating;
 }
 
 int Population::cross_over_prob()

@@ -12,6 +12,11 @@ namespace evo
 class RoyalRoad
 {
 public:
+	//typedefs etc.
+	static const int max_iterations = 50;	//!<Max number of iterations over which to compare RR functions with compare_seq
+	static const int not_converge = -2;		//!<Indicates it's not possible to create enough different blocks
+	static const int different = -1;		//!<Indicates different blocks have been built
+public:
 
 	/**
 	 * Allocates all sequence-related buffers and generates the royal road functions. Throws a runtime_error

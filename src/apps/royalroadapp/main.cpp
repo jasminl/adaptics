@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 		int res = pop.generation();
 		log.dump_stats(pop.stats());
 
-		if(OPTIMAL_INDIV == res)
+		if(Population::optim_indiv == res)
 			break;	//Break if an optimal individual has been found
 	}
 	return 0;

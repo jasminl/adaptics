@@ -12,6 +12,9 @@ namespace evo
 class CFRR2: public RoyalRoad
 {
 public:
+	//typedefs etc.
+	static const int not_found = -3;	//!<Means no building blocks were found
+public:
 
 	/**
 	 * Constructor, performs no other operations than calling the base class constructor and assigning

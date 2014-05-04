@@ -10,15 +10,6 @@ namespace evo
 {
 
 /**
- * Constants for population
- */
-namespace nsPOP
-{
-	static const float sigma_clip = 1.5;
-	static const float scaling_fitness = 0.1;	//!<sigma scaling of Tanese (1989)
-};
-
-/**
  * Generates and evolves a population
  */
 class Population
@@ -28,6 +19,14 @@ public:
 	enum{FIXED_RR, FLOATING_RR};				//!<The type of royal road function used
 	enum{CONTINUE = -2, OPTIMAL_INDIV = -1};	//!<Returned by the generation function to determine whether to continue or not
 	enum{MIX_PARENTS, NO_MIX_PARENTS};			//!<Whether or not to mix parent dna during cross-over
+	static const int continue_iterating = 10210209;	//!<Continues simulation
+	static const int optim_indiv = 987987986;		//!<Indicates a theoretically optimal individual has been found
+
+	static constexpr float sigma_clip = 1.5;
+	static constexpr float scaling_fitness = 0.1;	//!<sigma scaling of Tanese (1989)
+	static const int max_iterations = 50;		//!<Max iterations over which to compare sequences with compare_seq
+	static const int different = -1;			//!<Indicates all individuals are different
+	static const int optimum_31 = 31;			//!<Maximum fitness value that can be achieved by an individual
 public:
 
 	/**
