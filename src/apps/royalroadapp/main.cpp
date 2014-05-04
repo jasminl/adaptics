@@ -1,5 +1,4 @@
 #include "evo/Population.h"
-#include "evo/constants.h"
 #include "evo/Logger.h"
 #include <stdexcept>
 
