@@ -1,13 +1,13 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.6.2)
 PROJECT (Adaptics)
 
-SET(evo_source_files
+SET(learn_source_files
 Abam.cpp)
 
 link_directories(${MAINFOLDER}/lib)
 SET (project_LIBS ${Boost_LIBRARIES} ${Log4Cxx_LIBRARIES})
 
-ADD_LIBRARY(learn SHARED ${evo_source_files})
+ADD_LIBRARY(learn SHARED ${learn_source_files})
 TARGET_LINK_LIBRARIES(learn ${project_LIBS})
 #SET_TARGET_PROPERTIES(learn PROPERTIES VERSION "${APPLICATION_VERSION_MAJOR}.${APPLICATION_VERSION_MINOR}" OUTPUT_NAME ${project_BIN} CLEAN_DIRECT_OUTPUT 1)
 INSTALL(TARGETS learn DESTINATION lib)
