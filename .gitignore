@@ -27,6 +27,9 @@ bin/*
 
 docs/*
 build/*
+thirdparty/include/tnt/doxygen
+thirdparty/include/tnt/html
+thirdparty/src/tinyxml/docs
 
 # Settings
 
