@@ -3,3 +3,4 @@ PROJECT (Adaptics)
 
 ADD_SUBDIRECTORY(mt)
 ADD_SUBDIRECTORY(boxmuller)
+ADD_SUBDIRECTORY(tinyxml)
