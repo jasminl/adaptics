@@ -3,3 +3,4 @@ PROJECT (Adaptics)
 
 ADD_SUBDIRECTORY(royalroadapp)
 ADD_SUBDIRECTORY(abamapp)
+ADD_SUBDIRECTORY(formotionapp)
