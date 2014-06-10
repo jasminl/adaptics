@@ -4,7 +4,6 @@ PROJECT (Adaptics)
 SET(evo_source_files
 CFRR2.cpp
 CRR2.cpp
-Logger.cpp
 Population.cpp
 RoyalRoad.cpp
 Stats.cpp
