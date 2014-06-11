@@ -17,6 +17,8 @@
 #include <log4cxx/log4cxx.h>
 #include <log4cxx/logger.h>
 #include <log4cxx/basicconfigurator.h>
+#include <log4cxx/fileappender.h>
+#include <log4cxx/simplelayout.h>
 
 log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("sim"));	//Main logger
 
@@ -26,19 +28,17 @@ int		     g_countDownToSave;			    //Indicates whether to save current iteration
  
 int main(int argc, char *argv[], char *envp[])
 {
-	log4cxx::BasicConfigurator::configure();
-	logger->setLevel(log4cxx::Level::getInfo());
-
 	//Parse command line
 	namespace po = boost::program_options;
 	po::options_description desc("Allowed options");
 	int initial_folder;
 	desc.add_options()
 			("help", "formotionapp, implements the 3D formotion simulations")
-			("par, p", po::value<vector<string>>(), "parameter file/list")
-			("in, i", po::value<vector<string>>(), "input file")
-			("out, o", po::value<vector<string>>(), "output folder")
+			("par, p", po::value<vector<string>>()->required(), "parameter file/list")
+			("in, i", po::value<vector<string>>()->required(), "input file")
+			("out, o", po::value<vector<string>>()->required(), "output folder")
 			("fol, f", po::value<int>(&initial_folder)->default_value(CDirManager::DEFAULT_START), "initial folder number")
+			("log", po::value<vector<string>>()->required(), "log file")
 			("sparse, s", "Whether to save all steps or the last one only")
 			("l5", "Read in Layer5A values rather than compute them");
 
@@ -51,13 +51,6 @@ int main(int argc, char *argv[], char *envp[])
 	    cout<<desc<<endl;
 	    return 1;
 	}
-
-	if (vm.count("par") == 0)
-		throw runtime_error("Missing parameter file/folder");
-	if(vm.count("in") == 0)
-		throw runtime_error("Missing input file");
-	if(vm.count("out") == 0)
-		throw runtime_error("Missing output folder");
 
 	bool save_all = true;
 	if(vm.count("sparse"))
@@ -73,6 +66,15 @@ int main(int argc, char *argv[], char *envp[])
 	auto parameter = vm["par"].as<vector<string>>().front();
 	auto input_path = vm["in"].as<vector<string>>().front();
 	auto output_folder = vm["out"].as<vector<string>>().front();
+	auto log_file = vm["log"].as<vector<string>>().front();
+
+	//Setup logging to external file
+	logger->setLevel(log4cxx::Level::getInfo());
+	log4cxx::FileAppender* appender = new log4cxx::FileAppender(log4cxx::LayoutPtr(new log4cxx::SimpleLayout()),
+			log_file, false);
+	log4cxx::helpers::Pool p;
+	appender->activateOptions(p);
+	log4cxx::BasicConfigurator::configure(log4cxx::AppenderPtr(appender));
 
 	bool test_kernels = false;	//Indicates whether or not to calculate convolution times at each layer
 
