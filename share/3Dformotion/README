@@ -1,0 +1,8 @@
+This folder contains files relevant to the 3D formotion simulations in Grossberget al. (2011). How do object reference frames and motion vector
+decomposition emerge in laminar cortical circuits? Attention, Perception and Psychophysics, 73, 1147-1170.
+
+1. stimuli: This subfolder contains compressed xml files for the Johansson stimuli and the Duncker wheel stimulus, as well as for a stimulus from the study by Di Vita and Rock (1997). A belongingness principle of motion perception. J. Exp Psych.: Human Perception and Performance, 23, 1343-1352.
+
+2. parameters: This subfolder contains xml files that set the parameter configuration for the model.
+
+3. bufferAssignments.xls: This file lists for clarity, which double-precision array buffer is assigned to which model layer, and contains a study of the latency of each layer obtained with different optimization settings for the correlation filters, including the use of separable convolutions (SVD), the Fast Fourier Transform with FFTW (FFT) and a CUDA implementation of the FFT (CUDA FFT).  
