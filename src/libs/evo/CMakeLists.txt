@@ -1,13 +1,9 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.6.2)
 PROJECT (Adaptics)
 
-SET(evo_source_files
-CFRR2.cpp
-CRR2.cpp
-Population.cpp
-RoyalRoad.cpp
-Stats.cpp
-ESDna.h)
+SET(evo_source_files CFRR2.cpp CRR2.cpp Population.cpp
+RoyalRoad.cpp Stats.cpp ESDna.h GrayCode.cpp
+)
 
 link_directories(${MAINFOLDER}/lib)
 SET (project_LIBS ${Boost_LIBRARIES} ${Log4Cxx_LIBRARIES})
