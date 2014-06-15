@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 
-<title>Main Page</title>
+<title>evo/Stats.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 
@@ -26,9 +26,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -47,9 +47,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+    </ul>
+  </div>
 </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">evo/Stats.h</div>  </div>
+</div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00004"></a>00004 
+<a name="l00005"></a>00005 <span class="keyword">namespace </span>evo
+<a name="l00006"></a>00006 {
+<a name="l00007"></a>00007 
+<a name="l00011"></a><a class="code" href="structevo_1_1_stats.html">00011</a> <span class="keyword">struct </span><a class="code" href="structevo_1_1_stats.html">Stats</a>
+<a name="l00012"></a>00012 {
+<a name="l00013"></a>00013         <a class="code" href="structevo_1_1_stats.html">Stats</a>();
+<a name="l00014"></a>00014 
+<a name="l00019"></a>00019         <span class="keywordtype">void</span> <a class="code" href="structevo_1_1_stats.html#aac3a5234eee7b43de38f38eb669d08bb">compute_stats</a>(<span class="keyword">const</span> std::vector&lt;float&gt;&amp; fitness);
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="structevo_1_1_stats.html#ac8ce2645cc0db522e9a906a259df29b0">00021</a>         <span class="keywordtype">int</span> <a class="code" href="structevo_1_1_stats.html#ac8ce2645cc0db522e9a906a259df29b0" title="Total sum of all individual fitnesses.">_sum</a>;               
+<a name="l00022"></a><a class="code" href="structevo_1_1_stats.html#a6760c557b4711ae6519e0c696775f02f">00022</a>         <span class="keywordtype">float</span> <a class="code" href="structevo_1_1_stats.html#a6760c557b4711ae6519e0c696775f02f" title="Average fitness.">_average</a>; 
+<a name="l00023"></a><a class="code" href="structevo_1_1_stats.html#a2f988c1c5ca8bf0f2c3da51cd529141b">00023</a>         <span class="keywordtype">float</span> <a class="code" href="structevo_1_1_stats.html#a2f988c1c5ca8bf0f2c3da51cd529141b" title="Standard deviation of fitness.">_stdev</a>;   
+<a name="l00024"></a>00024 };
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 }
+</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
