@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00006"></a>00006 <span class="keyword">namespace </span>visio
 <a name="l00007"></a>00007 {
 <a name="l00011"></a>00011 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;
-<a name="l00012"></a><a class="code" href="classvisio_1_1_input.html">00012</a> <span class="keyword">class </span><a class="code" href="classvisio_1_1_input.html">Input</a>
+<a name="l00012"></a><a class="code" href="classvisio_1_1_input.html">00012</a> <span class="keyword">class </span><a class="code" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a>
 <a name="l00013"></a>00013 {
 <a name="l00014"></a>00014 <span class="keyword">public</span>:
 <a name="l00015"></a>00015         <span class="keyword">enum</span>{USE_MOTION, NO_USE_MOTION};        
@@ -78,7 +78,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a>00027         <a class="code" href="classvisio_1_1_input.html#aa0ca16481122d9b1bde188f5f277199b">Input</a>(<span class="keywordtype">int</span> use_motion, <span class="keywordtype">int</span> use_V2, <span class="keywordtype">int</span> use_V1, <span class="keywordtype">int</span> use_attention);
 <a name="l00028"></a>00028 
 <a name="l00032"></a>00032         <span class="keyword">virtual</span>
-<a name="l00033"></a>00033         ~<a class="code" href="classvisio_1_1_input.html">Input&lt;T&gt;</a>();
+<a name="l00033"></a>00033         ~<a class="code" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input&lt;T&gt;</a>();
 <a name="l00034"></a>00034 
 <a name="l00039"></a>00039         <span class="keywordtype">void</span> <a class="code" href="classvisio_1_1_input.html#af7cb3b41728d1e6fc828a6a216524224">show_frame</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* field) <span class="keyword">const</span>;
 <a name="l00040"></a>00040 
@@ -167,7 +167,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00214"></a>00214 
 <a name="l00215"></a>00215         std::vector&lt;SparseFrame&lt;T&gt;&gt;* _frame;    
 <a name="l00216"></a>00216 
-<a name="l00217"></a>00217         <a class="code" href="classvisio_1_1_sparse_frame.html">SparseFrame&lt;T&gt;</a>* _current_frame;                 
+<a name="l00217"></a>00217         <a class="code" href="classvisio_1_1_sparse_frame.html" title="Sparsely encoded input frame.">SparseFrame&lt;T&gt;</a>* _current_frame;                 
 <a name="l00218"></a>00218 
 <a name="l00223"></a>00223         <span class="keywordtype">int</span> _import_motion;                             
 <a name="l00224"></a>00224         <span class="keywordtype">int</span> _import_V2;                                 
@@ -218,7 +218,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00269"></a>00269 }
 <a name="l00270"></a>00270 
 <a name="l00271"></a>00271 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00272"></a>00272 <span class="keywordtype">void</span> <a class="code" href="classvisio_1_1_input.html">Input&lt;T&gt;::create_buffer</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width)
+<a name="l00272"></a>00272 <span class="keywordtype">void</span> <a class="code" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input&lt;T&gt;::create_buffer</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width)
 <a name="l00273"></a>00273 {
 <a name="l00274"></a>00274         <span class="keywordflow">if</span>(_import_motion == USE_MOTION)
 <a name="l00275"></a>00275         {
@@ -551,7 +551,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00602"></a>00602 }
 <a name="l00603"></a>00603 
 <a name="l00604"></a>00604 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00605"></a>00605 <span class="keywordtype">void</span> <a class="code" href="classvisio_1_1_input.html">Input&lt;T&gt;::decode</a>(std::vector&lt;T&gt;*&amp; source, std::vector&lt;T&gt;&amp; end)
+<a name="l00605"></a>00605 <span class="keywordtype">void</span> <a class="code" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input&lt;T&gt;::decode</a>(std::vector&lt;T&gt;*&amp; source, std::vector&lt;T&gt;&amp; end)
 <a name="l00606"></a>00606 {
 <a name="l00607"></a>00607         <span class="keyword">auto</span> q = end.begin();
 <a name="l00608"></a>00608         <span class="keywordflow">for</span>(<span class="keyword">auto</span> p = source-&gt;begin(); p != source-&gt;end(); p++)
@@ -590,7 +590,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 15 2014 18:03:15 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

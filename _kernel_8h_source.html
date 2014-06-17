@@ -67,7 +67,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00007"></a>00007 <span class="keyword">namespace </span>visio
 <a name="l00008"></a>00008 {
 <a name="l00012"></a>00012 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;
-<a name="l00013"></a><a class="code" href="classvisio_1_1_kernel.html">00013</a> <span class="keyword">class </span><a class="code" href="classvisio_1_1_kernel.html">Kernel</a>
+<a name="l00013"></a><a class="code" href="classvisio_1_1_kernel.html">00013</a> <span class="keyword">class </span><a class="code" href="classvisio_1_1_kernel.html" title="Convolution kernels.">Kernel</a>
 <a name="l00014"></a>00014 {
 <a name="l00015"></a>00015 
 <a name="l00016"></a>00016 <span class="keyword">public</span>:
@@ -76,7 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00019"></a>00019 
 <a name="l00020"></a>00020 <span class="keyword">public</span>: <span class="comment">//constructor</span>
 <a name="l00021"></a>00021 
-<a name="l00025"></a><a class="code" href="classvisio_1_1_kernel.html#abaf0b763ac8a7bd78aa5a91de73370a6">00025</a>         <a class="code" href="classvisio_1_1_kernel.html">Kernel&lt;T&gt;</a>()
+<a name="l00025"></a><a class="code" href="classvisio_1_1_kernel.html#abaf0b763ac8a7bd78aa5a91de73370a6">00025</a>         <a class="code" href="classvisio_1_1_kernel.html" title="Convolution kernels.">Kernel&lt;T&gt;</a>()
 <a name="l00026"></a>00026         {
 <a name="l00027"></a>00027                 <a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a> = <span class="keyword">nullptr</span>;
 <a name="l00028"></a>00028                 <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a> = <a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a> = 0;
@@ -90,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a>00036                 <a class="code" href="classvisio_1_1_kernel.html#a8f2ab959f8a11964bf399a93215f86d6" title="Padded array for input image.">_pad</a> = <span class="keyword">nullptr</span>;
 <a name="l00037"></a>00037         }
 <a name="l00038"></a>00038 
-<a name="l00046"></a><a class="code" href="classvisio_1_1_kernel.html#ad70643760d5cd2b62766e8c5f97f180e">00046</a>         <a class="code" href="classvisio_1_1_kernel.html">Kernel&lt;T&gt;</a>(<span class="keywordtype">double</span> orientation, <span class="keywordtype">double</span> sigma1, <span class="keywordtype">double</span> sigma2, <span class="keywordtype">double</span> clipThres)
+<a name="l00046"></a><a class="code" href="classvisio_1_1_kernel.html#ad70643760d5cd2b62766e8c5f97f180e">00046</a>         <a class="code" href="classvisio_1_1_kernel.html" title="Convolution kernels.">Kernel&lt;T&gt;</a>(<span class="keywordtype">double</span> orientation, <span class="keywordtype">double</span> sigma1, <span class="keywordtype">double</span> sigma2, <span class="keywordtype">double</span> clipThres)
 <a name="l00047"></a>00047         :<a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a>(orientation), <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a>(sigma1), _sigma2(sigma2), <a class="code" href="classvisio_1_1_kernel.html#a988214bdc7a27c10abfcc324c271be7a" title="Threshold value at which kernel is truncated.">_clipSize</a>(clipThres)
 <a name="l00048"></a>00048         {
 <a name="l00049"></a>00049                 <a class="code" href="classvisio_1_1_kernel.html#abe46e023ea54848d6c39a7aea9732083">determine_size</a>(clipThres);
@@ -106,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00059"></a>00059 
 <a name="l00060"></a>00060         }
 <a name="l00061"></a>00061 
-<a name="l00070"></a><a class="code" href="classvisio_1_1_kernel.html#aa91db50f2e50e965eb8fdfdb972567e7">00070</a>         <a class="code" href="classvisio_1_1_kernel.html">Kernel&lt;T&gt;</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classvisio_1_1_kernel.html#a7fc1d7d5ab46ddee643ea20fe6607521">hsize</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classvisio_1_1_kernel.html#a1bed5746f9b9bc6029b996769f819575">vsize</a>, <span class="keywordtype">double</span> orientation, <span class="keywordtype">double</span> sigma1, <span class="keywordtype">double</span> sigma2)
+<a name="l00070"></a><a class="code" href="classvisio_1_1_kernel.html#aa91db50f2e50e965eb8fdfdb972567e7">00070</a>         <a class="code" href="classvisio_1_1_kernel.html" title="Convolution kernels.">Kernel&lt;T&gt;</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classvisio_1_1_kernel.html#a7fc1d7d5ab46ddee643ea20fe6607521">hsize</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classvisio_1_1_kernel.html#a1bed5746f9b9bc6029b996769f819575">vsize</a>, <span class="keywordtype">double</span> orientation, <span class="keywordtype">double</span> sigma1, <span class="keywordtype">double</span> sigma2)
 <a name="l00071"></a>00071         :<a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a>(<a class="code" href="classvisio_1_1_kernel.html#a7fc1d7d5ab46ddee643ea20fe6607521">hsize</a>), <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a>(<a class="code" href="classvisio_1_1_kernel.html#a1bed5746f9b9bc6029b996769f819575">vsize</a>), <a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a>(orientation), <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a>(sigma1), _sigma2(sigma2)
 <a name="l00072"></a>00072         {
 <a name="l00073"></a>00073                 <span class="keywordflow">if</span>(<a class="code" href="classvisio_1_1_kernel.html#aa2f0618f88cb88c273360bce401293a9">is_even</a>(<a class="code" href="classvisio_1_1_kernel.html#a7fc1d7d5ab46ddee643ea20fe6607521">hsize</a>, <a class="code" href="classvisio_1_1_kernel.html#a1bed5746f9b9bc6029b996769f819575">vsize</a>))
@@ -125,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00086"></a>00086 
 <a name="l00087"></a>00087         }
 <a name="l00088"></a>00088 
-<a name="l00092"></a><a class="code" href="classvisio_1_1_kernel.html#a0f2b80724e650cf89bba37f7872e461f">00092</a>         <span class="keyword">virtual</span> ~<a class="code" href="classvisio_1_1_kernel.html">Kernel&lt;T&gt;</a>()
+<a name="l00092"></a><a class="code" href="classvisio_1_1_kernel.html#a0f2b80724e650cf89bba37f7872e461f">00092</a>         <span class="keyword">virtual</span> ~<a class="code" href="classvisio_1_1_kernel.html" title="Convolution kernels.">Kernel&lt;T&gt;</a>()
 <a name="l00093"></a>00093         {
 <a name="l00094"></a>00094                 <span class="keyword">remove</span>();
 <a name="l00095"></a>00095         }
@@ -821,7 +821,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00916"></a>00916 
 <a name="l00917"></a>00917 <span class="keyword">public</span>:
 <a name="l00918"></a>00918 
-<a name="l00923"></a><a class="code" href="classvisio_1_1_kernel.html#a318891d06d5d4635a34f75c273f764a0">00923</a>         <a class="code" href="classvisio_1_1_kernel.html">Kernel&lt;T&gt;</a>&amp; <a class="code" href="classvisio_1_1_kernel.html#a318891d06d5d4635a34f75c273f764a0">operator=</a>(<span class="keyword">const</span> <a class="code" href="classvisio_1_1_kernel.html">Kernel&lt;T&gt;</a>&amp; a)
+<a name="l00923"></a><a class="code" href="classvisio_1_1_kernel.html#a318891d06d5d4635a34f75c273f764a0">00923</a>         <a class="code" href="classvisio_1_1_kernel.html" title="Convolution kernels.">Kernel&lt;T&gt;</a>&amp; <a class="code" href="classvisio_1_1_kernel.html#a318891d06d5d4635a34f75c273f764a0">operator=</a>(<span class="keyword">const</span> <a class="code" href="classvisio_1_1_kernel.html" title="Convolution kernels.">Kernel&lt;T&gt;</a>&amp; a)
 <a name="l00924"></a>00924         {
 <a name="l00925"></a>00925                 <a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a> = a.<a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a>;
 <a name="l00926"></a>00926                 <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a> = a.<a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a>;
@@ -889,7 +889,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 15 2014 18:03:15 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

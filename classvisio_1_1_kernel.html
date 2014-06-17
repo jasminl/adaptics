@@ -86,6 +86,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="visio::Kernel" -->
+<p>Convolution kernels.  
+ <a href="classvisio_1_1_kernel.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_kernel_8h_source.html">Kernel.h</a>&gt;</code></p>
 
 <p><a href="classvisio_1_1_kernel-members.html">List of all members.</a></p>
@@ -170,7 +173,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>_sigma2</b></td></t
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
 class visio::Kernel&lt; T &gt;</h3>
 
-<p>Convolution kernels </p>
+<p>Convolution kernels. </p>
 
 <p>Definition at line <a class="el" href="_kernel_8h_source.html#l00013">13</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
@@ -429,7 +432,7 @@ template&lt;typename T&gt; </div>
 <p>To center the kernel such that middle is in location [0 0] for FFT convolutions. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">ker</td><td><a class="el" href="classvisio_1_1_kernel.html">Kernel</a> to center. </td></tr>
+    <tr><td class="paramname">ker</td><td><a class="el" href="classvisio_1_1_kernel.html" title="Convolution kernels.">Kernel</a> to center. </td></tr>
     <tr><td class="paramname">kerVSize</td><td>Vertical size of the kernel. </td></tr>
     <tr><td class="paramname">kerHSize</td><td>Horizontal size of the kernel. </td></tr>
     <tr><td class="paramname">output</td><td>Array containing the padded centered kernel. </td></tr>
@@ -523,7 +526,7 @@ template&lt;typename T&gt; </div>
 <p>FFT convolution </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">image</td><td><a class="el" href="classvisio_1_1_input.html">Input</a> frame to convolve. </td></tr>
+    <tr><td class="paramname">image</td><td><a class="el" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a> frame to convolve. </td></tr>
     <tr><td class="paramname">result</td><td>Array in which to store the result. </td></tr>
     <tr><td class="paramname">vsize</td><td>Vertical size of the input frame. </td></tr>
     <tr><td class="paramname">hsize</td><td>Horizontal size of the input frame. </td></tr>
@@ -635,7 +638,7 @@ template&lt;typename T&gt; </div>
 <p>Separable convolution. Convolves using m_mask1 and m_mask2 for separable kernels. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html">Input</a> frame. </td></tr>
+    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a> frame. </td></tr>
     <tr><td class="paramname">mvsize</td><td>Vertical size of the input frame. </td></tr>
     <tr><td class="paramname">mhsize</td><td>Horizontal size of the input frame. </td></tr>
     <tr><td class="paramname">result</td><td>Array storing the result of the convolution. </td></tr>
@@ -757,7 +760,7 @@ template&lt;typename T&gt; </div>
 <p>Convolves with rectification using m_mask1 and m_mask2 for separable kernels. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html">Input</a> frame. </td></tr>
+    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a> frame. </td></tr>
     <tr><td class="paramname">mvsize</td><td>Vertical size of the input frame. </td></tr>
     <tr><td class="paramname">mhsize</td><td>Horizontal size of the input frame. </td></tr>
     <tr><td class="paramname">result</td><td>Array storing the result of the convolution. </td></tr>
@@ -880,7 +883,7 @@ template&lt;typename T&gt; </div>
 <p>Convolves with rectification and squaring using m_mask1 and m_mask2 for separable kernels </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html">Input</a> frame. </td></tr>
+    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a> frame. </td></tr>
     <tr><td class="paramname">mvsize</td><td>Vertical size of the input frame. </td></tr>
     <tr><td class="paramname">mhsize</td><td>Horizontal size of the input frame. </td></tr>
     <tr><td class="paramname">result</td><td>Array storing the result of the convolution. </td></tr>
@@ -997,7 +1000,7 @@ template&lt;typename T&gt; </div>
 <p>Regular 2D convolution. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html">Input</a> array to convolve. </td></tr>
+    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a> array to convolve. </td></tr>
     <tr><td class="paramname">mvsize</td><td>Vertical size of the input. </td></tr>
     <tr><td class="paramname">mhsize</td><td>Horizontal size of the input. </td></tr>
     <tr><td class="paramname">result</td><td>Array containing the result of the convolution. </td></tr>
@@ -1095,7 +1098,7 @@ template&lt;typename T&gt; </div>
 <p>Convolution with additional rectification </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html">Input</a> array to convolve. </td></tr>
+    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a> array to convolve. </td></tr>
     <tr><td class="paramname">mvsize</td><td>Vertical size of the input. </td></tr>
     <tr><td class="paramname">mhsize</td><td>Horizontal size of the input. </td></tr>
     <tr><td class="paramname">result</td><td>Array containing the result of the convolution. </td></tr>
@@ -1194,7 +1197,7 @@ template&lt;typename T&gt; </div>
 <p>Convolution with additional rectification and squaring </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html">Input</a> array to convolve. </td></tr>
+    <tr><td class="paramname">matrix</td><td><a class="el" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a> array to convolve. </td></tr>
     <tr><td class="paramname">mvsize</td><td>Vertical size of the input. </td></tr>
     <tr><td class="paramname">mhsize</td><td>Horizontal size of the input. </td></tr>
     <tr><td class="paramname">result</td><td>Array containing the result of the convolution. </td></tr>
@@ -2339,7 +2342,7 @@ template&lt;typename T&gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 15 2014 18:03:15 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
