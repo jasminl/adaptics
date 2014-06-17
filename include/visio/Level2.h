@@ -6,8 +6,8 @@
 namespace visio
 {
 /**
-	Level 2 (transient cells)
-*/
+ *	\brief Transient motion detectors (3D formotion level 2)
+ */
 class CLevel2: public CLayer
 {
 public:

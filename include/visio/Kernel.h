@@ -7,7 +7,7 @@
 namespace visio
 {
 /**
- *	Convolution kernels
+ * \brief Convolution kernels
  */
 template <typename T>
 class Kernel

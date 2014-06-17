@@ -6,7 +6,7 @@
 namespace visio
 {
 /**
- * Level 3 (short-range filter)
+ * \brief Short-range filter (3D formotion level 3)
  */
 class CLevel3: public KernelLayer
 {

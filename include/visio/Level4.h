@@ -5,8 +5,8 @@
 namespace visio
 {
 /**
-	Level 4 (spatial competition and opponent direction of motion)
-*/
+ * \brief Spatial competition and opponent direction of motion (3D formotion level 4)
+ */
 class CLevel4: public KernelLayer
 {
 public:

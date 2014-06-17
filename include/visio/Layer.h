@@ -20,8 +20,8 @@ namespace visio
 #define NOT_ASSIGNED -1	//!< Constant used to assign no particular scale to a given layer's kernel bank
 
 /**
-	Base class for all model levels.
-*/	
+ *	\brief Base class for all 3D formotion model levels
+ */
 class CLayer
 {
 public:

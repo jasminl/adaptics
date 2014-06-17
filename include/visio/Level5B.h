@@ -9,7 +9,7 @@ namespace visio
 class CLevel6;
 
 /**
- * CLevel5B (long-range filter)
+ * \brief Long-range filter (3D formotion level 5B)
  */
 class CLevel5B: public KernelLayer
 {

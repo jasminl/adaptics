@@ -6,8 +6,8 @@
 namespace visio
 {
 /**
-	Kernel layer base class
-*/
+ *	\brief Kernel layer base class
+ */
 class KernelLayer:public CLayer
 {
 

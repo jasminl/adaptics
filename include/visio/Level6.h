@@ -10,8 +10,8 @@ namespace visio
 class CLevel5B;
 
 /**
-	CLevel6 (motion grouping)
-*/
+ * \brief Motion segmentation (3D formotion level6)
+ */
 class CLevel6: public KernelLayer
 {
 

@@ -6,7 +6,9 @@ namespace evo
 {
 
 /**
- * A fixed representation Royal Road functions
+ * \brief A fixed representation Royal Road functions
+ *
+ * A Royal road function with fixed-size representation.
  */
 class CRR2: public RoyalRoad
 {

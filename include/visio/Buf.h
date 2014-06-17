@@ -10,8 +10,10 @@ namespace visio
 {
 
 /**
-	This class contains a number of buffers which are accessed by model layers to perform various operations. 
-*/
+ * \brief Buffers for openMP parallelism
+ *
+ * Contains a number of buffers which are accessed by model layers to perform various operations when using openMP.
+ */
 class Buffer
 {
 public:

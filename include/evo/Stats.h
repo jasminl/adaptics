@@ -6,7 +6,7 @@ namespace evo
 {
 
 /**
- * Stores statistics for a given generation
+ * \brief Stores statistics for a given generation
  */
 struct Stats
 {

@@ -7,7 +7,7 @@ namespace evo
 {
 
 /**
- * A floating representation version of CRR2
+ * \brief A floating representation version of CRR2
  */
 class CFRR2: public RoyalRoad
 {

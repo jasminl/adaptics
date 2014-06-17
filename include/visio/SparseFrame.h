@@ -6,7 +6,7 @@
 namespace visio
 {
 /**
- *	Sparsely encoded input frame
+ *	\brief Sparsely encoded input frame
  */
 template <typename T>
 class SparseFrame

@@ -7,7 +7,7 @@ namespace evo
 {
 
 /**
-* Base class for royal road functions
+* \brief Base class for royal road functions
 */
 class RoyalRoad
 {

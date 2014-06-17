@@ -6,7 +6,7 @@ namespace learn
 {
 
 /**
- * Operators
+ * \brief Convenience operators for learn lib
  */
 class Ops
 {
@@ -22,7 +22,7 @@ public:
 };
 
 /**
- * Implements an ABAM network
+ * \brief Implements an ABAM network
  */
 class Abam
 {

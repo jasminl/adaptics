@@ -6,8 +6,8 @@
 namespace visio
 {
 /**
-	CLevel5A (formotion selection)
-*/
+ * \brief Shape-motion boundary interaction (3D formotion level5A)
+ */
 class CLevel5A: public KernelLayer
 {
 public:

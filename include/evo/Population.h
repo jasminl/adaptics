@@ -10,7 +10,7 @@ namespace evo
 {
 
 /**
- * Generates and evolves a population
+ * \brief Generates and evolves a population
  */
 class Population
 {

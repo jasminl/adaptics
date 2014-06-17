@@ -6,7 +6,7 @@
 namespace visio
 {
 /**
- *	Input Layer
+ *	\brief Input Layer for 3D formotion
  */
 template <typename T>
 class Input
