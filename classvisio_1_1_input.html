@@ -60,7 +60,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -132,7 +132,7 @@ class visio::Input&lt; T &gt;</h3>
 
 <p><a class="el" href="classvisio_1_1_input.html" title="Input Layer for 3D formotion.">Input</a> Layer for 3D formotion. </p>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00012">12</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00016">16</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa0ca16481122d9b1bde188f5f277199b"></a><!-- doxytag: member="visio::Input::Input" ref="aa0ca16481122d9b1bde188f5f277199b" args="(int use_motion, int use_V2, int use_V1, int use_attention)" -->
 <div class="memitem">
@@ -175,14 +175,15 @@ template&lt;typename T &gt; </div>
 <p>Constructor </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">useMotion</td><td>Determines whether to input motion signals or not. </td></tr>
-    <tr><td class="paramname">useV2</td><td>Determines whether to input V2 boundaries or not (default false). </td></tr>
-    <tr><td class="paramname">useV1</td><td>Determines whether to input V1 boundaries or not(default false). </td></tr>
+    <tr><td class="paramname">use_motion</td><td>Determines whether to input motion signals or not. </td></tr>
+    <tr><td class="paramname">use_V2</td><td>Determines whether to input V2 boundaries or not (default false). </td></tr>
+    <tr><td class="paramname">use_V1</td><td>Determines whether to input V1 boundaries or not(default false). </td></tr>
+    <tr><td class="paramname">use_attention</td><td>Determines whether to apply top down attention to the last model layer </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00239">239</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00244">244</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">: _import_motion(use_motion), _import_V2(use_V2), _import_V1(use_V1), _import_attention(use_attention)
   {};
 </pre></div>
@@ -205,7 +206,7 @@ template&lt;typename T &gt; </div>
 <div class="memdoc">
 <p>Destructor </p>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00244">244</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00249">249</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keyword">delete</span> _frame;
 }
@@ -238,7 +239,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Boolean value indicating whether the motion direction is being attended. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00588">588</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00593">593</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">switch</span>(d)
         {
@@ -291,7 +292,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00493">493</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00498">498</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">switch</span>(direction)
         {
@@ -336,7 +337,7 @@ template&lt;typename T&gt; </div>
 <p>Returns the number of cycles per second for current stimulus </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Number of cycles per second. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00072">72</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00077">77</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> _cycle_per_second;
         }
@@ -361,7 +362,7 @@ template&lt;typename T&gt; </div>
 <p>Gives the height of the stimulus frames </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The height of the frame. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00063">63</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00068">68</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> _frame_height;
         }
@@ -392,7 +393,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00316">316</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00321">321</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         ifstream file(input_file);
         <span class="keywordflow">if</span>(file.bad())
@@ -542,7 +543,7 @@ template&lt;typename T &gt; </div>
 <div class="memdoc">
 <p>Loads currently pointed-to frame. </p>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00519">519</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00524">524</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="comment">//Reset current input</span>
         <span class="keywordflow">if</span>(_import_motion == USE_MOTION)
@@ -630,7 +631,7 @@ template&lt;typename T&gt; </div>
 <p>Indicates the number of frames loaded. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of frames. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00045">45</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00050">50</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> _nb_frames;
         }
@@ -654,7 +655,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of V2 planes. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00126">126</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00131">131</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> _nb_V2_planes;
         }
@@ -678,7 +679,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>To go to next stored frame. </p>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00134">134</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00139">139</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 ++_cur_frame_nb;        <span class="comment">//Go to next frame</span>
                 <a class="code" href="classvisio_1_1_input.html#a2513d09acc6e8437115529ad61427ba0">load</a>();                         <span class="comment">//Load that frame</span>
@@ -704,7 +705,7 @@ template&lt;typename T&gt; </div>
 <p>To access OFF motion input. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A vector containing decoded motion input in the OFF channel. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00096">96</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00101">101</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> _off_motion;
         }
@@ -729,7 +730,7 @@ template&lt;typename T&gt; </div>
 <p>To access ON motion input. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A vector containing decoded motion input in the ON channel. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00087">87</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00092">92</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> _on_motion;
         }
@@ -760,7 +761,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00250">250</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00255">255</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keyword">const</span> std::vector&lt;T&gt;* p;
         <span class="keywordflow">if</span> (!strcmp(<span class="stringliteral">&quot;ONMOT&quot;</span>,field))
@@ -808,7 +809,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Decoded form input at the specified depth. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00448">448</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00453">453</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">switch</span>(depth)
         {
@@ -863,7 +864,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to the decoded array. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00467">467</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00472">472</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         std::vector&lt;double&gt;* v = <span class="keyword">nullptr</span>;
         <span class="keywordflow">switch</span>(depth)
@@ -908,7 +909,7 @@ template&lt;typename T&gt; </div>
 <p>Gives the width of the stimulus frames. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The width of the frame. </dd></dl>
 
-<p>Definition at line <a class="el" href="_input_8h_source.html#l00054">54</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
+<p>Definition at line <a class="el" href="_input_8h_source.html#l00059">59</a> of file <a class="el" href="_input_8h_source.html">Input.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> _frame_width;
         }
@@ -924,7 +925,7 @@ template&lt;typename T&gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -936,7 +937,7 @@ template&lt;typename T&gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 18 2014 22:09:04 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

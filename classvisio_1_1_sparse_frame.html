@@ -60,7 +60,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,7 +137,7 @@ class visio::SparseFrame&lt; T &gt;</h3>
 
 <p>Sparsely encoded input frame. </p>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00012">12</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00016">16</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1e72e1c1a390dfc59e237628aebaf573"></a><!-- doxytag: member="visio::SparseFrame::SparseFrame" ref="a1e72e1c1a390dfc59e237628aebaf573" args="()" -->
 <div class="memitem">
@@ -156,7 +156,7 @@ template&lt;typename T &gt; </div>
 <div class="memdoc">
 <p>Default constructor </p>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00186">186</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00190">190</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">: _on_motion(<span class="keyword">nullptr</span>), _off_motion(<span class="keyword">nullptr</span>), _on_V1(<span class="keyword">nullptr</span>), _off_V1(<span class="keyword">nullptr</span>),
         _V2D1(<span class="keyword">nullptr</span>), _V2D2(<span class="keyword">nullptr</span>), _V2D3(<span class="keyword">nullptr</span>)
 {
@@ -189,7 +189,7 @@ template&lt;typename T &gt; </div>
 <div class="memdoc">
 <p>Destructor </p>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00201">201</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00205">205</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
          <a class="code" href="classvisio_1_1_sparse_frame.html#ab132605d44997602b6fbde06e5cf4cdf">delete_array</a>(_on_motion);
          <a class="code" href="classvisio_1_1_sparse_frame.html#ab132605d44997602b6fbde06e5cf4cdf">delete_array</a>(_off_motion);
@@ -228,7 +228,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00214">214</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00218">218</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">if</span>(!strcmp(aName,<span class="stringliteral">&quot;ONMOT&quot;</span>))      <span class="keywordflow">return</span> _on_motion;
         <span class="keywordflow">if</span>(!strcmp(aName,<span class="stringliteral">&quot;OFFMOT&quot;</span>))     <span class="keywordflow">return</span> _off_motion;
@@ -262,7 +262,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00223">223</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00227">227</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">if</span>(!strcmp(aName,<span class="stringliteral">&quot;V2D1&quot;</span>))       <span class="keywordflow">return</span> _V2D1;
         <span class="keywordflow">if</span>(!strcmp(aName,<span class="stringliteral">&quot;V2D2&quot;</span>))       <span class="keywordflow">return</span> _V2D2;
@@ -297,7 +297,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00339">339</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00343">343</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">switch</span> (d)
         {
@@ -353,12 +353,12 @@ template&lt;typename T&gt; </div>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">pointer</td><td>Reference to the pointer to the location where to allocate memory for an input array. </td></tr>
-    <tr><td class="paramname">nbPoints</td><td>The number of points to allocate space for (2*nbPoints). </td></tr>
+    <tr><td class="paramname">nb_points</td><td>The number of points to allocate space for (2*nbPoints). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00084">84</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00088">88</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {       <span class="comment">//Allocate array such that each point corresponds to a triplet</span>
                 pointer = <span class="keyword">new</span> std::vector&lt;T&gt;(nb_points * 2);
         }
@@ -395,12 +395,12 @@ template&lt;typename T&gt; </div>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">pointer</td><td>Reference to the pointer to the location where to allocate memory for an input array. </td></tr>
-    <tr><td class="paramname">nbPoints</td><td>The number of points to allocate space for (2*nbPoints). </td></tr>
+    <tr><td class="paramname">nb_points</td><td>The number of points to allocate space for (2*nbPoints). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00094">94</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00098">98</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {       <span class="comment">//Allocate array such that each point corresponds to a triplet</span>
                 pointer = <span class="keyword">new</span> std::vector&lt;double&gt;(nb_points * 2);
         }
@@ -432,7 +432,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The address of the allocated array. </dd></dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00233">233</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00237">237</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">switch</span>(d)
         {
@@ -491,7 +491,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00116">116</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00120">120</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keyword">delete</span> pointer;
         }
@@ -522,7 +522,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00125">125</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00129">129</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keyword">delete</span> pointer;
         }
@@ -578,7 +578,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00267">267</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00271">271</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">if</span>(array == <span class="keyword">nullptr</span>)
                 <a class="code" href="classvisio_1_1_sparse_frame.html#afaba5f4661465f4674232fba273ae940">create_array</a>(array, nbPts);
@@ -665,7 +665,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00304">304</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00308">308</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">if</span>(array == <span class="keyword">nullptr</span>)
                 <a class="code" href="classvisio_1_1_sparse_frame.html#afaba5f4661465f4674232fba273ae940">create_array</a>(array,nbPts);
@@ -718,7 +718,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>OFF channel motion input </p>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00050">50</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00054">54</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{<span class="keywordflow">return</span> _off_motion;}
 </pre></div>
 </div>
@@ -740,7 +740,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>ON channel motion input </p>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00045">45</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00049">49</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{<span class="keywordflow">return</span> _on_motion;}
 </pre></div>
 </div>
@@ -762,7 +762,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>V2 depth 1 boundary input </p>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00055">55</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00059">59</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{<span class="keywordflow">return</span> _V2D1;}
 </pre></div>
 </div>
@@ -784,7 +784,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>V2 depth 2 boundary input </p>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00060">60</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00064">64</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{<span class="keywordflow">return</span> _V2D2;}
 </pre></div>
 </div>
@@ -806,7 +806,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>V2 depth 3 boundary input </p>
 
-<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00063">63</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
+<p>Definition at line <a class="el" href="_sparse_frame_8h_source.html#l00067">67</a> of file <a class="el" href="_sparse_frame_8h_source.html">SparseFrame.h</a>.</p>
 <div class="fragment"><pre class="fragment">{<span class="keywordflow">return</span> _V2D3;}
 </pre></div>
 </div>
@@ -820,7 +820,7 @@ template&lt;typename T&gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -832,7 +832,7 @@ template&lt;typename T&gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 18 2014 22:09:04 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

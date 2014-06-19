@@ -10,5 +10,6 @@ var searchData=
   ['_7ekernellayer',['~KernelLayer',['../classvisio_1_1_kernel_layer.html#a8f2993a559e14f8f37606de9327ab4d6',1,'visio::KernelLayer']]],
   ['_7epopulation',['~Population',['../classevo_1_1_population.html#a5d6154fc78b80db39a0ccd7adf6506f1',1,'evo::Population']]],
   ['_7eroyalroad',['~RoyalRoad',['../classevo_1_1_royal_road.html#a3f57fa6cc0c614ad828bed531dbe23a3',1,'evo::RoyalRoad']]],
+  ['_7eseq',['~Seq',['../classevo_1_1_seq.html#a0c34040a9ea3d380c82fd2fbfb4edad3',1,'evo::Seq']]],
   ['_7esparseframe',['~SparseFrame',['../classvisio_1_1_sparse_frame.html#a04c87e20bd4fc8ccc68980509f54b1a0',1,'visio::SparseFrame']]]
 ];

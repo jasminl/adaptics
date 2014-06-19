@@ -50,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -58,49 +59,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">visio/Level3.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;KernelLayer.h&quot;</span>
-<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;Level2.h&quot;</span>
-<a name="l00005"></a>00005 
-<a name="l00006"></a>00006 <span class="keyword">namespace </span>visio
-<a name="l00007"></a>00007 {
-<a name="l00011"></a><a class="code" href="classvisio_1_1_c_level3.html">00011</a> <span class="keyword">class </span><a class="code" href="classvisio_1_1_c_level3.html" title="Short-range filter (3D formotion level 3)">CLevel3</a>: <span class="keyword">public</span> <a class="code" href="classvisio_1_1_kernel_layer.html" title="Kernel layer base class.">KernelLayer</a>
-<a name="l00012"></a>00012 {
-<a name="l00013"></a>00013 <span class="keyword">public</span>:
-<a name="l00017"></a>00017         <a class="code" href="classvisio_1_1_c_level3.html#aac255d6155752c5d897f433b21f23a9c">CLevel3</a>(<span class="keywordtype">int</span> iter_per_frame, <span class="keywordtype">double</span> dt, <span class="keywordtype">double</span> A5, <span class="keywordtype">double</span> G, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> verticalSize, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> horizontalSize,
-<a name="l00018"></a>00018                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> totFrames, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nbDirections, <span class="keywordtype">double</span> sigma1Scale1, <span class="keywordtype">double</span> sigma2Scale1,
-<a name="l00019"></a>00019                     <span class="keywordtype">double</span> sigma1Scale2, <span class="keywordtype">double</span> sigma2Scale2, <span class="keywordtype">double</span> theta1, <span class="keywordtype">double</span> theta2,
-<a name="l00020"></a>00020                         <a class="code" href="classvisio_1_1_c_level2.html" title="Transient motion detectors (3D formotion level 2)">CLevel2</a>&amp; lev2, <span class="keyword">const</span> std::string&amp; output_folder, <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;motionLevel3&quot;</span>,
-<a name="l00021"></a>00021                         <span class="keywordtype">bool</span> record = <span class="keyword">false</span>, <a class="code" href="classvisio_1_1_buffer.html" title="Buffers for openMP parallelism.">Buffer</a>* buffer = <span class="keyword">nullptr</span>, <span class="keywordtype">bool</span> testKernels = <span class="keyword">false</span>);
-<a name="l00022"></a>00022 
-<a name="l00026"></a>00026         <span class="keywordtype">void</span> <a class="code" href="classvisio_1_1_c_level3.html#aa75aa94a51d94e37c651b6d799c8e125">compute</a>(<span class="keywordtype">void</span>* <span class="keywordtype">object</span>);
-<a name="l00027"></a>00027 
-<a name="l00031"></a>00031         <span class="keywordtype">void</span> setBaseB();
-<a name="l00032"></a>00032         <span class="keywordtype">void</span> setBaseSB();
-<a name="l00033"></a>00033         <span class="keywordtype">void</span> setBasePB();
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="keyword">protected</span>:      <span class="comment">//Data members</span>
-<a name="l00037"></a>00037 
-<a name="l00038"></a><a class="code" href="classvisio_1_1_c_level3.html#ab43019854f66fd8361b7898fb9547946">00038</a>         <span class="keywordtype">double</span> <a class="code" href="classvisio_1_1_c_level3.html#ab43019854f66fd8361b7898fb9547946" title="1-A5*dt">_cst13</a>;  
+<a href="_level3_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00005"></a>00005 <span class="preprocessor">#pragma once</span>
+<a name="l00006"></a>00006 <span class="preprocessor"></span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="_kernel_layer_8h.html" title="Declaration of the base class for all 3D formotion layers that perform convolutions.">KernelLayer.h</a>&quot;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_level2_8h.html" title="3D formotion level 2 (transient motion detection)">Level2.h</a>&quot;</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="keyword">namespace </span>visio
+<a name="l00011"></a>00011 {
+<a name="l00015"></a><a class="code" href="classvisio_1_1_c_level3.html">00015</a> <span class="keyword">class </span><a class="code" href="classvisio_1_1_c_level3.html" title="Short-range filter (3D formotion level 3)">CLevel3</a>: <span class="keyword">public</span> <a class="code" href="classvisio_1_1_kernel_layer.html" title="Kernel layer base class.">KernelLayer</a>
+<a name="l00016"></a>00016 {
+<a name="l00017"></a>00017 <span class="keyword">public</span>:
+<a name="l00021"></a>00021         <a class="code" href="classvisio_1_1_c_level3.html#aac255d6155752c5d897f433b21f23a9c">CLevel3</a>(<span class="keywordtype">int</span> iter_per_frame, <span class="keywordtype">double</span> dt, <span class="keywordtype">double</span> A5, <span class="keywordtype">double</span> G, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> verticalSize, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> horizontalSize,
+<a name="l00022"></a>00022                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> totFrames, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nbDirections, <span class="keywordtype">double</span> sigma1Scale1, <span class="keywordtype">double</span> sigma2Scale1,
+<a name="l00023"></a>00023                     <span class="keywordtype">double</span> sigma1Scale2, <span class="keywordtype">double</span> sigma2Scale2, <span class="keywordtype">double</span> theta1, <span class="keywordtype">double</span> theta2,
+<a name="l00024"></a>00024                         <a class="code" href="classvisio_1_1_c_level2.html" title="Transient motion detectors (3D formotion level 2)">CLevel2</a>&amp; lev2, <span class="keyword">const</span> std::string&amp; output_folder, <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;motionLevel3&quot;</span>,
+<a name="l00025"></a>00025                         <span class="keywordtype">bool</span> record = <span class="keyword">false</span>, <a class="code" href="classvisio_1_1_buffer.html" title="Buffers for openMP parallelism.">Buffer</a>* buffer = <span class="keyword">nullptr</span>, <span class="keywordtype">bool</span> testKernels = <span class="keyword">false</span>);
+<a name="l00026"></a>00026 
+<a name="l00030"></a>00030         <span class="keywordtype">void</span> <a class="code" href="classvisio_1_1_c_level3.html#aa75aa94a51d94e37c651b6d799c8e125">compute</a>(<span class="keywordtype">void</span>* <span class="keywordtype">object</span>);
+<a name="l00031"></a>00031 
+<a name="l00035"></a>00035         <span class="keywordtype">void</span> setBaseB();
+<a name="l00036"></a>00036         <span class="keywordtype">void</span> setBaseSB();
+<a name="l00037"></a>00037         <span class="keywordtype">void</span> setBasePB();
 <a name="l00039"></a>00039 
-<a name="l00043"></a>00043         <span class="keywordtype">double</span> _theta1;
-<a name="l00044"></a>00044         <span class="keywordtype">double</span> _theta2;
-<a name="l00046"></a>00046 
-<a name="l00051"></a>00051         std::vector&lt;Kernel&lt;double&gt;*&gt; _ks1;
-<a name="l00052"></a>00052         std::vector&lt;Kernel&lt;double&gt;*&gt; _ks2;
-<a name="l00053"></a>00053         std::vector&lt;std::string&gt; _ns;
-<a name="l00054"></a>00054         std::vector&lt;double*&gt; _vs1;
-<a name="l00055"></a>00055         std::vector&lt;double*&gt; _vs2;
-<a name="l00057"></a>00057 };
-<a name="l00058"></a>00058 }
+<a name="l00040"></a>00040 <span class="keyword">protected</span>:      <span class="comment">//Data members</span>
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="classvisio_1_1_c_level3.html#ab43019854f66fd8361b7898fb9547946">00042</a>         <span class="keywordtype">double</span> <a class="code" href="classvisio_1_1_c_level3.html#ab43019854f66fd8361b7898fb9547946" title="1-A5*dt">_cst13</a>;  
+<a name="l00043"></a>00043 
+<a name="l00047"></a>00047         <span class="keywordtype">double</span> _theta1;
+<a name="l00048"></a>00048         <span class="keywordtype">double</span> _theta2;
+<a name="l00050"></a>00050 
+<a name="l00055"></a>00055         std::vector&lt;Kernel&lt;double&gt;*&gt; _ks1;
+<a name="l00056"></a>00056         std::vector&lt;Kernel&lt;double&gt;*&gt; _ks2;
+<a name="l00057"></a>00057         std::vector&lt;std::string&gt; _ns;
+<a name="l00058"></a>00058         std::vector&lt;double*&gt; _vs1;
+<a name="l00059"></a>00059         std::vector&lt;double*&gt; _vs2;
+<a name="l00061"></a>00061 };
+<a name="l00062"></a>00062 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,7 +114,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 18 2014 22:09:04 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -7,5 +7,6 @@ var searchData=
   ['update_5fnoo_5fnodepth',['update_noO_noDepth',['../classvisio_1_1_c_level6.html#a6033ae32593725fce8262d6aed396d80',1,'visio::CLevel6']]],
   ['update_5fnoo_5fnodepth_5fgaussian',['update_noO_noDepth_gaussian',['../classvisio_1_1_c_level6.html#a17a393c313eaa7d672f354654535d51e',1,'visio::CLevel6']]],
   ['update_5fweights',['update_weights',['../classlearn_1_1_abam.html#ac0d364dc9393d66c06baa2882e7aa63c',1,'learn::Abam']]],
-  ['updatesep',['updateSep',['../classvisio_1_1_c_level5_b.html#a5759f1d4959fdca880a60fc8aad46936',1,'visio::CLevel5B']]]
+  ['updatesep',['updateSep',['../classvisio_1_1_c_level5_b.html#a5759f1d4959fdca880a60fc8aad46936',1,'visio::CLevel5B']]],
+  ['utils_2eh',['Utils.h',['../_utils_8h.html',1,'']]]
 ];

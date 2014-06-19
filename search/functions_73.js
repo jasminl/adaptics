@@ -2,6 +2,7 @@ var searchData=
 [
   ['save',['save',['../classvisio_1_1_kernel_layer.html#aa14c8558a1cb2d1efb4622e843072fb0',1,'visio::KernelLayer::save()'],['../classvisio_1_1_c_layer.html#af9bafcb3a9a439165c47d59c305d2c4e',1,'visio::CLayer::save()'],['../classvisio_1_1_c_level2.html#a5d8fd3c63a94a00ea508e46aea8ee0be',1,'visio::CLevel2::save()']]],
   ['select_5fparent',['select_parent',['../classevo_1_1_population.html#a0e14e93ebf25d1d6fb2b728a10dc698a',1,'evo::Population']]],
+  ['seq',['Seq',['../classevo_1_1_seq.html#a71aec846b96256ac503417cc79f2fad5',1,'evo::Seq']]],
   ['set_5fcentral',['set_central',['../classvisio_1_1_kernel.html#af3314979e24a20bc64315c8567ae88bd',1,'visio::Kernel']]],
   ['set_5fdft',['set_dft',['../classvisio_1_1_kernel.html#af0ab95b93001cada3ea061434b8183a2',1,'visio::Kernel']]],
   ['set_5fintrinsic_5fweight',['set_intrinsic_weight',['../classvisio_1_1_kernel.html#a22be0193141e2877d5725237f4e15548',1,'visio::Kernel::set_intrinsic_weight()'],['../classvisio_1_1_kernel_layer.html#af8ba9870235ad568768e7135f55d4965',1,'visio::KernelLayer::set_intrinsic_weight()']]],

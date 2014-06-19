@@ -60,7 +60,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -125,8 +125,8 @@ Static Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Continues simulation.  <a href="#a197721bc334d1b1bd38ac338039ce152"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevo_1_1_population.html#a9ac23decc5f336bed197cc87307d5a6a">optim_indiv</a> = 987987986</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates a theoretically optimal individual has been found.  <a href="#a9ac23decc5f336bed197cc87307d5a6a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43a22b492f55d4bfaf0ed754fb702e2a"></a><!-- doxytag: member="evo::Population::sigma_clip" ref="a43a22b492f55d4bfaf0ed754fb702e2a" args="" -->
-static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>sigma_clip</b> = 1.5</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevo_1_1_population.html#a43a22b492f55d4bfaf0ed754fb702e2a">sigma_clip</a> = 1.5</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Max population fitness.  <a href="#a43a22b492f55d4bfaf0ed754fb702e2a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevo_1_1_population.html#a1ac4c161c4bb0bfe6f29b11cdbc793ca">scaling_fitness</a> = 0.1</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">sigma scaling of Tanese (1989)  <a href="#a1ac4c161c4bb0bfe6f29b11cdbc793ca"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevo_1_1_population.html#acad171fceac0b9a73e1ffa74f1df96fe">max_iterations</a> = 50</td></tr>
@@ -165,7 +165,7 @@ Protected Attributes</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Generates and evolves a population. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00015">15</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00019">19</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1a173caf98049ccd87ac37c6803e7feb"></a><!-- doxytag: member="evo::Population::Population" ref="a1a173caf98049ccd87ac37c6803e7feb" args="(int pop_size, int nb_building_blocks, int nb_neutral_blocks, float mutation_rate, float cross_over_rate, int building_block_size, int rr_type)" -->
 <div class="memitem">
@@ -491,7 +491,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The size of building blocks. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00125">125</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00129">129</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -508,7 +508,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Crossover probability. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00124">124</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00128">128</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -525,7 +525,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The next generation (necessary for crossover) </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00133">133</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00137">137</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -542,7 +542,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Genotype length. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00126">126</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00130">130</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -559,7 +559,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Mutation probability. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00123">123</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00127">127</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -576,7 +576,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The number of building blocks. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00121">121</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00125">125</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -593,7 +593,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The number of neutral blocks. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00122">122</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00126">126</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -610,7 +610,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The current population. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00132">132</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00136">136</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -627,7 +627,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Array of population fitness. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00134">134</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00138">138</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -644,7 +644,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The population size. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00120">120</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00124">124</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -661,7 +661,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The royal road signature. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00130">130</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00134">134</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -678,7 +678,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Continues simulation. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00022">22</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00026">26</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -695,7 +695,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Indicates all individuals are different. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00028">28</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00032">32</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -712,7 +712,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Stores simulation statistics. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00128">128</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00132">132</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -729,7 +729,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Max iterations over which to compare sequences with compare_seq. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00027">27</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00031">31</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -746,7 +746,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Indicates a theoretically optimal individual has been found. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00023">23</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00027">27</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -763,7 +763,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Maximum fitness value that can be achieved by an individual. </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00029">29</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00033">33</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -780,7 +780,24 @@ Protected Attributes</h2></td></tr>
 
 <p>sigma scaling of Tanese (1989) </p>
 
-<p>Definition at line <a class="el" href="_population_8h_source.html#l00026">26</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00030">30</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a43a22b492f55d4bfaf0ed754fb702e2a"></a><!-- doxytag: member="evo::Population::sigma_clip" ref="a43a22b492f55d4bfaf0ed754fb702e2a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float <a class="el" href="classevo_1_1_population.html#a43a22b492f55d4bfaf0ed754fb702e2a">evo::Population::sigma_clip</a> = 1.5<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Max population fitness. </p>
+
+<p>Definition at line <a class="el" href="_population_8h_source.html#l00029">29</a> of file <a class="el" href="_population_8h_source.html">Population.h</a>.</p>
 
 </div>
 </div>
@@ -793,7 +810,7 @@ Protected Attributes</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -805,7 +822,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 18 2014 22:09:04 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

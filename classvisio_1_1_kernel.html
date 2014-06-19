@@ -60,7 +60,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,9 +137,9 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7">_orientation</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Orientation (in rads)  <a href="#a6bd6dc8dd700f159b34cf822991d4dc7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026">_sigma1</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Stdev of Gaussian.  <a href="#add4998c8a0aaddafe3a9f218d302e026"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8c2f4998a02a89c9a7ceaef55945d8d"></a><!-- doxytag: member="visio::Kernel::_sigma2" ref="ae8c2f4998a02a89c9a7ceaef55945d8d" args="" -->
-double&#160;</td><td class="memItemRight" valign="bottom"><b>_sigma2</b></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard deviation of Gaussian in one direction.  <a href="#add4998c8a0aaddafe3a9f218d302e026"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisio_1_1_kernel.html#ae8c2f4998a02a89c9a7ceaef55945d8d">_sigma2</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard deviation of Gaussian in other direction.  <a href="#ae8c2f4998a02a89c9a7ceaef55945d8d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisio_1_1_kernel.html#a988214bdc7a27c10abfcc324c271be7a">_clipSize</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Threshold value at which kernel is truncated.  <a href="#a988214bdc7a27c10abfcc324c271be7a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisio_1_1_kernel.html#a73d6c48187e591d75714b4c4d0fbbbd3">_intrinsic_weight</a></td></tr>
@@ -175,7 +175,7 @@ class visio::Kernel&lt; T &gt;</h3>
 
 <p>Convolution kernels. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00013">13</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00019">19</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="abaf0b763ac8a7bd78aa5a91de73370a6"></a><!-- doxytag: member="visio::Kernel::Kernel" ref="abaf0b763ac8a7bd78aa5a91de73370a6" args="()" -->
 <div class="memitem">
@@ -194,12 +194,12 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>Default constructor </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00025">25</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00031">31</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a> = <span class="keyword">nullptr</span>;
                 <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a> = <a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a> = 0;
                 <a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a> = -1;
-                <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a> = _sigma2 = -1;
+                <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Standard deviation of Gaussian in one direction.">_sigma1</a> = <a class="code" href="classvisio_1_1_kernel.html#ae8c2f4998a02a89c9a7ceaef55945d8d" title="Standard deviation of Gaussian in other direction.">_sigma2</a> = -1;
                 <a class="code" href="classvisio_1_1_kernel.html#a73d6c48187e591d75714b4c4d0fbbbd3" title="Weighting coefficient present in the kernel&#39;s equation.">_intrinsic_weight</a> = 1;
                 <a class="code" href="classvisio_1_1_kernel.html#a988214bdc7a27c10abfcc324c271be7a" title="Threshold value at which kernel is truncated.">_clipSize</a> = 0;
                 <a class="code" href="classvisio_1_1_kernel.html#aa099ea9a287e07b8e1bc0bbe3f3b43a7" title="First SV mask (rows)">_mask1</a> = <a class="code" href="classvisio_1_1_kernel.html#a5e7df3e8639fd52ae50570238df3f0d8" title="Second SV mask (cols)">_mask2</a> = <span class="keyword">nullptr</span>;
@@ -259,8 +259,8 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00046">46</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
-<div class="fragment"><pre class="fragment">        :<a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a>(orientation), <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a>(sigma1), _sigma2(sigma2), <a class="code" href="classvisio_1_1_kernel.html#a988214bdc7a27c10abfcc324c271be7a" title="Threshold value at which kernel is truncated.">_clipSize</a>(clipThres)
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00052">52</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<div class="fragment"><pre class="fragment">        :<a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a>(orientation), <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Standard deviation of Gaussian in one direction.">_sigma1</a>(sigma1), <a class="code" href="classvisio_1_1_kernel.html#ae8c2f4998a02a89c9a7ceaef55945d8d" title="Standard deviation of Gaussian in other direction.">_sigma2</a>(sigma2), <a class="code" href="classvisio_1_1_kernel.html#a988214bdc7a27c10abfcc324c271be7a" title="Threshold value at which kernel is truncated.">_clipSize</a>(clipThres)
         {
                 <a class="code" href="classvisio_1_1_kernel.html#abe46e023ea54848d6c39a7aea9732083">determine_size</a>(clipThres);
                 <a class="code" href="classvisio_1_1_kernel.html#a27ccbc26e7ad6a5b9e9931941353e917">make_kernel</a>();
@@ -333,8 +333,8 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00070">70</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
-<div class="fragment"><pre class="fragment">        :<a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a>(<a class="code" href="classvisio_1_1_kernel.html#a7fc1d7d5ab46ddee643ea20fe6607521">hsize</a>), <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a>(<a class="code" href="classvisio_1_1_kernel.html#a1bed5746f9b9bc6029b996769f819575">vsize</a>), <a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a>(orientation), <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a>(sigma1), _sigma2(sigma2)
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00076">76</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<div class="fragment"><pre class="fragment">        :<a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a>(<a class="code" href="classvisio_1_1_kernel.html#a7fc1d7d5ab46ddee643ea20fe6607521">hsize</a>), <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a>(<a class="code" href="classvisio_1_1_kernel.html#a1bed5746f9b9bc6029b996769f819575">vsize</a>), <a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a>(orientation), <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Standard deviation of Gaussian in one direction.">_sigma1</a>(sigma1), <a class="code" href="classvisio_1_1_kernel.html#ae8c2f4998a02a89c9a7ceaef55945d8d" title="Standard deviation of Gaussian in other direction.">_sigma2</a>(sigma2)
         {
                 <span class="keywordflow">if</span>(<a class="code" href="classvisio_1_1_kernel.html#aa2f0618f88cb88c273360bce401293a9">is_even</a>(<a class="code" href="classvisio_1_1_kernel.html#a7fc1d7d5ab46ddee643ea20fe6607521">hsize</a>, <a class="code" href="classvisio_1_1_kernel.html#a1bed5746f9b9bc6029b996769f819575">vsize</a>))
                         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;kernel&lt;T&gt;::kernel: size must be odd.&quot;</span>);
@@ -371,7 +371,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>Destructor </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00092">92</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00098">98</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keyword">remove</span>();
         }
@@ -442,7 +442,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00594">594</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00600">600</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> hbound = (kerHSize-1)/2;
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vbound = (kerVSize-1)/2;
@@ -534,7 +534,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00642">642</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00648">648</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i,j,ij=0;
 
@@ -648,7 +648,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to the array storing the result. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00706">706</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00712">712</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 T* pRes = buffer;
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i,j,k;
@@ -770,7 +770,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to the array storing the result. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00778">778</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00784">784</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 T* pRes = buffer;
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i,j,k;
@@ -893,7 +893,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to the array storing the result. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00851">851</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00857">857</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 T* pRes = buffer;
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i,j,k;
@@ -1009,7 +1009,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to the resulting array. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00255">255</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00261">261</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i, j, k, g;
                 T* pRes = result;
@@ -1107,7 +1107,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to the resulting array. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00309">309</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00315">315</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i,j,k,g;
                 T* pRes = result;
@@ -1206,7 +1206,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to the resulting array. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00365">365</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00371">371</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i,j,k,g;
                 T* pRes = result;
@@ -1280,9 +1280,9 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the size of one side of the kernel. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00205">205</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00211">211</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
-                <span class="keywordtype">double</span> sig = max(<a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a>, _sigma2);
+                <span class="keywordtype">double</span> sig = max(<a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Standard deviation of Gaussian in one direction.">_sigma1</a>, <a class="code" href="classvisio_1_1_kernel.html#ae8c2f4998a02a89c9a7ceaef55945d8d" title="Standard deviation of Gaussian in other direction.">_sigma2</a>);
 
                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> loc = 0;
 
@@ -1318,7 +1318,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <dl class="return"><dt><b>Returns:</b></dt><dd>Horizontal size of kernel. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00136">136</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00142">142</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> <a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a>;
         }
@@ -1361,7 +1361,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A Boolean flag indicating whether the proposed sizes satisfy the requirement that the kernel be odd. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00195">195</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00201">201</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> (!(sz1%2) || !(sz2%2));
         }
@@ -1385,7 +1385,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <dl class="return"><dt><b>Returns:</b></dt><dd>A boolean flag indicating whether the kernel is used or not. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00184">184</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00190">190</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> (<a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a> != <span class="keyword">nullptr</span>);
         }
@@ -1427,7 +1427,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00417">417</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00423">423</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 T* pker;
 
@@ -1466,7 +1466,7 @@ template&lt;typename T&gt; </div>
                                 nj = rot[0][0] * (j-cx) + rot[0][1] * (i-cy);
                                 ni = rot[1][0] * (j-cx) + rot[1][1] * (i-cy);
 
-                                pker[i*_hsize + j] =  <a class="code" href="classvisio_1_1_kernel.html#aa78d9ba427020f0478cf371a07fc3969">weight</a> * <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(exp(-0.5 * ( pow(ni/_sigma2,2) + pow(nj/<a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a>,2)  )));
+                                pker[i*_hsize + j] =  <a class="code" href="classvisio_1_1_kernel.html#aa78d9ba427020f0478cf371a07fc3969">weight</a> * <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(exp(-0.5 * ( pow(ni/<a class="code" href="classvisio_1_1_kernel.html#ae8c2f4998a02a89c9a7ceaef55945d8d" title="Standard deviation of Gaussian in other direction.">_sigma2</a>,2) + pow(nj/<a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Standard deviation of Gaussian in one direction.">_sigma1</a>,2)  )));
                         }
                 }
 
@@ -1516,7 +1516,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00521">521</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00527">527</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">if</span>(row==-1 || column==-1)
                 {
@@ -1554,11 +1554,11 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00923">923</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00929">929</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <a class="code" href="classvisio_1_1_kernel.html#a6bd6dc8dd700f159b34cf822991d4dc7" title="Orientation (in rads)">_orientation</a> = a._orientation;
-                <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Stdev of Gaussian.">_sigma1</a> = a._sigma1;
-                _sigma2 = a._sigma2;
+                <a class="code" href="classvisio_1_1_kernel.html#add4998c8a0aaddafe3a9f218d302e026" title="Standard deviation of Gaussian in one direction.">_sigma1</a> = a._sigma1;
+                <a class="code" href="classvisio_1_1_kernel.html#ae8c2f4998a02a89c9a7ceaef55945d8d" title="Standard deviation of Gaussian in other direction.">_sigma2</a> = a._sigma2;
                 <a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a> = a._hsize;
                 <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a> = a._vsize;
 
@@ -1609,7 +1609,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00483">483</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00489">489</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">if</span> (<a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a> == <span class="keyword">nullptr</span>)
                         <span class="keywordflow">return</span>;         <span class="comment">//Signifies the kernel is nonexistent</span>
@@ -1660,7 +1660,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>Frees the space of the kernel without destroying it. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00144">144</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00150">150</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keyword">delete</span>[] <a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a>;
                 <a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a> = NULL;
@@ -1712,7 +1712,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00174">174</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00180">180</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 memset(<a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a>, 0, <span class="keyword">sizeof</span>(T) * <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a> * <a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a>);
                 <a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a>[<a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a>*(<a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a>-1)/2 + (<a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a>-1)/2] = value;
@@ -1750,14 +1750,13 @@ template&lt;typename T &gt; </div>
 <p>DFT setup </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">mvise</td><td>Vertical size of the typical input frame. </td></tr>
-    <tr><td class="paramname">mhsize</td><td>Horizontal size of the typical input frame.</td></tr>
+    <tr><td class="paramname">mvsize</td><td>Vertical size of the typical input frame. </td></tr>
+    <tr><td class="paramname">mhsize</td><td>Horizontal size of the typical input frame. </td></tr>
   </table>
   </dd>
 </dl>
-<p>Class for convolution kernels. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00946">946</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00950">950</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">if</span> (<a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a> == <span class="keyword">nullptr</span>)
         {
@@ -1813,7 +1812,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00242">242</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00248">248</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <a class="code" href="classvisio_1_1_kernel.html#a73d6c48187e591d75714b4c4d0fbbbd3" title="Weighting coefficient present in the kernel&#39;s equation.">_intrinsic_weight</a> = w;
         }
@@ -1844,7 +1843,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00466">466</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00472">472</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0;i&lt;<a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a>;i++)
                 {
@@ -1875,7 +1874,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <p>Performs svd of kernel (for faster separable convolution). Uses the JAMA library (<a href="http://math.nist.gov/tnt/download.html">http://math.nist.gov/tnt/download.html</a>) </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00537">537</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00543">543</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
 
                 <span class="keywordflow">if</span>(<a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a>==NULL)
@@ -1935,7 +1934,7 @@ template&lt;typename T&gt; </div>
 <div class="memdoc">
 <dl class="return"><dt><b>Returns:</b></dt><dd>Vertical size of kernel. </dd></dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00128">128</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00134">134</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 <span class="keywordflow">return</span> <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a>;
         }
@@ -1966,7 +1965,7 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00228">228</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00234">234</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 <div class="fragment"><pre class="fragment">        {
                 T* p = <a class="code" href="classvisio_1_1_kernel.html#ae5a48004e39ed54f31a1a2a1f4360c14" title="The kernel data.">_kernel</a>;
                 <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classvisio_1_1_kernel.html#ad2711eb60ce4e8d61115059bd915a465" title="Horizontal size.">_hsize</a> * <a class="code" href="classvisio_1_1_kernel.html#a98f2f8508da81e5ba21ee34bb289874a" title="Vertical size.">_vsize</a>; i++, p++)
@@ -1994,7 +1993,7 @@ template&lt;typename T&gt; </div>
 
 <p>Threshold value at which kernel is truncated. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00104">104</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00110">110</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2013,7 +2012,7 @@ template&lt;typename T&gt; </div>
 
 <p>FFT coefficients for kernel. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00113">113</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00119">119</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2032,7 +2031,7 @@ template&lt;typename T&gt; </div>
 
 <p>Horizontal size of padded array. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00121">121</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00127">127</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2051,7 +2050,7 @@ template&lt;typename T&gt; </div>
 
 <p>Vertical size of padded array. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00120">120</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00126">126</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2070,7 +2069,7 @@ template&lt;typename T&gt; </div>
 
 <p>FFT plan for inverse transform. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00117">117</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00123">123</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2089,7 +2088,7 @@ template&lt;typename T&gt; </div>
 
 <p>Horizontal size. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00099">99</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00105">105</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2108,7 +2107,7 @@ template&lt;typename T&gt; </div>
 
 <p>FFT coefficients for convolved image. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00114">114</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00120">120</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2127,7 +2126,7 @@ template&lt;typename T&gt; </div>
 
 <p>Weighting coefficient present in the kernel's equation. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00106">106</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00112">112</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2146,7 +2145,7 @@ template&lt;typename T&gt; </div>
 
 <p>The kernel data. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00108">108</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00114">114</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2165,7 +2164,7 @@ template&lt;typename T&gt; </div>
 
 <p>First SV mask (rows) </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00110">110</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00116">116</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2184,7 +2183,7 @@ template&lt;typename T&gt; </div>
 
 <p>Second SV mask (cols) </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00111">111</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00117">117</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2203,7 +2202,7 @@ template&lt;typename T&gt; </div>
 
 <p>Orientation (in rads) </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00101">101</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00107">107</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2222,7 +2221,7 @@ template&lt;typename T&gt; </div>
 
 <p>Padded array for input image. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00119">119</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00125">125</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2241,7 +2240,7 @@ template&lt;typename T&gt; </div>
 
 <p>FFT plan to generate kernel's FFT. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00115">115</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00121">121</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2260,7 +2259,7 @@ template&lt;typename T&gt; </div>
 
 <p>Noncentered FFT output. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00118">118</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00124">124</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2277,9 +2276,28 @@ template&lt;typename T&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Stdev of Gaussian. </p>
+<p>Standard deviation of Gaussian in one direction. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00102">102</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00108">108</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae8c2f4998a02a89c9a7ceaef55945d8d"></a><!-- doxytag: member="visio::Kernel::_sigma2" ref="ae8c2f4998a02a89c9a7ceaef55945d8d" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classvisio_1_1_kernel.html">visio::Kernel</a>&lt; T &gt;::<a class="el" href="classvisio_1_1_kernel.html#ae8c2f4998a02a89c9a7ceaef55945d8d">_sigma2</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Standard deviation of Gaussian in other direction. </p>
+
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00109">109</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2298,7 +2316,7 @@ template&lt;typename T&gt; </div>
 
 <p>FFT plan to perform convolution. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00116">116</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00122">122</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2317,7 +2335,7 @@ template&lt;typename T&gt; </div>
 
 <p>Vertical size. </p>
 
-<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00100">100</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
+<p>Definition at line <a class="el" href="_kernel_8h_source.html#l00106">106</a> of file <a class="el" href="_kernel_8h_source.html">Kernel.h</a>.</p>
 
 </div>
 </div>
@@ -2330,7 +2348,7 @@ template&lt;typename T&gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -2342,7 +2360,7 @@ template&lt;typename T&gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 18 2014 22:09:04 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

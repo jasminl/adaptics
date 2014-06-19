@@ -50,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -58,56 +59,57 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">evo/RoyalRoad.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;string&gt;</span>
-<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;vector&gt;</span>
-<a name="l00005"></a>00005 
-<a name="l00006"></a>00006 <span class="keyword">namespace </span>evo
-<a name="l00007"></a>00007 {
-<a name="l00008"></a>00008 
-<a name="l00012"></a><a class="code" href="classevo_1_1_royal_road.html">00012</a> <span class="keyword">class </span><a class="code" href="classevo_1_1_royal_road.html" title="Base class for royal road functions.">RoyalRoad</a>
-<a name="l00013"></a>00013 {
-<a name="l00014"></a>00014 <span class="keyword">public</span>:
-<a name="l00015"></a>00015         <span class="comment">//typedefs etc.</span>
-<a name="l00016"></a><a class="code" href="classevo_1_1_royal_road.html#a77119046e84e4697f3544382e80f7bc6">00016</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a77119046e84e4697f3544382e80f7bc6" title="Max number of iterations over which to compare RR functions with compare_seq.">max_iterations</a> = 50;   
-<a name="l00017"></a><a class="code" href="classevo_1_1_royal_road.html#a1bc15313c058c427135b1f2d09001cc0">00017</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a1bc15313c058c427135b1f2d09001cc0" title="Indicates it&#39;s not possible to create enough different blocks.">not_converge</a> = -2;             
-<a name="l00018"></a><a class="code" href="classevo_1_1_royal_road.html#ab118b7ba2393aeff65b06a40b4b135d0">00018</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#ab118b7ba2393aeff65b06a40b4b135d0" title="Indicates different blocks have been built.">different</a> = -1;                
-<a name="l00019"></a>00019 <span class="keyword">public</span>:
-<a name="l00020"></a>00020 
-<a name="l00027"></a>00027         <a class="code" href="classevo_1_1_royal_road.html#a7d92b6eaf9886f63c360d8e78a85ad45">RoyalRoad</a>(<span class="keywordtype">int</span> nb_building_blocks, <span class="keywordtype">int</span> building_block_size);
-<a name="l00028"></a>00028         
-<a name="l00029"></a>00029 
-<a name="l00033"></a>00033         <span class="keyword">virtual</span>
-<a name="l00034"></a>00034         <a class="code" href="classevo_1_1_royal_road.html#a3f57fa6cc0c614ad828bed531dbe23a3">~RoyalRoad</a>();
-<a name="l00035"></a>00035 
-<a name="l00040"></a>00040         <span class="keywordtype">void</span> <a class="code" href="classevo_1_1_royal_road.html#a67dcf3707216c30e18cc645fef00b13f">generate_rr</a>();
-<a name="l00041"></a>00041 
-<a name="l00046"></a>00046         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a7f8d1a58123b0bd3b8b9bcc457eca7ba">compare_seq</a>();
-<a name="l00047"></a>00047 
-<a name="l00052"></a>00052         <span class="keywordtype">void</span> <a class="code" href="classevo_1_1_royal_road.html#a2c46abecfa7031f0d829241885189c95">sgl_blck</a>(<span class="keywordtype">int</span> block);
-<a name="l00053"></a>00053 
-<a name="l00057"></a>00057         <span class="keyword">virtual</span>
-<a name="l00058"></a>00058         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a74cb700aab06d066e577da1d2e802e57">cmp_blcks</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* individual) = 0;
-<a name="l00059"></a>00059 
-<a name="l00101"></a>00101         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#aa4bdabd4825a99ed7bd4adc7ecdf2c56">fndupblck</a>();
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103 <span class="keyword">protected</span>:
-<a name="l00104"></a><a class="code" href="classevo_1_1_royal_road.html#a716f7593f52251d67a66c0fdc756a727">00104</a>         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a716f7593f52251d67a66c0fdc756a727" title="Stores the number of basic building blocks.">_nb_blocks</a>;                                                         
-<a name="l00105"></a><a class="code" href="classevo_1_1_royal_road.html#a281b3c279b84445916ae135ae4517def">00105</a>         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a281b3c279b84445916ae135ae4517def" title="Stores size of basic building blocks.">_bld_blck_size</a>;                                                     
-<a name="l00106"></a><a class="code" href="classevo_1_1_royal_road.html#a556037fd3eab1b98ee3e9f978a935dc2">00106</a>         std::vector&lt;int&gt; <a class="code" href="classevo_1_1_royal_road.html#a556037fd3eab1b98ee3e9f978a935dc2" title="Array stores actual fitness.">_fitness</a>;                                      
-<a name="l00107"></a><a class="code" href="classevo_1_1_royal_road.html#a36fd453d6f426a815ae2875cec8c66cd">00107</a>         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a36fd453d6f426a815ae2875cec8c66cd" title="Number of units in m_fit.">_size</a>;                                                                      
-<a name="l00108"></a><a class="code" href="classevo_1_1_royal_road.html#a17dc758a2615c3e7b183fab22cff0221">00108</a>         std::vector&lt;std::vector&lt;bool&gt;&gt; <a class="code" href="classevo_1_1_royal_road.html#a17dc758a2615c3e7b183fab22cff0221" title="Contains the royal road function values.">_rr_value</a>;       
-<a name="l00109"></a>00109 };
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111 }
+<a href="_royal_road_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00005"></a>00005 <span class="preprocessor">#pragma once</span>
+<a name="l00006"></a>00006 <span class="preprocessor"></span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="keyword">namespace </span>evo
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012 
+<a name="l00016"></a><a class="code" href="classevo_1_1_royal_road.html">00016</a> <span class="keyword">class </span><a class="code" href="classevo_1_1_royal_road.html" title="Base class for royal road functions.">RoyalRoad</a>
+<a name="l00017"></a>00017 {
+<a name="l00018"></a>00018 <span class="keyword">public</span>:
+<a name="l00019"></a>00019         <span class="comment">//typedefs etc.</span>
+<a name="l00020"></a><a class="code" href="classevo_1_1_royal_road.html#a77119046e84e4697f3544382e80f7bc6">00020</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a77119046e84e4697f3544382e80f7bc6" title="Max number of iterations over which to compare RR functions with compare_seq.">max_iterations</a> = 50;   
+<a name="l00021"></a><a class="code" href="classevo_1_1_royal_road.html#a1bc15313c058c427135b1f2d09001cc0">00021</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a1bc15313c058c427135b1f2d09001cc0" title="Indicates it&#39;s not possible to create enough different blocks.">not_converge</a> = -2;             
+<a name="l00022"></a><a class="code" href="classevo_1_1_royal_road.html#ab118b7ba2393aeff65b06a40b4b135d0">00022</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#ab118b7ba2393aeff65b06a40b4b135d0" title="Indicates different blocks have been built.">different</a> = -1;                
+<a name="l00023"></a>00023 <span class="keyword">public</span>:
+<a name="l00024"></a>00024 
+<a name="l00031"></a>00031         <a class="code" href="classevo_1_1_royal_road.html#a7d92b6eaf9886f63c360d8e78a85ad45">RoyalRoad</a>(<span class="keywordtype">int</span> nb_building_blocks, <span class="keywordtype">int</span> building_block_size);
+<a name="l00032"></a>00032         
+<a name="l00033"></a>00033 
+<a name="l00037"></a>00037         <span class="keyword">virtual</span>
+<a name="l00038"></a>00038         <a class="code" href="classevo_1_1_royal_road.html#a3f57fa6cc0c614ad828bed531dbe23a3">~RoyalRoad</a>();
+<a name="l00039"></a>00039 
+<a name="l00044"></a>00044         <span class="keywordtype">void</span> <a class="code" href="classevo_1_1_royal_road.html#a67dcf3707216c30e18cc645fef00b13f">generate_rr</a>();
+<a name="l00045"></a>00045 
+<a name="l00050"></a>00050         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a7f8d1a58123b0bd3b8b9bcc457eca7ba">compare_seq</a>();
+<a name="l00051"></a>00051 
+<a name="l00056"></a>00056         <span class="keywordtype">void</span> <a class="code" href="classevo_1_1_royal_road.html#a2c46abecfa7031f0d829241885189c95">sgl_blck</a>(<span class="keywordtype">int</span> block);
+<a name="l00057"></a>00057 
+<a name="l00061"></a>00061         <span class="keyword">virtual</span>
+<a name="l00062"></a>00062         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a74cb700aab06d066e577da1d2e802e57">cmp_blcks</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* individual) = 0;
+<a name="l00063"></a>00063 
+<a name="l00105"></a>00105         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#aa4bdabd4825a99ed7bd4adc7ecdf2c56">fndupblck</a>();
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 <span class="keyword">protected</span>:
+<a name="l00108"></a><a class="code" href="classevo_1_1_royal_road.html#a716f7593f52251d67a66c0fdc756a727">00108</a>         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a716f7593f52251d67a66c0fdc756a727" title="Stores the number of basic building blocks.">_nb_blocks</a>;                                                         
+<a name="l00109"></a><a class="code" href="classevo_1_1_royal_road.html#a281b3c279b84445916ae135ae4517def">00109</a>         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a281b3c279b84445916ae135ae4517def" title="Stores size of basic building blocks.">_bld_blck_size</a>;                                                     
+<a name="l00110"></a><a class="code" href="classevo_1_1_royal_road.html#a556037fd3eab1b98ee3e9f978a935dc2">00110</a>         std::vector&lt;int&gt; <a class="code" href="classevo_1_1_royal_road.html#a556037fd3eab1b98ee3e9f978a935dc2" title="Array stores actual fitness.">_fitness</a>;                                      
+<a name="l00111"></a><a class="code" href="classevo_1_1_royal_road.html#a36fd453d6f426a815ae2875cec8c66cd">00111</a>         <span class="keywordtype">int</span> <a class="code" href="classevo_1_1_royal_road.html#a36fd453d6f426a815ae2875cec8c66cd" title="Number of units in m_fit.">_size</a>;                                                                      
+<a name="l00112"></a><a class="code" href="classevo_1_1_royal_road.html#a17dc758a2615c3e7b183fab22cff0221">00112</a>         std::vector&lt;std::vector&lt;bool&gt;&gt; <a class="code" href="classevo_1_1_royal_road.html#a17dc758a2615c3e7b183fab22cff0221" title="Contains the royal road function values.">_rr_value</a>;       
+<a name="l00113"></a>00113 };
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -119,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 16 2014 21:53:50 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 18 2014 22:09:04 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
