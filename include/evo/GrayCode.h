@@ -1,9 +1,12 @@
 #pragma once
 
+#include <map>
 #include <string>
 
 namespace evo
 {
+
+static const int gray_undefined = -1; //!<For a string that has no corresponding code
 
 /**
  * Returns the next position where to insert a bit. Throws a runtime_error exception in case of an invalid
@@ -28,8 +31,9 @@ void inplace_relocate(int* dest, int* src, int start, int code_length);
  * \param codes The resulting array of Gray code sequences
  * \param table_length The number of sequences in the table
  * \param code_length The length of each sequence
+ * \return A map of gray code strings and corresponding integers
  */
-void create_gray(int** codes, int table_length, int code_length);
+std::map<std::string, int> create_gray(int** codes, int table_length, int code_length);
 
 /**
  * Prints the Gray code to file
@@ -40,5 +44,12 @@ void create_gray(int** codes, int table_length, int code_length);
  * \sa create_gray
  */
 void print_table(const std::string& file_path, int** codes, int table_length, int code_length);
+
+/**
+ * Match a graycode
+ * \param target The code to locate
+ * \param table The table of codes
+ */
+int match_gray(const std::string& target, const std::map<std::string, int>& table);
 
 }

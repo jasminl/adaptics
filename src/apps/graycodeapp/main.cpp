@@ -1,11 +1,12 @@
 #include "evo/GrayCode.h"
+#include "evo/Seq.h"
 #include <boost/program_options.hpp>
 
 using namespace std;
 using namespace evo;
 
 /**
- * Demonstrates the use of gray coding to encode sequences.
+ * Demonstrates the use of gray coding to decode sequences.
  */
 int main(int argc, char* argv[])
 {
@@ -14,8 +15,9 @@ int main(int argc, char* argv[])
 	po::options_description desc("Allowed options");
 	desc.add_options()
 			("help", "graycodeapp, demonstrates the use of gray coding to encode sequences.")
-			("len, l", po::value<int>()->required(), "Sequence length")
-			("out, o", po::value<vector<string>>()->required(), "output file");
+			("len, l", po::value<int>()->required(), "Code length (i.e. number of bits in a gene)")
+			("out, o", po::value<vector<string>>()->required(), "output file")
+			("seq, s", po::value<int>()->required(), "Decoded sequence length");
 
 	po::variables_map vm;
 	po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -38,9 +40,28 @@ int main(int argc, char* argv[])
 	int** sequence = new int*[table_length];
 	for(int i = 0; i < table_length; i++)
 		sequence[i] = new int[code_length];
-	create_gray(sequence, table_length, code_length);
+	auto table = create_gray(sequence, table_length, code_length);
 	print_table(output_file, sequence, table_length, code_length);
 
+	//Create a sequence and decode the genes
+	int seq_len = vm["seq"].as<int>();
+	Seq one_seq(seq_len, code_length);
+	one_seq.randomize();
+
+	//Find target "11" for example
+	string target_tag(2, 0);
+	target_tag[0] = 1;
+	target_tag[1] = 1;
+	auto instance = Seq::read_seq(one_seq.data(), seq_len, code_length, target_tag);
+
+	//Show corresponding decoded sequence
+	for(auto i: instance)
+	{
+		for(char p: i)
+			cout<<(int)p;
+		cout<<": "<<match_gray(i, table);
+		cout<<endl;
+	}
 	//Cleanup
 	for(int i = 0; i < table_length; i++)
 		 delete[] sequence[i];

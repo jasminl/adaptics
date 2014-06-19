@@ -29,7 +29,7 @@ void inplace_relocate(int* dest, int* src, int start, int code_length)
 		*(dest + i) = *(src + i);
 }
 
-void create_gray(int** codes, int table_length, int code_length)
+map<string, int> create_gray(int** codes, int table_length, int code_length)
 {
 	//initialize the table to invalid codes
 	for (int i = 0; i < table_length; i++)
@@ -54,6 +54,18 @@ void create_gray(int** codes, int table_length, int code_length)
 		for (; i < nballoc; i++)
 			*(*(codes + i) + pos) = 1;
 	}
+
+	//Fill map
+	map<string, int> out;
+	for(int c = 0; c < table_length; c++)
+	{
+		string cc(code_length, 0);
+		for(int s = 0; s < code_length; s++)
+			cc[s] = codes[c][s];
+		out[cc] = c;
+	}
+
+	return out;
 }
 
 void print_table(const string& file_path, int** codes, int table_length, int code_length)
@@ -75,6 +87,17 @@ void print_table(const string& file_path, int** codes, int table_length, int cod
 			file<<*(*(codes + i) + j);
 		file<<"\t"<<i<<endl;
 	}
+}
+
+int match_gray(const string& target, const map<string, int>& table)
+{
+	for(auto& pt: table)
+	{
+		if(pt.first.compare(target) == 0)
+			return pt.second;
+	}
+
+	return gray_undefined;
 }
 
 }

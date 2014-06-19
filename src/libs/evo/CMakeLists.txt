@@ -3,6 +3,7 @@ PROJECT (Adaptics)
 
 SET(evo_source_files CFRR2.cpp CRR2.cpp Population.cpp
 RoyalRoad.cpp Stats.cpp ESDna.h GrayCode.cpp
+Seq.cpp
 )
 
 link_directories(${MAINFOLDER}/lib)
