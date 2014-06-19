@@ -1,3 +1,7 @@
+/**
+ * \file CRR2.h
+ * \brief Declaration of Fixed Royal Road functions
+ */
 #pragma once
 
 #include "RoyalRoad.h"

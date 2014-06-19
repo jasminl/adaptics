@@ -1,3 +1,7 @@
+/**
+ * \file Input.h
+ * \brief Declaration of input layer to 3D formotion model
+ */
 #pragma once
 
 #include <stdexcept>
@@ -20,9 +24,10 @@ public:
 public:
 	/**
 	 *	Constructor
-	 *	@param useMotion Determines whether to input motion signals or not.
-	 *	@param useV2     Determines whether to input V2 boundaries or not (default false).
-	 *	@param useV1     Determines whether to input V1 boundaries or not(default false).
+	 *	\param use_motion Determines whether to input motion signals or not.
+	 *	\param use_V2     Determines whether to input V2 boundaries or not (default false).
+	 *	\param use_V1     Determines whether to input V1 boundaries or not(default false).
+	 *	\param use_attention Determines whether to apply top down attention to the last model layer
 	 */
 	Input(int use_motion, int use_V2, int use_V1, int use_attention);
 

@@ -1,3 +1,7 @@
+/**
+ * \file KernelLayer.h
+ * \brief Declaration of the base class for all 3D formotion layers that perform convolutions
+ */
 #pragma once
 
 #include "Layer.h"
@@ -53,8 +57,9 @@ public:
 	 * To print all kernels to files. If recreate is true, it recreates the weights in a external buffer (useful to
 	 * display weights without weighting factor) before printing them. Optname is useful if you want to add a specific
 	 * part to the generated filenames.
-	 * \param recreate Indicates whether to include intrinsic weighting or not.
-	 * \param optName Optional file name where to save the kernels.
+	 * \param output_folder The folder in which to create the output files
+	 * \param recreate Indicates whether to include intrinsic weighting or not
+	 * \param optName Optional file name where to save the kernels
 	 */
 	virtual
 	void print_kernels(const std::string& output_folder, int recreate = Kernel<double>::NO_RECREATE_KER,
@@ -69,7 +74,7 @@ public:
 
 	/**
 	 *	For pre-weighting kernels.
-	 *	\param Weight to use as factor.
+	 *	\param w Weight to use as factor.
 	 */
 	void weight_kernels(double w);
 

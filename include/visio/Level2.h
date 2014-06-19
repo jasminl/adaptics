@@ -1,3 +1,7 @@
+/**
+ * \file Level2.h
+ * \brief 3D formotion level 2 (transient motion detection)
+ */
 #pragma once
 
 #include "Layer.h"

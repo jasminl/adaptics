@@ -1,3 +1,7 @@
+/**
+ * \file Level6.h
+ * \brief 3D formotion motion segmentation
+ */
 #pragma once
 
 #include "KernelLayer.h"
@@ -54,12 +58,13 @@ public:
 
 	/**
 	 *	Attentional top down attention
-	 *	\param x X coordinate of unit to modulate.
-	 *	\param y Y coordinate of unit to modulate.
-	 *	\param sigma Spread of attentional Gaussian.
-	 *	\param attX X coordinate of center of Gaussian attentional top-down.
-	 *	\param attY Y coordinate of center of Gaussian attentional top-down.
-	 *	\return Strenght of attentional top-down.
+	 *	\param x X coordinate of unit to modulate
+	 *	\param y Y coordinate of unit to modulate
+	 *	\param a Gaussian magnitude
+	 *	\param sigma Spread of attentional Gaussian
+	 *	\param attX X coordinate of center of Gaussian attentional top-down
+	 *	\param attY Y coordinate of center of Gaussian attentional top-down
+	 *	\return Strenght of attentional top-down
 	 */
 	double top_down_weight(unsigned int x, unsigned int y, double a, double sigma,
 			double attX, double attY);

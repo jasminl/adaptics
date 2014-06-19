@@ -1,3 +1,7 @@
+/**
+ * \file Utils.h
+ * \brief Misc functions to print matrices
+ */
 #pragma once
 
 #include <string>

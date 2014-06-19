@@ -1,3 +1,7 @@
+/**
+ * \file Level4.h
+ * \brief 3D formotion spatial competition (sparsification) and opponent direction layer
+ */
 #pragma once
 
 #include "KernelLayer.h"

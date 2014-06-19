@@ -1,3 +1,9 @@
+/**
+ * \file Kernel.h
+ * \brief Convolution kernels used by 3D formotion model
+ *
+ * Encapsulates both normal convolutions, SVD-based separable convolutions, and FFTW-base convolutions
+ */
 #pragma once
 
 #include <iomanip>
@@ -99,8 +105,8 @@ protected: //Data members
 	unsigned int _hsize;			//!< Horizontal size
 	unsigned int _vsize;			//!< Vertical size
 	double _orientation;			//!< Orientation (in rads)
-	double _sigma1;				//!< Stdev of Gaussian
-	double _sigma2;
+	double _sigma1;					//!< Standard deviation of Gaussian in one direction
+	double _sigma2;					//!< Standard deviation of Gaussian in other direction
 	double _clipSize;				//!< Threshold value at which kernel is truncated
 
 	T _intrinsic_weight;			//!< Weighting coefficient present in the kernel's equation
@@ -577,7 +583,7 @@ public: //Member functions
 
 	/**
 	 *	DFT setup
-	 *	\param mvise Vertical size of the typical input frame.
+	 *	\param mvsize Vertical size of the typical input frame.
 	 *	\param mhsize Horizontal size of the typical input frame.
 	 */
 	void set_dft(unsigned int mvsize, unsigned int mhsize);
@@ -939,11 +945,9 @@ public:
 	}
 };
 
-/**
- * Class for convolution kernels.
- */
 template<typename T>
-inline void Kernel<T>::set_dft(unsigned int mvsize, unsigned int mhsize)
+inline
+void Kernel<T>::set_dft(unsigned int mvsize, unsigned int mhsize)
 {
 	if (_kernel == nullptr)
 	{

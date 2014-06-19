@@ -1,3 +1,7 @@
+/**
+ * \file Abam.h
+ * \brief Stackable bi-associative memory module
+ */
 #pragma once
 
 #include <vector>
@@ -51,7 +55,7 @@ public:
 
 	/**
 	 * Fills in values for the weight matrix.
-	 * \param Filling-in mode (RANDOM or ZEROS)
+	 * \param mode Filling-in mode (RANDOM or ZEROS)
 	 * \sa RANDOM, ZEROS
 	 */
 	void init_matrix(int mode);

@@ -1,8 +1,14 @@
+/**
+ * \file Seq.h
+ * \brief Declaration of Seq class for low-level encapsulation of bit sequences
+ */
 #pragma once
 
 #include <string>
 #include <list>
 
+namespace evo
+{
 /**
  * \brief Low-level sequence encapsulation with bytes
  */
@@ -65,4 +71,5 @@ inline
 const char* Seq::data() const
 {
 	return _data;
+}
 }

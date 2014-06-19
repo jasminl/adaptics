@@ -1,3 +1,7 @@
+/**
+ * \file RoyalRoad.h
+ * \brief RoyalRoad.h Base class and constants for Royal Road functions
+ */
 #pragma once
 
 #include <string>

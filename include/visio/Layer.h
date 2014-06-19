@@ -1,3 +1,7 @@
+/**
+ * \file Layer.h
+ * \brief Base class for all 3D formotion layers
+ */
 #pragma once
 
 #include <iostream>
@@ -136,7 +140,7 @@ protected:
 
 	bool _record;					//!< Indicates whether or not to keep track of values in time
 
-	Buffer* _buf;						//<! Unique buffer object, contains all buffers
+	Buffer* _buf;					//!< Unique buffer object, contains all buffers
 
 	/** @name Buffers
 	*/

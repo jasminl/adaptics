@@ -1,3 +1,7 @@
+/**
+ * \file Level3.h
+ * \brief 3D formotion short-range filter
+ */
 #pragma once
 
 #include "KernelLayer.h"

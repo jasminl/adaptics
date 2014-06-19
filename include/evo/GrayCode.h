@@ -1,3 +1,7 @@
+/**
+ * \file GrayCode.h
+ * \brief Main functions to create, display and match Gray codes
+ */
 #pragma once
 
 #include <map>

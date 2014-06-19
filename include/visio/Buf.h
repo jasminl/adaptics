@@ -1,7 +1,10 @@
-/*
- * buf.h contains declarations of the buf class which is used by model levels 3-6 for performing various operations such as convolutions
- * and rectifications. See 'bufferAssignments.xls' for a table detailing the use of each buffer.
-*/
+/**
+ * \file Buf.h
+ * \brief Buffer class used by 3D formotion model
+ *
+ * Levels 3-6 for performing various operations such as convolutions and rectifications.
+ * See 'bufferAssignments.xls' for a table detailing the use of each buffer.
+ */
 #pragma once
 
 #include "config.h"

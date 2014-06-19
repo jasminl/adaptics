@@ -1,3 +1,7 @@
+/**
+ * \file Level5B.h
+ * \brief 3D formotion long-range filter
+ */
 #pragma once
 
 #include "KernelLayer.h"
@@ -67,6 +71,10 @@ public:
 	 *	\param direction Direction of the update (0-7)
 	 *	\param L5AInput Layer 5A boundary input
 	 *	\param k Low-pass kernel applied to boundary input
+	 *	\param pLayer Pointer to Level5B layer
+	 *	\param b Buffer to store FFT output
+	 *	\param preb Buffer to store rectified and squared input
+	 *	\param theta Angle for update
 	 *	\param L6Selection Layer 6 feedback input
 	 *	\param scale (-1 or +1) which depth plane to update
 	 */

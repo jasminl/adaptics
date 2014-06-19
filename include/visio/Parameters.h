@@ -1,6 +1,7 @@
 #pragma once
-/*! \file parameters.h
-    List of all parameters used in the simulations.
+/**
+ * @file Parameters.h
+ * @brief List of all parameters used in the 3D formotion simulations.
 */
 
 /**	@name Time parameters 

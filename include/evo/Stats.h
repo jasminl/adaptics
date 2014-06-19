@@ -1,3 +1,7 @@
+/**
+ * \file Stats.h
+ * \brief Miscellaneous classes and functions to encode population statistics
+ */
 #pragma once
 
 #include <vector>

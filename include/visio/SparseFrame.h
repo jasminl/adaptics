@@ -1,3 +1,7 @@
+/**
+ * \file SparseFrame.h
+ * \brief 3D formotion sparsely encoded input frame (decoded from XML)
+ */
 #pragma once
 
 #include <vector>
@@ -78,8 +82,8 @@ public:
 
 	/**
 	 *	Creates array to store sparse input
-	 *	@param pointer Reference to the pointer to the location where to allocate memory for an input array.
-	 *	@param nbPoints The number of points to allocate space for (2*nbPoints).
+	 *	\param pointer Reference to the pointer to the location where to allocate memory for an input array.
+	 *	\param nb_points The number of points to allocate space for (2*nbPoints).
 	 */
 	void create_array(std::vector<T>*& pointer, unsigned int nb_points)
 	{	//Allocate array such that each point corresponds to a triplet
@@ -89,7 +93,7 @@ public:
 	/**
 	 * Creates array to store sparse input
 	 * @param pointer Reference to the pointer to the location where to allocate memory for an input array.
-	 * @param nbPoints The number of points to allocate space for (2*nbPoints).
+	 * @param nb_points The number of points to allocate space for (2*nbPoints).
 	 */
 	void create_array(std::vector<double>*& pointer, unsigned int nb_points)
 	{	//Allocate array such that each point corresponds to a triplet

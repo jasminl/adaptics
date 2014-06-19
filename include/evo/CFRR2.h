@@ -1,3 +1,8 @@
+/**
+ * \file CFRR2.h
+ * \brief Declaration of Floating Royal Road functions
+ */
+
 #pragma once
 
 #include <vector>
