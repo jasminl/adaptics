@@ -2,6 +2,9 @@
 
 using namespace std;
 
+namespace evo
+{
+
 Seq::Seq(int seq_len, int gene_len)
 : _seq_len(seq_len), _gene_len(gene_len), _data(nullptr)
 {}
@@ -48,4 +51,5 @@ void Seq::randomize()
 	_data = new char[_seq_len];
 	for(int i = 0; i < _seq_len; i++)
 		_data[i] = rand() % 2;
+}
 }
