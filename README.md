@@ -1,12 +1,11 @@
 adaptics
 ========
 
- Learning, vision and artificial evolution. See the Wiki page for more detailed information.
+ Learning, vision and artificial evolution. This README file only gives a quick summary of requirements and build instructions. See the Wiki page for more detailed information.
 
  1.) Prerequisites
  2.) Building
  3.) Installing
- 4.) Contributing
  
 == 1. PREREQUISITES ==
 
@@ -18,10 +17,6 @@ adaptics
   * Boost C++ Libraries v1.37+ [HEADERS and LIBRARIES]
   * Log4Cxx v0.10.0+
   * fftw3 libary
-
- Project template adapted from Michael Safyan's cpp-project-template (http://code.google.com/p/cpp-project-template/). 
- Unlike the original template, boost's unit test framework is used instead of UnitTest++, QT is not necessary, and the project
- can be used to build a family of both libraries and applications. 
 
 == 2. BUILDING ==
  
@@ -41,7 +36,3 @@ adaptics
 == 3. INSTALLING ==
  ** NOTE: Installation has not been tested yet **
  Once the project has been built (see "BUILDING"), execute "sudo make install".
-
-== 4. CONTRIBUTING ==
-
- Email me if you are interested in contributing (Jasmin Leveille at jalev51@gmail.com).

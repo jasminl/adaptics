@@ -1,3 +1,9 @@
 04/13/14 Initial commit with royalroadapp and evo library. 
 04/29/14 thirdparty/src contains code for random number generation (Gaussian and Mersenne Twister)
 05/02/14 Removed path in royalroadapp, added Evolution Strategies base components in evo lib
+06/03/14 Added thirdparty jama, tnt and tinyxml, visio lib and formotionapp
+06/09/14 Remove evo's Logger and replaced with log4cxx
+06/11/14 Stimuli and parameters for formotionapp
+06/14/14 Gray coding in evo lib and graycodeapp
+06/18/14 Added Seq to evo lib
+
