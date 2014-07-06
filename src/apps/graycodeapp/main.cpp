@@ -67,4 +67,5 @@ int main(int argc, char* argv[])
 		 delete[] sequence[i];
 	delete[] sequence;
 
+	return 0;
 }
