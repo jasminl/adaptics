@@ -1,6 +1,5 @@
 #include "evo/Population.h"
-//#include "evo/Logger.h"
-#include <stdexcept>
+#include <boost/program_options.hpp>
 
 #include <tuple>
 #include <log4cxx/log4cxx.h>
@@ -19,12 +18,27 @@ log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("sim"));	//Main logger
  */
 int main(int argc, char *argv[])
 {
-	if(argc < 2)
-		throw runtime_error("royalroadapp::main: must specify a log file as argument");
+	//Parse command line
+	namespace po = boost::program_options;
+	po::options_description desc("Allowed options");
+	desc.add_options()
+			("help", "royalroadapp, demonstrates Royal Road functions for evolution.")
+			("out, o", po::value<vector<string>>()->required(), "output file");
+
+	po::variables_map vm;
+	po::store(po::parse_command_line(argc, argv, desc), vm);
+	po::notify(vm);
+
+	if (vm.count("help"))
+	{
+		cout<<desc<<endl;
+		return 1;
+	}
+	auto output_file = vm["out"].as<vector<string>>().front();
 
 	//Setup logging to extneral file
 	log4cxx::FileAppender* appender = new log4cxx::FileAppender(log4cxx::LayoutPtr(new log4cxx::SimpleLayout()),
-			argv[1], false);
+			output_file, false);
 	log4cxx::helpers::Pool p;
 	appender->activateOptions(p);
 	log4cxx::BasicConfigurator::configure(log4cxx::AppenderPtr(appender));

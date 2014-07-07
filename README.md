@@ -3,10 +3,6 @@ adaptics
 
  Learning, vision and artificial evolution. This README file only gives a quick summary of requirements and build instructions. See the [Wiki page](https://github.com/jasminl/adaptics/wiki) for more detailed information.
 
- 1.) Prerequisites
- 2.) Building
- 3.) Installing
- 
 **1. PREREQUISITES**
 
  This project requires:
@@ -22,8 +18,9 @@ adaptics
  
  1. Clone the repository (see github page for link)
  2. Move into build directory (type 'cd build')
- 3. Build makefiles for all libraries and applications (type 'cmake ..')
- 4. Build all libraries and applications (type 'make')
+ 3. Source environment file (type 'source ../tools/share/adaptics.env')
+ 4. Build makefiles for all libraries and applications (type 'cmake ..')
+ 5. Build all libraries and applications (type 'make')
 
  This project uses the Cross-platform Make (CMake) build system. However, we
  have conveniently provided a wrapper configure script and Makefile so that
