@@ -35,7 +35,7 @@ list<string> Seq::read_seq(const char* str, int str_len, int gene_length, const 
 	string cppstr(str, str_len);
 
 	list<string> out;
-	while(string::npos != (position = cppstr.find(tag, position)))
+	while((int)string::npos != (position = cppstr.find(tag, position)))
 	{
 		if(position < str_len - gene_length - (int)tag.size())
 			out.push_back(cppstr.substr(position + (int)tag.size(), gene_length));
