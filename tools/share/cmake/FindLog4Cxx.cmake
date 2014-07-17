@@ -1,6 +1,9 @@
 # Michael Aaron Safyan (michaelsafyan@gmail.com). Copyright (C) 2009. Simplified BSD License.
-INCLUDE (FindPackageHandleStandardArgs)
-FIND_PACKAGE(PkgConfig ${Log4Cxx_FIND_REQUIRED} ${Log4Cxx_FIND_QUIETLY})
+INCLUDE (FindPackageHandleStandardArgs) 
+FIND_PACKAGE (PkgConfig)
+
+# 07/17/2014: For some reason I had to remove the following line from FIND_PACKAGE, otherwise it attempts to find pkg-config version 1
+# ${Log4Cxx_FIND_REQUIRED} ${Log4Cxx_FIND_QUIETLY} 
 IF (PKG_CONFIG_FOUND)
     SET(PKG_CONFIG_PATH_ENV_VAR $ENV{PKG_CONFIG_PATH})
     IF (NOT PKG_CONFIG_PATH_ENV_VAR)
