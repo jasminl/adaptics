@@ -122,9 +122,10 @@ void trackSIFTFilter::prune(unsigned char* validity,unsigned int width)
 		if(validity[(unsigned int)floor(xy.first + xy.second*width)] != 1)
 		{
 			//This is not a valid point
-			vector<trackFeature*>::iterator& q = p-1;	//Store current iterator in buffer
+			//note: this was a reference before, does it still work?
+			vector<trackFeature*>::iterator q = p - 1;	//Store current iterator in buffer
 			m_pFeature.feature().erase(p);			//Erase current iterator
-			p=q;									//Assign previous location
+			p = q;									//Assign previous location
 			p++;									//Go to next location
 		}
 		else

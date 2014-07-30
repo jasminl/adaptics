@@ -2,12 +2,6 @@
 
 #include <vector>
 
-#ifdef TRACK_EXPORTS
-#define TRACK_API __declspec(dllexport)
-#else
-#define TRACK_API __declspec(dllimport)
-#endif
-
 using namespace std;
 
 class trackFeatArray;
@@ -16,7 +10,7 @@ class trackFeature;
 /**
 	Base class for matching point pairs
 */
-class  TRACK_API trackMatch
+class   trackMatch
 {
 public:
 
@@ -53,7 +47,7 @@ protected:	//Data members
 	Simple matching
 	See: Chen et al. (2008) Mean-shift tracking combining SIFT. ICSP2008.
 */
-class  TRACK_API trackMatchTri: public trackMatch
+class   trackMatchTri: public trackMatch
 {
 public:	//Member functions
 

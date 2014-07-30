@@ -4,10 +4,12 @@
 #include "trackFeature.h"
 #include "track.h"
 #include "trackMatch.h"
+#include "trackMeanShift.h"
+#include "trackMSTargetRGB.h"
 
 #include <cmath>
 
-#define MATLAB_INTERFACE		//Matlab interface to capture video frames and display tracked object, comment this if not using matlab 
+//#define MATLAB_INTERFACE		//Matlab interface to capture video frames and display tracked object, comment this if not using matlab
 #ifdef MATLAB_INTERFACE
 #include "mli.h"
 #endif

@@ -2,14 +2,8 @@
 
 #include <vector>
 extern "C" {
-#include "sift.h"
+#include "vl/sift.h"
 }
-
-#ifdef TRACK_EXPORTS
-#define TRACK_API __declspec(dllexport)
-#else
-#define TRACK_API __declspec(dllimport)
-#endif
 
 
 using namespace std;
@@ -17,7 +11,7 @@ using namespace std;
 /**
 	Base class for feature point descriptors
 */
-class  TRACK_API trackFeature
+class  trackFeature
 {
 
 public:	//Member functions
@@ -60,7 +54,7 @@ protected:	//Data member
 /**
 	SIFT feature descriptor: this may be useless
 */
-class  TRACK_API trackFeatureSIFT: public trackFeature
+class   trackFeatureSIFT: public trackFeature
 {
 protected:	//Data members
 
@@ -127,7 +121,7 @@ public:	//Member functions
 /**
 	Feature point array
 */
-class  TRACK_API trackFeatArray
+class   trackFeatArray
 {
 public:	//Member functions
 
@@ -184,7 +178,7 @@ protected:	//Data members
 /**
 	Base filter class
 */
-class TRACK_API trackFilter
+class  trackFilter
 {
 public:		//Member functions
 
@@ -230,7 +224,7 @@ public:	//Constructors / destructor
 /**
 	SIFT Filter wrapper
 */
-class TRACK_API trackSIFTFilter: public trackFilter
+class  trackSIFTFilter: public trackFilter
 {
 public:	//Member functions
 

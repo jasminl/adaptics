@@ -1,17 +1,11 @@
 #pragma once
 
-#ifdef TRACK_EXPORTS
-#define TRACK_API __declspec(dllexport)
-#else
-#define TRACK_API __declspec(dllimport)
-#endif
-
-class trackMatch;
+#include "trackMatch.h"
 
 /**
 	Base class for random consensus matching algorithms
 */
-class  TRACK_API trackSAC
+class   trackSAC
 {
 public: //typedefs
 
@@ -67,7 +61,7 @@ public:
 	*/
 	trackSAC(void)
 	{
-		m_match = NULL;
+		m_match = nullptr;
 		m_alarmRate = 0.000001;		
 		m_minIter = 100;			
 		m_maxIter = 100000;
@@ -100,7 +94,7 @@ protected:	//Data members
 	unsigned int m_adaptIter;		/*<<Number of iterations to perform based on calculations */
 };
 
-class  TRACK_API trackRANSAC: public trackSAC
+class   trackRANSAC: public trackSAC
 {
 public:	//Member functions
 
