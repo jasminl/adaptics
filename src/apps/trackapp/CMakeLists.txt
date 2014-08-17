@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.6.2)
 PROJECT (Adaptics)
 
-SET(trackapp_source_files main.cpp track.cpp trackFeature.cpp trackMatch.cpp trackSAC.cpp
+SET(trackapp_source_files main.cpp track.cpp trackFeature.cpp TrackMatch.cpp TrackSAC.cpp
 fastmap.h TrackMSTargetBase.cpp trackMSTargetColor.cpp trackMSTargetRGB.cpp
 trackMSTargetSIFT.h trackFlow.cpp trackParticleFilter.h trackMeanShift.cpp)
 

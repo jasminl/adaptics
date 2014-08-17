@@ -3,7 +3,7 @@
 
 #include "trackFeature.h"
 #include "track.h"
-#include "trackMatch.h"
+#include "TrackMatch.h"
 #include "trackMeanShift.h"
 #include "trackMSTargetRGB.h"
 

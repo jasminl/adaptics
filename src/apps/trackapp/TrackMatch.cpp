@@ -1,14 +1,15 @@
-#include "trackMatch.h"
+#include "TrackMatch.h"
 #include "trackFeature.h"
-
 #include <iostream>
+
+using namespace std;
 
 void trackMatchTri::match(trackFeatArray* model, trackFeatArray* target)
 {
 	unsigned int size = model->size();	//Get number of points
 
-	m_x1.clear();						//Empty matched arrays
-	m_x2.clear();
+	_x1.clear();						//Empty matched arrays
+	_x2.clear();
 
 	if (size==0)
 	{
@@ -21,11 +22,11 @@ void trackMatchTri::match(trackFeatArray* model, trackFeatArray* target)
 	for(unsigned int i=0;i<size;i++)
 	{
 		res = firstSecond((*model)[i],target);		//Get first and second neighbors
-		if(res.first.second / res.second.second < m_t)
+		if(res.first.second / res.second.second < _t)
 		{
 			//This is a valid pair: add to list
-			m_x1.push_back((*model)[i]->spatial());						//Add model point
-			m_x2.push_back((*model)[res.first.first]->spatial());		//Add target point
+			_x1.push_back((*model)[i]->spatial());						//Add model point
+			_x2.push_back((*model)[res.first.first]->spatial());		//Add target point
 		}
 	}
 }

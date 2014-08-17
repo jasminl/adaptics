@@ -5,7 +5,7 @@
 
 #include "track.h"
 #include "trackFeature.h"
-#include "trackMatch.h"
+#include "TrackMatch.h"
 
 
 /***** Misc functions *****/

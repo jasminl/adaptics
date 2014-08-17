@@ -15,7 +15,7 @@ public:
 	}
 
 public:	//Constructors /destructors
-	trackParticleFilter(trackFilter* filt, trackMatch* match):trackFlow(filt,match)			//Optional feature descriptor filter)
+	trackParticleFilter(trackFilter* filt, TrackMatch* match):trackFlow(filt,match)			//Optional feature descriptor filter)
 	{}
 
 };

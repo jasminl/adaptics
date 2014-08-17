@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "trackFeature.h"
-#include "trackMatch.h"
+#include "TrackMatch.h"
 
 /**
 	Base class for all tracking methods
@@ -62,13 +62,13 @@ public:	//Member functions
 		return m_targetFilter;
 	}
 
-	trackMatch* matcher()
+	TrackMatch* matcher()
 	{
 		return m_match;
 	}
 
 public:	//Constructors/destructors
-	trackFlow(trackFilter* filt, trackMatch* match);
+	trackFlow(trackFilter* filt, TrackMatch* match);
 
 protected:	//Data members
 
@@ -79,7 +79,7 @@ protected:	//Data members
 
 	trackFilter*   m_featFilter;				/*<< Feature filter for the model */
 	trackFilter*   m_targetFilter;				/*<< Feature filter for a particular target */
-	trackMatch*    m_match;						/*<<Matching object */
+	TrackMatch*    m_match;						/*<<Matching object */
 
 	std::vector<double> m_currentExpandedScale;		/*<< Current range of scales tracked */
 

@@ -70,7 +70,7 @@ public: //Constructors/destructor
 		int n,											//Scale range radius (usually 2)
 		limits bounds,									//Convergence parameters
 		trackFilter* filt=nullptr,							//Optional feature descriptor filter
-		trackMatch* match=nullptr);
+		TrackMatch* match=nullptr);
 	/**
 		Copy constructor, useful since tracker objects are passed in std::vector (therefore are copied)
 	*/

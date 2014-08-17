@@ -17,7 +17,7 @@ trackMeanShift::trackMeanShift(TrackMSTargetBase* model,			//Pointer to previous
 	int n,											//Scale range radius (usually 2)
 	limits bounds,									//Convergence parameters
 	trackFilter* filt,							//Optional feature descriptor filter
-	trackMatch* match):trackFlow(filt,match),	//Optional matching object
+	TrackMatch* match):trackFlow(filt,match),	//Optional matching object
 				   m_model(model),
 				   m_b(b),
 				   m_n(n),
