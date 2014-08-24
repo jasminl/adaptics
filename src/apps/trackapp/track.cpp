@@ -12,7 +12,7 @@
 vector<bool> track1Frame(pair<double,double>& location,
 				 double& scale,
 				 unsigned char* image,
-				 vector<trackFlow*> tracker,
+				 vector<TrackFlow*> tracker,
 				 double hx,
    			     double hy,
 				 unsigned int width,
@@ -25,14 +25,14 @@ vector<bool> track1Frame(pair<double,double>& location,
 	double denominator=0,numerator=0;				//Qties used to average output 
 	location.first = location.second = scale = 0;	//Initialize output variables to zero
 
-	for(vector<trackFlow*>::iterator p=tracker.begin() ; p != tracker.end() ; p++, q++)	
+	for(vector<TrackFlow*>::iterator p=tracker.begin() ; p != tracker.end() ; p++, q++)	
 	{
 		*q = (*p)->track(image);
 
 		if(*q == true)
 		{
 			//If this a valid target, include it in the fused x,y,scale estimates.
-			trackFlow::coord current = (*p)->currentCoordinates();		
+			TrackFlow::coord current = (*p)->currentCoordinates();		
 			location.first += current.s_x;
 			location.second += current.s_y;
 			scale += current.s_scale;
@@ -52,7 +52,7 @@ vector<bool> track1Frame(pair<double,double>& location,
 	crop(cropped,scale*hx,scale*hy,location.first,location.second,image,width,height);
 	
 	//Perform shape matching if applicable
-	for(vector<trackFlow*>::iterator p=tracker.begin() ; p != tracker.end() ; p++)	
+	for(vector<TrackFlow*>::iterator p=tracker.begin() ; p != tracker.end() ; p++)	
 	{
 		if((*p)->featFilter() == NULL) continue;		//Skip this step if no feature descriptor has been defined
 
@@ -109,7 +109,7 @@ unsigned char* crop(unsigned char*& buffer, unsigned int width, unsigned int hei
 }
 
 
-void trackFlow::_coord::show() const
+void TrackFlow::_coord::show() const
 {
 	cout<<"(X,Y)=("<<s_x<<","<<s_y<<") Scale="<<s_scale<<" Range=(";
 

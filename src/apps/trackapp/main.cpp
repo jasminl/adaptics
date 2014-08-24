@@ -4,7 +4,7 @@
 #include "trackFeature.h"
 #include "track.h"
 #include "TrackMatch.h"
-#include "trackMeanShift.h"
+#include "TrackMeanShift.h"
 #include "trackMSTargetRGB.h"
 
 #include <cmath>
@@ -59,7 +59,7 @@ int main(int argc, char *argv[], char *envp[])
 	double mt			= 0.1;	//Threshold at which the first neighbor must be higher than the second one
 
 	//Create a 'limits' object: this governs convergence properties and can be used as parameter to determine how good the quality of the solution is
-	trackMeanShift::limits bounds(epsSpatial,epsScale,maxAll,maxSpatial,maxScale);		
+	TrackMeanShift::limits bounds(epsSpatial,epsScale,maxAll,maxSpatial,maxScale);		
 	
 	/***** 1. Create target model histogram *****/
 	trackMSTargetRGB model(x,y,hx,hy,s,frame,hsize,vsize,2);
@@ -72,11 +72,11 @@ int main(int argc, char *argv[], char *envp[])
 	trackMatchTri match(mt);
 
 	/***** 2. Create a meanshift tracking object and initialize it with above parameters *****/
-	trackMeanShift track1(&model,b,n,bounds,&sift,&match);		
+	TrackMeanShift track1(&model,b,n,bounds,&sift,&match);		
 //	trackMeanShift track1(&model,b,n,bounds);
 
 	/***** 3. Create a vector of tracking objects (for now we only use 1 meanshift object but this will be extended) *****/
-	vector<trackFlow*> tracker;	
+	vector<TrackFlow*> tracker;	
 	tracker.push_back(&track1);							//Insert meanshift tracker in vector
  
 	/***** 4. Declare output parameters *****/

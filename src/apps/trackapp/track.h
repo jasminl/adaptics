@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "trackFlow.h"
+#include "TrackFlow.h"
 
 /**
 	Function to track 1 frame
@@ -9,7 +9,7 @@
  std::vector<bool> track1Frame(std::pair<double,double>& location,			//Output location
 						   double& scale,										//Output scale
 						   unsigned char* image,								//image frame
-						   std::vector<trackFlow*> tracker,							//trackFlow objects
+						   std::vector<TrackFlow*> tracker,							//trackFlow objects
 						   double hx,											//Width of model
 						   double hy,											//Height of model
 						   unsigned int width,									//Width of image

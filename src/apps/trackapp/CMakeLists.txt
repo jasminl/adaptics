@@ -3,7 +3,7 @@ PROJECT (Adaptics)
 
 SET(trackapp_source_files main.cpp track.cpp trackFeature.cpp TrackMatch.cpp TrackSAC.cpp
 fastmap.h TrackMSTargetBase.cpp trackMSTargetColor.cpp trackMSTargetRGB.cpp
-trackMSTargetSIFT.h trackFlow.cpp trackParticleFilter.h trackMeanShift.cpp)
+trackMSTargetSIFT.h TrackFlow.cpp trackParticleFilter.h TrackMeanShift.cpp)
 
 #Add SYSTEM to disable warnings related to third party tnt library
 include_directories(SYSTEM ${MAINFOLDER}/thirdparty/src/vlfeat) 

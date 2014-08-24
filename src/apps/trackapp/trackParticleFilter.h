@@ -1,11 +1,11 @@
 #pragma once
 
-#include "trackFlow.h"
+#include "TrackFlow.h"
 
 /**
 	Main class for particle filter tracking
 */
-class  trackParticleFilter: public trackFlow
+class  trackParticleFilter: public TrackFlow
 {
 public:
 
@@ -15,7 +15,7 @@ public:
 	}
 
 public:	//Constructors /destructors
-	trackParticleFilter(trackFilter* filt, TrackMatch* match):trackFlow(filt,match)			//Optional feature descriptor filter)
+	trackParticleFilter(trackFilter* filt, TrackMatch* match):TrackFlow(filt,match)			//Optional feature descriptor filter)
 	{}
 
 };
