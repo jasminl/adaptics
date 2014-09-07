@@ -8,7 +8,7 @@
 */
 class  TrackMeanShift: public TrackFlow
 {
-public: //typedefs etc.
+public:
 
 	/**
 		All limit constants for meanshift tracking in scale-space (note, scale tracking is optional)

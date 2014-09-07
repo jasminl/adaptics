@@ -1,11 +1,11 @@
 #pragma once
 
-#include "trackMSTargetColor.h"
+#include "TrackMSTargetColor.h"
 
 /**
 	RGB color mean-shift target
 */
-class trackMSTargetRGB: public trackMSTargetColor
+class trackMSTargetRGB: public TrackMSTargetColor
 {
 public:	//Member functions
 
