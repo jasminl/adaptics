@@ -5,7 +5,7 @@
 #include "track.h"
 #include "TrackMatch.h"
 #include "TrackMeanShift.h"
-#include "trackMSTargetRGB.h"
+#include "TrackMSTargetRGB.h"
 
 #include <cmath>
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[], char *envp[])
 	TrackMeanShift::limits bounds(epsSpatial,epsScale,maxAll,maxSpatial,maxScale);		
 	
 	/***** 1. Create target model histogram *****/
-	trackMSTargetRGB model(x,y,hx,hy,s,frame,hsize,vsize,2);
+	TrackMSTargetRGB model(x,y,hx,hy,s,frame,hsize,vsize,2);
 
 	/***** 1B. Create SIFT feature descriptor for model *****/
 	trackSIFTFilter sift(noctaves,nlevels,o_min);		//Declare SIFT Filter object (which contains model features)

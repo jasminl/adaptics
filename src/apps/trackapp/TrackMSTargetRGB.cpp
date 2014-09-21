@@ -1,10 +1,10 @@
-#include "trackMSTargetRGB.h"
+#include "TrackMSTargetRGB.h"
 
 #include <cmath>
 
 using namespace std;
 
-unsigned int trackMSTargetRGB::quantize(unsigned char r,unsigned  char g,unsigned  char b)
+unsigned int TrackMSTargetRGB::quantize(unsigned char r,unsigned  char g,unsigned  char b)
 {
 	unsigned int red   = static_cast<unsigned int>(floor(static_cast<double>(r)/_levels_per_bin[0]));
 	unsigned int green = static_cast<unsigned int>(floor(static_cast<double>(g)/_levels_per_bin[1]));
@@ -13,16 +13,16 @@ unsigned int trackMSTargetRGB::quantize(unsigned char r,unsigned  char g,unsigne
 	return red + green * _bins_per_dim[0] + blue * _bins_per_dim[0]*_bins_per_dim[1];
 }
 
-void trackMSTargetRGB::candidate(TrackMSTargetBase*& dest, unsigned char* image, double x, double y, std::vector<double> scale)
+void TrackMSTargetRGB::candidate(TrackMSTargetBase*& dest, unsigned char* image, double x, double y, std::vector<double> scale)
 {
 	kill_candidate(dest);
-	dest = new trackMSTargetRGB(x,y,_hx,_hy,scale,image,_width,_height,_back_size,_bins_per_dim[0],_bins_per_dim[1],_bins_per_dim[2]);
+	dest = new TrackMSTargetRGB(x,y,_hx,_hy,scale,image,_width,_height,_back_size,_bins_per_dim[0],_bins_per_dim[1],_bins_per_dim[2]);
 }
 
 
 /***** trackMSTargetRGB *****/
 
-trackMSTargetRGB::trackMSTargetRGB(double x,
+TrackMSTargetRGB::TrackMSTargetRGB(double x,
 					  double y,
 					  double hx,
 					  double hy,
@@ -50,9 +50,9 @@ trackMSTargetRGB::trackMSTargetRGB(double x,
 }
 
 
-void trackMSTargetRGB::update_candidate(TrackMSTargetBase* dest, unsigned char* image, double x, double y, std::vector<double> scale)
+void TrackMSTargetRGB::update_candidate(TrackMSTargetBase* dest, unsigned char* image, double x, double y, std::vector<double> scale)
 {
-	trackMSTargetRGB* p = dynamic_cast<trackMSTargetRGB*>(dest);
+	TrackMSTargetRGB* p = dynamic_cast<TrackMSTargetRGB*>(dest);
 
 	std::pair< std::vector<unsigned int> , std::vector<double> > q = p->histParams();
 
@@ -70,8 +70,8 @@ void trackMSTargetRGB::update_candidate(TrackMSTargetBase* dest, unsigned char* 
 	p->makeHistogram(scale);					//Make histogram
 }
 
-void trackMSTargetRGB::kill_candidate(TrackMSTargetBase*& dest)
+void TrackMSTargetRGB::kill_candidate(TrackMSTargetBase*& dest)
 {
-	delete dynamic_cast<trackMSTargetRGB*>(dest);
+	delete dynamic_cast<TrackMSTargetRGB*>(dest);
 	dest = NULL;
 }

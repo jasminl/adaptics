@@ -2,8 +2,8 @@ CMAKE_MINIMUM_REQUIRED (VERSION 2.6.2)
 PROJECT (Adaptics)
 
 SET(trackapp_source_files main.cpp track.cpp trackFeature.cpp TrackMatch.cpp TrackSAC.cpp
-fastmap.h TrackMSTargetBase.cpp TrackMSTargetColor.cpp trackMSTargetRGB.cpp
-trackMSTargetSIFT.h TrackFlow.cpp TrackParticleFilter.h TrackMeanShift.cpp)
+fastmap.h TrackMSTargetBase.cpp TrackMSTargetColor.cpp TrackMSTargetRGB.cpp
+TrackMSTargetSIFT.h TrackFlow.cpp TrackParticleFilter.h TrackMeanShift.cpp)
 
 #Add SYSTEM to disable warnings related to third party tnt library
 include_directories(SYSTEM ${MAINFOLDER}/thirdparty/src/vlfeat) 
