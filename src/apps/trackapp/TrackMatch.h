@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "trackFeature.h"
+#include "TrackFeature.h"
 
 /**
 	Base class for matching point pairs
@@ -60,7 +60,7 @@ public:
 	/**
 		Find 1st and 2nd nearest neighbors
 	*/
-	std::pair<std::pair<unsigned int, double>, std::pair<unsigned int, double> > firstSecond(trackFeature* modelPt, trackFeatArray* target);
+	std::pair<std::pair<unsigned int, double>, std::pair<unsigned int, double> > firstSecond(TrackFeature* modelPt, trackFeatArray* target);
 
 public:
 

@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 
-#include "trackFeature.h"
-#include "track.h"
+#include "TrackFeature.h"
+#include "Track.h"
 #include "TrackMatch.h"
 #include "TrackMeanShift.h"
 #include "TrackMSTargetRGB.h"

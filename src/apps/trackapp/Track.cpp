@@ -3,12 +3,13 @@
 #include <iostream>
 #include <string.h>
 
-#include "track.h"
-#include "trackFeature.h"
+#include "Track.h"
+#include "TrackFeature.h"
 #include "TrackMatch.h"
 
+using namespace std;
 
-/***** Misc functions *****/
+
 vector<bool> track1Frame(pair<double,double>& location,
 				 double& scale,
 				 unsigned char* image,
@@ -20,12 +21,12 @@ vector<bool> track1Frame(pair<double,double>& location,
 {
 	//Create boolean vector indicating whether the tracked object is valid, for each tracking object
  	vector<bool> validTrack(tracker.size());
-	vector<bool>::iterator q = validTrack.begin();
+	auto q = validTrack.begin();
 
 	double denominator=0,numerator=0;				//Qties used to average output 
 	location.first = location.second = scale = 0;	//Initialize output variables to zero
 
-	for(vector<TrackFlow*>::iterator p=tracker.begin() ; p != tracker.end() ; p++, q++)	
+	for(auto p = tracker.begin(); p != tracker.end(); p++, q++)
 	{
 		*q = (*p)->track(image);
 
@@ -47,14 +48,14 @@ vector<bool> track1Frame(pair<double,double>& location,
 	scale /= denominator;
 
 	//Create cropped image for shape matching
-	unsigned char* cropped = NULL;
+	unsigned char* cropped = nullptr;
 	
 	crop(cropped,scale*hx,scale*hy,location.first,location.second,image,width,height);
 	
 	//Perform shape matching if applicable
-	for(vector<TrackFlow*>::iterator p=tracker.begin() ; p != tracker.end() ; p++)	
+	for(auto p = tracker.begin() ; p != tracker.end() ; p++)
 	{
-		if((*p)->featFilter() == NULL) continue;		//Skip this step if no feature descriptor has been defined
+		if((*p)->featFilter() == nullptr) continue;		//Skip this step if no feature descriptor has been defined
 
 		//Use target filter to compute and process keypoints
 		(*p)->targetFilter()->compute(cropped,scale*hx,scale*hy);
@@ -78,7 +79,7 @@ vector<bool> track1Frame(pair<double,double>& location,
 
 unsigned char* crop(unsigned char*& buffer, unsigned int width, unsigned int height,double x,double y,unsigned char* image,unsigned int imageWidth,unsigned int imageHeight)
 {
-	if (buffer != NULL)
+	if (buffer != nullptr)
 	{
 		delete[] buffer;
 	}

@@ -1,4 +1,4 @@
-#include "trackFeature.h"
+#include "TrackFeature.h"
 
 #include <iostream>
 
@@ -8,20 +8,31 @@ extern "C" {
 #include <vl/generic.h>
 }
 
+using namespace std;
 
-void trackFeature::show() const
+void TrackFeature::show() const
 {
-	std::cout<<"Feature point x: "<<m_x<<", y:"<<m_y<<std::endl;
+	cout<<"Feature point x: "<<_x<<", y:"<<_y<<endl;
 }
 
 void trackFeatArray::show() 
 {
-	cout<<"Number of feature points: "<<m_feature.size()<<endl;
+	cout<<"Number of feature points: "<<_feature.size()<<endl;
 
-	for(vector<trackFeature*>::iterator p = m_feature.begin() ; p != m_feature.end(); p++)
+	for(vector<TrackFeature*>::iterator p = _feature.begin() ; p != _feature.end(); p++)
 	{
 		(*p)->show();
 	}
+}
+
+
+double trackFeatureSIFT::compare(TrackFeature* x)
+{
+	trackFeatureSIFT* px = dynamic_cast<trackFeatureSIFT*>(x);
+	double d = 0;
+	for(unsigned int i = 0; i < _size; i++)
+		d += (_desc[i] - px->desc()[i]) * (_desc[i] - px->desc()[i]);
+	return d;
 }
 
 /**
@@ -43,7 +54,7 @@ void rgb2gray(unsigned char* image, unsigned char*& output, unsigned int width, 
 
 void trackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned int height, bool isModel,unsigned char* bw)
 {
-	m_filter = vl_sift_new(width, height, m_noctaves, m_nlevels, m_nomin);
+	_filter = vl_sift_new(width, height, _noctaves, _nlevels, _nomin);
 
 	unsigned char* gsimage;
 	rgb2gray(image,gsimage,width,height);
@@ -57,13 +68,13 @@ void trackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned
 		*p = static_cast<float>(*q);
 	}
 
-	vl_sift_process_first_octave(m_filter,pImage);			//Process first octave
+	vl_sift_process_first_octave(_filter,pImage);			//Process first octave
 	process();
 
 	//Process remaining octaves
-	for(int j=0;j<m_noctaves;j++)
+	for(int j=0;j<_noctaves;j++)
 	{
-		vl_sift_process_next_octave(m_filter);			//Process octave
+		vl_sift_process_next_octave(_filter);			//Process octave
 		process();		
 	}
 
@@ -76,8 +87,8 @@ void trackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned
 //	process();	//TODO why would there be another call to process if it's already called earlier!
 
 
-	vl_sift_delete(m_filter);
-	m_filter = NULL;
+	vl_sift_delete(_filter);
+	_filter = NULL;
 
 	delete[] pImage;
 	delete[] gsimage;
@@ -85,26 +96,23 @@ void trackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned
 
 void trackSIFTFilter::process()
 {
-	vl_sift_detect(m_filter);								//Detect keypoints
-	int nkp = vl_sift_get_nkeypoints(m_filter) ;				//Get number of keypoints
-	m_kp = vl_sift_get_keypoints(m_filter);						//Get the list
+	vl_sift_detect(_filter);								//Detect keypoints
+	int nkp = vl_sift_get_nkeypoints(_filter) ;				//Get number of keypoints
+	_kp = vl_sift_get_keypoints(_filter);						//Get the list
 	
 	double angles[4];
-
-	VlSiftKeypoint * pq;
-
 	unsigned int size = 128;	//TODO: how to determine this empirically?
 
 	for(int i=0;i<nkp;i++)
 	{
-		int nangle = vl_sift_calc_keypoint_orientations(m_filter,angles,&m_kp[i]);			//Get orientations
+		int nangle = vl_sift_calc_keypoint_orientations(_filter,angles,&_kp[i]);			//Get orientations
 
 		for(int j=0;j<nangle;j++)
 		{
-			m_pFeature.feature().push_back(new trackFeatureSIFT(m_kp[i].x,m_kp[i].y,size));
+			m_pFeature.feature().push_back(new trackFeatureSIFT(_kp[i].x,_kp[i].y,size));
 
 			//Here assign descriptor vector of proper length (see docs) which is part of a trackFeatureSIFT object 
-			vl_sift_calc_keypoint_descriptor(m_filter,((trackFeatureSIFT*)m_pFeature.feature().back())->desc(),&m_kp[i],angles[j]);
+			vl_sift_calc_keypoint_descriptor(_filter,((trackFeatureSIFT*)m_pFeature.feature().back())->desc(),&_kp[i],angles[j]);
 		}
 	}
 }
@@ -112,33 +120,33 @@ void trackSIFTFilter::process()
 void trackSIFTFilter::prune(unsigned char* validity,unsigned int width)
 {	
 
-	vector<trackFeature*>& ref = m_pFeature.feature();
+	vector<TrackFeature*>& ref = m_pFeature.feature();
 
-	for(vector<trackFeature*>::iterator p = ref.begin();p != ref.end();)
+	for(vector<TrackFeature*>::iterator p = ref.begin();p != ref.end();)
 	{
 		//Get a feature point
-		pair<double,double> xy = ((trackFeatureSIFT*)*p)->spatial();	//TODO: check that this works
+		auto xy = ((trackFeatureSIFT*)*p)->spatial();	//TODO: check that this works
 
 		if(validity[(unsigned int)floor(xy.first + xy.second*width)] != 1)
 		{
 			//This is not a valid point
 			//note: this was a reference before, does it still work?
-			vector<trackFeature*>::iterator q = p - 1;	//Store current iterator in buffer
+			vector<TrackFeature*>::iterator q = p - 1;	//Store current iterator in buffer
 			m_pFeature.feature().erase(p);			//Erase current iterator
 			p = q;									//Assign previous location
 			p++;									//Go to next location
 		}
 		else
-		{
-			//This is a valid one
+		{   //This is a valid one
 			p++;
 		}
 	}
 }
 
-trackSIFTFilter::trackSIFTFilter(int noctaves, int nlevels, int o_min):m_noctaves(noctaves),m_nlevels(nlevels),m_nomin(o_min)
-{
-}
+trackSIFTFilter::trackSIFTFilter(int noctaves, int nlevels, int o_min)
+: _filter(nullptr), _kp(nullptr), _noctaves(noctaves), _nlevels(nlevels),
+  _nomin(o_min)
+{}
 
 trackSIFTFilter::~trackSIFTFilter()
 {}

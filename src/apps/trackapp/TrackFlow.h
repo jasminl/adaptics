@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "trackFeature.h"
+#include "TrackFeature.h"
 #include "TrackMatch.h"
 
 /**

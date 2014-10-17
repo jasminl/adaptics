@@ -1,5 +1,4 @@
 #include "TrackMatch.h"
-#include "trackFeature.h"
 #include <iostream>
 
 using namespace std;
@@ -31,7 +30,7 @@ void trackMatchTri::match(trackFeatArray* model, trackFeatArray* target)
 	}
 }
 
-pair< pair<unsigned int, double>, pair<unsigned int, double> > trackMatchTri::firstSecond(trackFeature* modelPt, trackFeatArray* target)
+pair< pair<unsigned int, double>, pair<unsigned int, double> > trackMatchTri::firstSecond(TrackFeature* modelPt, trackFeatArray* target)
 {
 	unsigned int size = target->size();
 
