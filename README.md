@@ -13,6 +13,7 @@ adaptics
   * Boost C++ Libraries v1.37+ [HEADERS and LIBRARIES]
   * Log4Cxx v0.10.0+
   * fftw3 libary
+  * OpenCV v2.4.8
 
 **2. BUILDING**
  
