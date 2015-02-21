@@ -9,6 +9,11 @@
 
 #include <cmath>
 
+#define OPENCV_INTERFACE 		//To use opencv to load/roi video frames
+#ifdef OPENCV_INTERFACE
+#include "opencv2/opencv.hpp"
+#endif
+
 //#define MATLAB_INTERFACE		//Matlab interface to capture video frames and display tracked object, comment this if not using matlab
 #ifdef MATLAB_INTERFACE
 #include "mli.h"
@@ -25,18 +30,17 @@ int main(int argc, char *argv[], char *envp[])
 	unsigned char* roi = nullptr;		//Buffer for roi containing the model returned by mli::getTarget
 	unsigned char* bw = nullptr;		//Non-rectangular model region within roi
 
-	//NOTE: we assume that the frames have INTERLEAVED color channels 
-
 #ifdef MATLAB_INTERFACE
 	//Here we use the matlab interface to load movie and get initial frame and target. Replace this with the interface you use
 	mli me(atoi(argv[2]),atoi(argv[3]));			//argv[2] is a number specifying which frame to track from, argv[3] specifes how many frames to track for
 	me.loadMovie(string(argv[1]));					//argv[1] is the name of the avi file 
 	me.getFrame(string(argv[2]),frame,hsize,vsize);	//Get initial frame
 	me.getTarget(x,y,hx,hy,roi,bw);					//Here we use the matlab interface to set x,y, hx and hy, roi and bw
-#else
-	string movie_path = argv[1];
-	int initial_frame = atoi(argv[2]);
+#endif
 
+#ifdef OPENCV_INTERFACE
+	string movie_path = argv[1];
+	cv::VideoCapture vid(movie_path);
 #endif
 
 	/*****	0. Setup parameters *****/
@@ -57,41 +61,56 @@ int main(int argc, char *argv[], char *envp[])
 	//Parameters for matching
 	double mt			= 0.1;	//Threshold at which the first neighbor must be higher than the second one
 
-	//Create a 'limits' object: this governs convergence properties and can be used as parameter to determine how good the quality of the solution is
-	TrackMeanShift::limits bounds(epsSpatial, epsScale, maxAll, maxSpatial, maxScale);
-	
-	/***** 1. Create target model histogram *****/
-	TrackMSTargetRGB model(x, y, hx, hy, s, frame, hsize, vsize, 2);
-
-	/***** 1B. Create SIFT feature descriptor for model *****/
-	trackSIFTFilter sift(noctaves,nlevels,o_min);		//Declare SIFT Filter object (which contains model features)
-	sift.compute(roi,hx,hy,true,bw);					//Create SIFT descriptor for model and prune boundaries
-
-	/***** 1C. Create Matching class for feature descriptors *****/
-	trackMatchTri match(mt);
-
-	/***** 2. Create a meanshift tracking object and initialize it with above parameters *****/
-	TrackMeanShift track1(&model,b,n,bounds,&sift,&match);		
-//	trackMeanShift track1(&model,b,n,bounds);
-
-	/***** 3. Create a vector of tracking objects (for now we only use 1 meanshift object but this will be extended) *****/
-	vector<TrackFlow*> tracker;	
-	tracker.push_back(&track1);							//Insert meanshift tracker in vector
- 
-	/***** 4. Declare output parameters *****/
-	pair<double,double> init(0,0);						//This one will contain the x and y coordinates of the target 
-	double sc = 0;										//This one will contain the scale "	"	"	"	"	"
+//	//Create a 'limits' object: this governs convergence properties and can be used as parameter to determine how good the quality of the solution is
+//	TrackMeanShift::limits bounds(epsSpatial, epsScale, maxAll, maxSpatial, maxScale);
+//
+//	/***** 1. Create target model histogram *****/
+//	TrackMSTargetRGB model(x, y, hx, hy, s, frame, hsize, vsize, 2);
+//
+//	/***** 1B. Create SIFT feature descriptor for model *****/
+//	trackSIFTFilter sift(noctaves,nlevels,o_min);		//Declare SIFT Filter object (which contains model features)
+//	sift.compute(roi,hx,hy,true,bw);					//Create SIFT descriptor for model and prune boundaries
+//
+//	/***** 1C. Create Matching class for feature descriptors *****/
+//	trackMatchTri match(mt);
+//
+//	/***** 2. Create a meanshift tracking object and initialize it with above parameters *****/
+//	TrackMeanShift track1(&model,b,n,bounds,&sift,&match);
+////	trackMeanShift track1(&model,b,n,bounds);
+//
+//	/***** 3. Create a vector of tracking objects (for now we only use 1 meanshift object but this will be extended) *****/
+//	vector<TrackFlow*> tracker;
+//	tracker.push_back(&track1);							//Insert meanshift tracker in vector
+//
+//	/***** 4. Declare output parameters *****/
+//	pair<double,double> init(0,0);						//This one will contain the x and y coordinates of the target
+//	double sc = 0;										//This one will contain the scale "	"	"	"	"	"
 
 #ifdef MATLAB_INTERFACE
-	for(int i=0;i<me.nbIter();i++)						//Track for as many iterations as specified by nbIter()
+	for(int i = 0;i < me.nbIter(); i++)						//Track for as many iterations as specified by nbIter()
 	{
 		me.nextFrame(frame);							//Get next frame using matlab interface
 #endif
 
-		/***** 5. Track 1 frame: current x,y coordinates and scale are returned in 'init' and 'sc' *****/
-		track1Frame(init,sc,frame,tracker,hx,hy,hsize,vsize);			
+#ifdef OPENCV_INTERFACE
+	cv::namedWindow("image", 1);
+	for(int i = 0; i < vid.get(cv::CAP_PROP_FRAME_COUNT); i++)						//Track for as many iterations as specified by nbIter()
+	{
+		cout<<"Frame "<<i<<endl;
+		cv::Mat frame;
+		vid >> frame;
+		cv::Size size(640, 480);
+		cv::Mat resized_frame;
+		cv::resize(frame, resized_frame, size);
+		cv::imshow("image", resized_frame);
+		cv::waitKey(30);
+#endif
 
-		tracker[0]->currentCoordinates().show();		//Output current x,y location and scale to stdout (for testing)
+//		/***** 5. Track 1 frame: current x,y coordinates and scale are returned in 'init' and 'sc' *****/
+//		track1Frame(init,sc,frame,tracker,hx,hy,hsize,vsize);
+//
+//		tracker[0]->currentCoordinates().show();		//Output current x,y location and scale to stdout (for testing)
+
 
 #ifdef MATLAB_INTERFACE
 		//Display result using matlab interface
@@ -99,11 +118,18 @@ int main(int argc, char *argv[], char *envp[])
 	}
 #endif
 
+#ifdef OPENCV_INTERFACE
+	}
+#endif
 
 	//Clean up before exit
 	delete[] frame;
 	delete[] roi;
 	delete[] bw;
+
+#ifdef OPENCV_INTERFACE
+	vid.release();
+#endif
 
 	return 0;
 }
