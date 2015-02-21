@@ -21,9 +21,9 @@ int main(int argc, char *argv[], char *envp[])
 	double x, y;					//x,y coordinates of the target model, those are obtained after manually selecting an object to track
 	double hx, hy;					//width and height of the selected object
 	unsigned int vsize, hsize;		//Vertical and horizontal sizes of frames
-	unsigned char* frame = NULL;	//Buffer for current frame
-	unsigned char* roi=NULL;		//Buffer for roi containing the model returned by mli::getTarget
-	unsigned char* bw =NULL;		//Non-rectangular model region within roi
+	unsigned char* frame = nullptr;	//Buffer for current frame
+	unsigned char* roi = nullptr;		//Buffer for roi containing the model returned by mli::getTarget
+	unsigned char* bw = nullptr;		//Non-rectangular model region within roi
 
 	//NOTE: we assume that the frames have INTERLEAVED color channels 
 
@@ -33,15 +33,14 @@ int main(int argc, char *argv[], char *envp[])
 	me.loadMovie(string(argv[1]));					//argv[1] is the name of the avi file 
 	me.getFrame(string(argv[2]),frame,hsize,vsize);	//Get initial frame
 	me.getTarget(x,y,hx,hy,roi,bw);					//Here we use the matlab interface to set x,y, hx and hy, roi and bw
+#else
+	string movie_path = argv[1];
+	int initial_frame = atoi(argv[2]);
+
 #endif
 
 	/*****	0. Setup parameters *****/
-	vector<double> s(5);	//Default tracking scales. These should be centered on 1.0. Here we use: 0.8, 0.9, 1.0, 1.1 and 1.2. 
-	s[2] = 1;
-	s[0] = 0.8;
-	s[1] = 0.9;
-	s[3] = 1.1;
-	s[4] = 1.2;
+	vector<double> s = {0.8, 0.9, 1.0, 1.1, 1.2};	//Default tracking scales. These should be centered on 1.0. Here we use: 0.8, 0.9, 1.0, 1.1 and 1.2.
 
 	// More parameters to be set by that user (here use default values)
 	double b            = 1.1;				
@@ -59,10 +58,10 @@ int main(int argc, char *argv[], char *envp[])
 	double mt			= 0.1;	//Threshold at which the first neighbor must be higher than the second one
 
 	//Create a 'limits' object: this governs convergence properties and can be used as parameter to determine how good the quality of the solution is
-	TrackMeanShift::limits bounds(epsSpatial,epsScale,maxAll,maxSpatial,maxScale);		
+	TrackMeanShift::limits bounds(epsSpatial, epsScale, maxAll, maxSpatial, maxScale);
 	
 	/***** 1. Create target model histogram *****/
-	TrackMSTargetRGB model(x,y,hx,hy,s,frame,hsize,vsize,2);
+	TrackMSTargetRGB model(x, y, hx, hy, s, frame, hsize, vsize, 2);
 
 	/***** 1B. Create SIFT feature descriptor for model *****/
 	trackSIFTFilter sift(noctaves,nlevels,o_min);		//Declare SIFT Filter object (which contains model features)

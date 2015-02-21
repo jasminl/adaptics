@@ -10,7 +10,9 @@ include_directories(SYSTEM ${MAINFOLDER}/thirdparty/src/vlfeat)
 
 link_directories(${MAINFOLDER}/lib)
 
+find_package(OpenCV REQUIRED)
+
 ADD_EXECUTABLE(trackapp ${trackapp_source_files})
 
 SET (project_LIBS ${Boost_LIBRARIES} ${Log4Cxx_LIBRARIES} ${MAINFOLDER}/thirdparty/src/vlfeat/bin/g64/libvl.so)
-TARGET_LINK_LIBRARIES(trackapp ${project_LIBS})
+TARGET_LINK_LIBRARIES(trackapp ${project_LIBS} ${OpenCV_LIBS})

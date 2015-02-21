@@ -52,43 +52,39 @@ void rgb2gray(unsigned char* image, unsigned char*& output, unsigned int width, 
 }
 
 
-void trackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned int height, bool isModel,unsigned char* bw)
+void trackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned int height,
+		bool isModel,unsigned char* bw)
 {
 	_filter = vl_sift_new(width, height, _noctaves, _nlevels, _nomin);
 
 	unsigned char* gsimage;
-	rgb2gray(image,gsimage,width,height);
+	rgb2gray(image, gsimage, width, height);
 
 	//Convert to float array
-	vl_sift_pix* pImage = new vl_sift_pix[width*height];
+	vl_sift_pix* pImage = new vl_sift_pix[width * height];
 	vl_sift_pix* p = pImage;
 	unsigned char* q = gsimage;
-	for(unsigned int i=0;i<width*height;i++,p++,q++)
-	{
+	for(unsigned int i = 0; i < width * height; i++, p++, q++)
 		*p = static_cast<float>(*q);
-	}
 
-	vl_sift_process_first_octave(_filter,pImage);			//Process first octave
+	vl_sift_process_first_octave(_filter, pImage); //Process first octave
 	process();
 
 	//Process remaining octaves
-	for(int j=0;j<_noctaves;j++)
+	for(int j = 0; j < _noctaves; j++)
 	{
-		vl_sift_process_next_octave(_filter);			//Process octave
+		vl_sift_process_next_octave(_filter); //Process octave
 		process();		
 	}
 
-	if (isModel==true)
-	{
-		//If it is the model, we remove boundary points
-		prune(bw,width);
-	}
+	if (isModel == true)//If it is the model, we remove boundary points
+		prune(bw, width);
 
 //	process();	//TODO why would there be another call to process if it's already called earlier!
 
 
 	vl_sift_delete(_filter);
-	_filter = NULL;
+	_filter = nullptr;
 
 	delete[] pImage;
 	delete[] gsimage;
