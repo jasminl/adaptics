@@ -20,17 +20,18 @@
 #endif
 
 using namespace std;
+using namespace cv;
 
 int main(int argc, char *argv[], char *envp[])
 {
-	double x, y;					//x,y coordinates of the target model, those are obtained after manually selecting an object to track
-	double hx, hy;					//width and height of the selected object
-	unsigned int vsize, hsize;		//Vertical and horizontal sizes of frames
-	unsigned char* frame = nullptr;	//Buffer for current frame
+	double x, y;						//x,y coordinates of the target model, those are obtained after manually selecting an object to track
+	double hx, hy;						//width and height of the selected object
+	int vsize, hsize;					//Vertical and horizontal sizes of frames
 	unsigned char* roi = nullptr;		//Buffer for roi containing the model returned by mli::getTarget
 	unsigned char* bw = nullptr;		//Non-rectangular model region within roi
 
 #ifdef MATLAB_INTERFACE
+	unsigned char* frame = nullptr;	//Buffer for current frame
 	//Here we use the matlab interface to load movie and get initial frame and target. Replace this with the interface you use
 	mli me(atoi(argv[2]),atoi(argv[3]));			//argv[2] is a number specifying which frame to track from, argv[3] specifes how many frames to track for
 	me.loadMovie(string(argv[1]));					//argv[1] is the name of the avi file 
@@ -40,10 +41,27 @@ int main(int argc, char *argv[], char *envp[])
 
 #ifdef OPENCV_INTERFACE
 	string movie_path = argv[1];
-	cv::VideoCapture vid(movie_path);
+	VideoCapture vid(movie_path);
+
+	namedWindow("image", 1);
+	namedWindow("target", 2);
+	Mat frame;
+	vid >> frame;
+	Size size(640, 480);
+	Mat resized_frame;
+	resize(frame, resized_frame, size);
+	imshow("image", resized_frame);
+
+	//Extract rectangle
+	x = y = 250;
+	hx = hy = 100;
+	vsize = resized_frame.rows;
+	hsize = resized_frame.cols;
+	Mat target = resized_frame(Range(x - hx/2, x + hx/2), Range(y - hy/2, y + hy/2));
+	imshow("target", target);
+	waitKey();
 #endif
 
-	/*****	0. Setup parameters *****/
 	vector<double> s = {0.8, 0.9, 1.0, 1.1, 1.2};	//Default tracking scales. These should be centered on 1.0. Here we use: 0.8, 0.9, 1.0, 1.1 and 1.2.
 
 	// More parameters to be set by that user (here use default values)
@@ -61,15 +79,15 @@ int main(int argc, char *argv[], char *envp[])
 	//Parameters for matching
 	double mt			= 0.1;	//Threshold at which the first neighbor must be higher than the second one
 
-//	//Create a 'limits' object: this governs convergence properties and can be used as parameter to determine how good the quality of the solution is
-//	TrackMeanShift::limits bounds(epsSpatial, epsScale, maxAll, maxSpatial, maxScale);
-//
-//	/***** 1. Create target model histogram *****/
-//	TrackMSTargetRGB model(x, y, hx, hy, s, frame, hsize, vsize, 2);
-//
-//	/***** 1B. Create SIFT feature descriptor for model *****/
-//	trackSIFTFilter sift(noctaves,nlevels,o_min);		//Declare SIFT Filter object (which contains model features)
-//	sift.compute(roi,hx,hy,true,bw);					//Create SIFT descriptor for model and prune boundaries
+	//Create a 'limits' object: this governs convergence properties and can be used as parameter to determine how good the quality of the solution is
+	TrackMeanShift::limits bounds(epsSpatial, epsScale, maxAll, maxSpatial, maxScale);
+
+	//Create target histogram
+	TrackMSTargetRGB model(x, y, hx, hy, s, frame.data, hsize, vsize, 2);
+
+	//Create SIFT descriptor
+	trackSIFTFilter sift(noctaves, nlevels, o_min);	//Declare SIFT Filter object (which contains model features)
+	sift.compute(target.data, hx, hy, true, bw); //Create SIFT descriptor for model and prune boundaries
 //
 //	/***** 1C. Create Matching class for feature descriptors *****/
 //	trackMatchTri match(mt);
@@ -93,17 +111,17 @@ int main(int argc, char *argv[], char *envp[])
 #endif
 
 #ifdef OPENCV_INTERFACE
-	cv::namedWindow("image", 1);
-	for(int i = 0; i < vid.get(cv::CAP_PROP_FRAME_COUNT); i++)						//Track for as many iterations as specified by nbIter()
+	namedWindow("image", 1);
+	for(int i = 0; i < vid.get(CAP_PROP_FRAME_COUNT); i++)						//Track for as many iterations as specified by nbIter()
 	{
 		cout<<"Frame "<<i<<endl;
-		cv::Mat frame;
+		//Mat frame;
 		vid >> frame;
-		cv::Size size(640, 480);
-		cv::Mat resized_frame;
-		cv::resize(frame, resized_frame, size);
-		cv::imshow("image", resized_frame);
-		cv::waitKey(30);
+		//Size size(640, 480);
+		//Mat resized_frame;
+		resize(frame, resized_frame, size);
+		imshow("image", resized_frame);
+		waitKey(30);
 #endif
 
 //		/***** 5. Track 1 frame: current x,y coordinates and scale are returned in 'init' and 'sc' *****/
@@ -123,7 +141,10 @@ int main(int argc, char *argv[], char *envp[])
 #endif
 
 	//Clean up before exit
+
+#ifdef MATLAB_INTERFACE
 	delete[] frame;
+#endif
 	delete[] roi;
 	delete[] bw;
 

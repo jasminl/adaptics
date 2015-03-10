@@ -6,15 +6,15 @@
 using namespace std;
 
 TrackMSTargetColor::TrackMSTargetColor(double x, double y, double hx, double hy,
-		vector<double> s, unsigned char* image, unsigned int imageWidth, unsigned int imageHeight,
-		double backSize)
-: TrackMSTargetBase(x, y, hx, hy, s, image, imageWidth, imageHeight),
-  _back_size(backSize)
+		vector<double> s, unsigned char* image, int image_width, int image_height,
+		double back_size)
+: TrackMSTargetBase(x, y, hx, hy, s, image, image_width, image_height),
+  _back_size(back_size)
 {}
 
 pair<vector<unsigned int>, vector<double>> TrackMSTargetColor::histParams() const
 {
-	return pair<vector<unsigned int>, vector<double>>(_bins_per_dim, _levels_per_bin);
+	return make_pair(_bins_per_dim, _levels_per_bin);
 }
 
 void TrackMSTargetColor::set_histogram(vector<unsigned int> nb, vector<double> sz)

@@ -20,10 +20,10 @@ public:
 		Constructor used to initialize target
 	*/
 	TrackMSTargetBase(double x, double y, double hx, double hy,
-			std::vector<double> s, unsigned char* image, unsigned int imageWidth, unsigned int imageHeight);
+			std::vector<double> s, unsigned char* image, int image_width, int image_height);
 
 	/**
-	 * Destructor, does nothing.
+	 * Destructor
 	 */
 	virtual
 	~TrackMSTargetBase()
@@ -154,8 +154,8 @@ protected:
 	std::vector<double> _s;	//!< scale of the tracking ellipse
 
 	unsigned char* _image;	//!< Pointer to image from which to get representation
-	unsigned int _width;	//!< Image width
-	unsigned int _height;   //!< Image height
+	int _width;	//!< Image width
+	int _height;   //!< Image height
 
 	unsigned int _vertical1;	//!< Rectangle upper pixel
 	unsigned int _vertical2;	//!< Rectangle lower pixel

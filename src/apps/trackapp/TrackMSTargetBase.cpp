@@ -12,9 +12,9 @@ TrackMSTargetBase::TrackMSTargetBase()
 {};
 
 TrackMSTargetBase::TrackMSTargetBase(double x, double y, double hx, double hy,
-				  std::vector<double> s, unsigned char* image, unsigned int imageWidth, unsigned int imageHeight)
+				  std::vector<double> s, unsigned char* image, int image_width, int image_height)
 : _x(x), _y(y), _hx(hx), _hy(hy),
-  _s(s), _image(image), _width(imageWidth), _height(imageHeight),
+  _s(s), _image(image), _width(image_width), _height(image_height),
   _vertical1(0), _vertical2(0), _horizontal1(0), _horizontal2(0)
 {
 	allocate(s);

@@ -201,13 +201,13 @@ public:
 
 protected:
 
-	trackFeatArray m_pFeature;		//!< Pointer to the feature array
+	trackFeatArray _p_feat;		//!< Pointer to the feature array
 };
 
 inline
 trackFeatArray* trackFilter::feature()
 {
-	return &m_pFeature;
+	return &_p_feat;
 }
 
 

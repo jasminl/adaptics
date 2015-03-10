@@ -105,35 +105,37 @@ void trackSIFTFilter::process()
 
 		for(int j=0;j<nangle;j++)
 		{
-			m_pFeature.feature().push_back(new trackFeatureSIFT(_kp[i].x,_kp[i].y,size));
+			_p_feat.feature().push_back(new trackFeatureSIFT(_kp[i].x,_kp[i].y,size));
 
 			//Here assign descriptor vector of proper length (see docs) which is part of a trackFeatureSIFT object 
-			vl_sift_calc_keypoint_descriptor(_filter,((trackFeatureSIFT*)m_pFeature.feature().back())->desc(),&_kp[i],angles[j]);
+			vl_sift_calc_keypoint_descriptor(_filter,((trackFeatureSIFT*)_p_feat.feature().back())->desc(),&_kp[i],angles[j]);
 		}
 	}
 }
 
-void trackSIFTFilter::prune(unsigned char* validity,unsigned int width)
+void trackSIFTFilter::prune(unsigned char* validity, unsigned int width)
 {	
-
-	vector<TrackFeature*>& ref = m_pFeature.feature();
-
-	for(vector<TrackFeature*>::iterator p = ref.begin();p != ref.end();)
+	auto& ref = _p_feat.feature();
+	cout<<_p_feat.size()<<endl;
+	for(auto p = ref.begin();p != ref.end();)
 	{
 		//Get a feature point
-		auto xy = ((trackFeatureSIFT*)*p)->spatial();	//TODO: check that this works
 
-		if(validity[(unsigned int)floor(xy.first + xy.second*width)] != 1)
-		{
-			//This is not a valid point
+		auto xy = ((trackFeatureSIFT*)*p)->spatial();	//TODO: check that this works
+		cout<<xy.first<<" "<<xy.second;
+
+		if(validity[(int)floor(xy.first + xy.second * width)] != 1)
+		{	//This is not a valid point
 			//note: this was a reference before, does it still work?
+			cout<<" invalid "<<endl;
 			vector<TrackFeature*>::iterator q = p - 1;	//Store current iterator in buffer
-			m_pFeature.feature().erase(p);			//Erase current iterator
+			_p_feat.feature().erase(p);			//Erase current iterator
 			p = q;									//Assign previous location
 			p++;									//Go to next location
 		}
 		else
 		{   //This is a valid one
+			cout<<" valid"<<endl;
 			p++;
 		}
 	}

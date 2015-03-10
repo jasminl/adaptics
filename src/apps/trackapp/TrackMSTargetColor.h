@@ -17,8 +17,8 @@ public:
 		Default constructor for color target representation
 	*/
 	TrackMSTargetColor(double x, double y, double hx, double hy,
-			std::vector<double> s, unsigned char* image, unsigned int imageWidth,
-			unsigned int imageHeight, double backSize);
+			std::vector<double> s, unsigned char* image, int image_width,
+			int image_height, double back_size);
 
 	/**
 		Returns histogram parameters

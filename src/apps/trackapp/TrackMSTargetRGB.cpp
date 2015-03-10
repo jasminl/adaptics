@@ -19,36 +19,37 @@ void TrackMSTargetRGB::candidate(TrackMSTargetBase*& dest, unsigned char* image,
 }
 
 TrackMSTargetRGB::TrackMSTargetRGB(double x, double y, double hx, double hy,
-					  vector<double> s, unsigned char* image, unsigned int imageWidth, unsigned int imageHeight,
-					  double backSize, unsigned int rNbBin, unsigned int gNbBin, unsigned int bNbBin)
-: TrackMSTargetColor(x,y,hx,hy,s,image,imageWidth,imageHeight,backSize)
+					  vector<double> s, unsigned char* image, int image_width, int image_height,
+					  double back_size, unsigned int rNbBin, unsigned int gNbBin, unsigned int bNbBin)
+: TrackMSTargetColor(x, y, hx, hy, s, image, image_width, image_height, back_size)
 {
-	_bins_per_dim.push_back(rNbBin);										//Setup histogram parameters
+	//Setup histogram parameters
+	_bins_per_dim.push_back(rNbBin);
 	_bins_per_dim.push_back(gNbBin);
 	_bins_per_dim.push_back(bNbBin);
 
-	_levels_per_bin.push_back(256.0 / _bins_per_dim[0]);				//Get number of color levels per bin for each dimension
+	//Get number of color levels per bin for each dimension
+	_levels_per_bin.push_back(256.0 / _bins_per_dim[0]);
 	_levels_per_bin.push_back(256.0 / _bins_per_dim[1]);
 	_levels_per_bin.push_back(256.0 / _bins_per_dim[2]);
 
-	allocateHistograms(s,(backSize>0)?true:false);					//Allocate histogram space
-
-	makeHistogram(_s);												//Make histograms
+	allocateHistograms(s, (back_size > 0) ? true:false);
+	makeHistogram(_s);
 }
 
 void TrackMSTargetRGB::update_candidate(TrackMSTargetBase* dest, unsigned char* image, double x, double y, std::vector<double> scale)
 {
 	TrackMSTargetRGB* p = dynamic_cast<TrackMSTargetRGB*>(dest);
 
-	pair<vector<unsigned int> , vector<double> > q = p->histParams();
+	auto q = p->histParams();
 
-	if(_bins_per_dim != q.first)				//Check that histogram doesn't change
-		p->set_histogram(_bins_per_dim,_levels_per_bin);
+	if(_bins_per_dim != q.first) //Check that histogram doesn't change
+		p->set_histogram(_bins_per_dim, _levels_per_bin);
 
-	p->allocateHistograms(scale,(_back_size>0)?true:false);	//Always reallocate to keep track of scale range change
-	p->allocate(scale);							//Allocate remaining base histograms
-	p->set(x,y,scale);							//Set new space scale location
-	p->makeHistogram(scale);					//Make histogram
+	p->allocateHistograms(scale, (_back_size > 0) ? true:false); //Always reallocate to keep track of scale range change
+	p->allocate(scale);		 //Allocate remaining base histograms
+	p->set(x, y, scale);	 //Set new space scale location
+	p->makeHistogram(scale); //Make histogram
 }
 
 void TrackMSTargetRGB::kill_candidate(TrackMSTargetBase*& dest)

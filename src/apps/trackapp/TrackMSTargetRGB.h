@@ -17,16 +17,16 @@ public:
 	 * \param hy Height of target ellipse
 	 * \param s Scales to track
 	 * \param image Input frame
-	 * \param imageWidth Width of the input frame
-	 * \param imageHeight Height of the input frame
-	 * \param backSize Size of background for background reweighting (if -1, no background reweighting is used)
+	 * \param image_width Width of the input frame
+	 * \param image_height Height of the input frame
+	 * \param back_size Size of background for background reweighting (if -1, no background reweighting is used)
 	 * \param rNbBin Number of bins in red dimension
 	 * \param gNbBin Number of bins in green dimension
 	 * \param bNbBin Number of bins in blue dimension
 	 */
 	TrackMSTargetRGB(double x, double y, double hx, double hy,
-			std::vector<double> s, unsigned char* image, unsigned int imageWidth, unsigned int imageHeight,
-			double backSize = -1, unsigned int rNbBin = 16, unsigned int gNbBin = 16, unsigned int bNbBin = 16);
+			std::vector<double> s, unsigned char* image, int image_width, int image_height,
+			double back_size = -1, unsigned int rNbBin = 16, unsigned int gNbBin = 16, unsigned int bNbBin = 16);
 
 	/**
 		Bin assignment function
