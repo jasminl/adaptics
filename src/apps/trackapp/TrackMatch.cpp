@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void trackMatchTri::match(trackFeatArray* model, trackFeatArray* target)
+void trackMatchTri::match(TrackFeatArray* model, TrackFeatArray* target)
 {
 	unsigned int size = model->size();	//Get number of points
 
@@ -30,7 +30,7 @@ void trackMatchTri::match(trackFeatArray* model, trackFeatArray* target)
 	}
 }
 
-pair< pair<unsigned int, double>, pair<unsigned int, double> > trackMatchTri::firstSecond(TrackFeature* modelPt, trackFeatArray* target)
+pair< pair<unsigned int, double>, pair<unsigned int, double> > trackMatchTri::firstSecond(TrackFeature* modelPt, TrackFeatArray* target)
 {
 	unsigned int size = target->size();
 

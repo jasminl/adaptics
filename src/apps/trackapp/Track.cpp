@@ -10,20 +10,14 @@
 using namespace std;
 
 
-vector<bool> track1Frame(pair<double,double>& location,
-				 double& scale,
-				 unsigned char* image,
-				 vector<TrackFlow*> tracker,
-				 double hx,
-   			     double hy,
-				 unsigned int width,
-				 unsigned int height)
+vector<bool> track1Frame(pair<double,double>& location, double& scale, unsigned char* image,
+		vector<TrackFlow*> tracker, double hx, double hy, unsigned int width, unsigned int height)
 {
 	//Create boolean vector indicating whether the tracked object is valid, for each tracking object
  	vector<bool> validTrack(tracker.size());
 	auto q = validTrack.begin();
 
-	double denominator=0,numerator=0;				//Qties used to average output 
+	double denominator = 0, numerator = 0;				//Qties used to average output
 	location.first = location.second = scale = 0;	//Initialize output variables to zero
 
 	for(auto p = tracker.begin(); p != tracker.end(); p++, q++)
@@ -50,7 +44,7 @@ vector<bool> track1Frame(pair<double,double>& location,
 	//Create cropped image for shape matching
 	unsigned char* cropped = nullptr;
 	
-	crop(cropped,scale*hx,scale*hy,location.first,location.second,image,width,height);
+	crop(cropped, scale*hx,scale*hy,location.first,location.second,image,width,height);
 	
 	//Perform shape matching if applicable
 	for(auto p = tracker.begin() ; p != tracker.end() ; p++)

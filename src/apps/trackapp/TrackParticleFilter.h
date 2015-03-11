@@ -13,7 +13,7 @@ public:
 	/**
 	 * Base constructor
 	 */
-	TrackParticleFilter(trackFilter* filt, TrackMatch* match)
+	TrackParticleFilter(TrackFilter* filt, TrackMatch* match)
 	: TrackFlow(filt, match)
 	{}
 

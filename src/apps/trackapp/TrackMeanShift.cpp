@@ -1,7 +1,5 @@
 #include "TrackMeanShift.h"
-#include <iostream> //todo remove all cout
 #include <cmath>
-using namespace std;
 
 double TrackMeanShift::norm(double loc1[2], double x, double y)
 {
@@ -9,31 +7,22 @@ double TrackMeanShift::norm(double loc1[2], double x, double y)
 }
 
 TrackMeanShift::TrackMeanShift(TrackMSTargetBase* model, double b, int n, limits bounds,
-		trackFilter* filt, TrackMatch* match)
-: TrackFlow(filt, match), m_model(model), m_b(b), m_n(n), m_limits(bounds)
+		TrackFilter* filt, TrackMatch* match)
+: TrackFlow(filt, match), _model(model), _candidate(nullptr), _scale_range(b), _nb_scales(n),
+  _limits(bounds)
 {
-	//Obtain current scale-space locations (for scale, always middle scale in m_s std::vector of the model)
+	//Obtain current scale-space locations (for scale, always middle scale in vector
 	_cur_scale = model->current_scale();
-	_cur_x     = model->current_x();
-	_cur_y     = model->current_y();
-	m_candidate    = nullptr;
-	_cur_expanded_scale = m_model->expand_scale(m_b,m_n);
+	_cur_x = model->current_x();
+	_cur_y = model->current_y();
+	_cur_expanded_scale = _model->expand_scale(_scale_range, _nb_scales);
 }
 
 
-TrackMeanShift::TrackMeanShift(const TrackMeanShift& source):TrackFlow(source._feat_filter,source._match),m_model(source.m_model),
-											 m_b(source.m_b),
-											 m_n(source.m_n),
-											 m_limits(source.m_limits)
-{
-	_cur_scale = source._cur_scale;
-	_cur_x     = source._cur_x;
-	_cur_y     = source._cur_y;
-
-	m_candidate = nullptr;
-}
-
-
+TrackMeanShift::TrackMeanShift(const TrackMeanShift& source):
+		TrackFlow(source._feat_filter,source._match),_model(source._model), _candidate(nullptr),
+		_scale_range(source._scale_range), _nb_scales(source._nb_scales), _limits(source._limits)
+{}
 
 bool TrackMeanShift::track(unsigned char* image)
 {
@@ -44,18 +33,18 @@ bool TrackMeanShift::track(unsigned char* image)
 	bool badScale = false;       //"  "   "   "   "   " scale "   "   "   "   "   "
 
 	//General tracking
-	while(((_cur_scale-s1)>=m_limits.s_epsilonScale || norm(y1,_cur_x,_cur_y)>=m_limits.s_epsilonSpatial) && (nbIterAll<m_limits.s_maxNbIterAll))
+	while(((_cur_scale-s1)>=_limits.s_epsilonScale || norm(y1,_cur_x,_cur_y)>=_limits.s_epsilonSpatial) && (nbIterAll<_limits.s_maxNbIterAll))
 	{
 
 		//Track in space
-		m_model->expand_scale(m_b, m_n);
+		_model->expand_scale(_scale_range, _nb_scales);
 
-		m_model->candidate(m_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);		//Instantiation of candidate representation
+		_model->candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);		//Instantiation of candidate representation
 
-		double rho0 = m_candidate->bhattacharyya_distance(m_model,_cur_scale);	//Get initial rho
+		double rho0 = _candidate->bhattacharyya_distance(_model,_cur_scale);	//Get initial rho
 		double rho1;
 
-		bool shiftLeg=false, firstIteration=true;
+		bool shiftLeg = false, firstIteration = true;
 
 		while(shiftLeg==0)
 		{
@@ -69,17 +58,17 @@ bool TrackMeanShift::track(unsigned char* image)
 			else
 			{
 				//Calculate target candidate, without recomputing rho, since it hasn't changed
-				m_model->candidate(m_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
+				_model->candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
 			}
 
-			m_candidate->weight(m_model);
+			_candidate->weight(_model);
 
-			pair<double,double> shift = m_candidate->spatial_meanshift();
+			auto shift = _candidate->spatial_meanshift();
 			y1[0] += shift.first;
 			y1[1] += shift.second;
 
-			m_model->update_candidate(m_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
-			rho1 = m_candidate->bhattacharyya_distance(m_model,_cur_scale);
+			_model->update_candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
+			rho1 = _candidate->bhattacharyya_distance(_model,_cur_scale);
 
 			unsigned int meanShiftIter=1;
 			while(rho1<rho0)
@@ -88,21 +77,20 @@ bool TrackMeanShift::track(unsigned char* image)
 				y1[1] = 0.5*(_cur_y + y1[1]);
 
 				//Calculate p1 and correlate
-				m_model->update_candidate(m_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
+				_model->update_candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
 
-				rho1 = m_candidate->bhattacharyya_distance(m_model,_cur_scale);
+				rho1 = _candidate->bhattacharyya_distance(_model,_cur_scale);
 
 				meanShiftIter++;
 
-				if(meanShiftIter > m_limits.s_maxNbIterSpatial)
+				if(meanShiftIter > _limits.s_maxNbIterSpatial)
 				{
 					badLoc = true;
-					std::cout<<"Bad location\n";
 					break;
 				}
 			}
 
-			if(norm(y1,_cur_x,_cur_y)<m_limits.s_epsilonSpatial)
+			if(norm(y1,_cur_x,_cur_y)<_limits.s_epsilonSpatial)
 			{
 				shiftLeg = true;
 			}
@@ -117,7 +105,7 @@ bool TrackMeanShift::track(unsigned char* image)
 
 		while(shiftLeg==false)
 		{
-			m_model->update_candidate(m_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
+			_model->update_candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
 
 			if(firstIteration==true)
 			{
@@ -126,64 +114,58 @@ bool TrackMeanShift::track(unsigned char* image)
 				s1 = _cur_scale;
 			}
 
-			m_candidate->weight(m_model);
-			double ds = m_candidate->scale_meanshift();
+			_candidate->weight(_model);
+			double ds = _candidate->scale_meanshift();
 
-			s1 = s1 * pow(m_b,ds);
-			m_candidate->c_scale() = s1;										//Rest scale to new location
-			_cur_expanded_scale = m_candidate->expand_scale(m_b,m_n);		//Adjust searched range
+			s1 = s1 * pow(_scale_range,ds);
+			_candidate->c_scale() = s1;										//Rest scale to new location
+			_cur_expanded_scale = _candidate->expand_scale(_scale_range,_nb_scales);		//Adjust searched range
 
-			m_model->update_candidate(m_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
-			double rho2 = m_candidate->bhattacharyya_distance(m_model,m_candidate->current_scale());
+			_model->update_candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
+			double rho2 = _candidate->bhattacharyya_distance(_model,_candidate->current_scale());
 
 			unsigned int meanShiftIter = 1;
 
 			while(rho2<rho1)
 			{
 				s1 = 0.5 * (_cur_scale + s1);
-				m_candidate->c_scale() = s1;									//Rest scale to new location
-				_cur_expanded_scale = m_candidate->expand_scale(m_b,m_n); //Adjust searched range
+				_candidate->c_scale() = s1;									//Rest scale to new location
+				_cur_expanded_scale = _candidate->expand_scale(_scale_range,_nb_scales); //Adjust searched range
 
 				//Calculate p1 and correlate
-				m_model->update_candidate(m_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
-				rho2 = m_candidate->bhattacharyya_distance(m_model,m_candidate->current_scale());
+				_model->update_candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
+				rho2 = _candidate->bhattacharyya_distance(_model,_candidate->current_scale());
 
 				meanShiftIter++;
 
-				if(meanShiftIter> m_limits.s_maxNbIterScale)
+				if(meanShiftIter> _limits.s_maxNbIterScale)
 				{
 					badScale = true;
-					cout<<"Bad scale\n";
 					break;
 				}
 			}
 
-			if (sqrt((_cur_scale-s1)*(_cur_scale-s1))<m_limits.s_epsilonScale)
-			{
+			if (sqrt((_cur_scale-s1)*(_cur_scale-s1))<_limits.s_epsilonScale)
 				shiftLeg = true;
-			}
+
 
 			_cur_scale = s1;	//Always set sigma0 to s1 for next iteration of entire algorithm
-			_cur_expanded_scale = m_candidate->expand_scale(m_b,m_n);
+			_cur_expanded_scale = _candidate->expand_scale(_scale_range,_nb_scales);
 		}
 
 
 		nbIterAll++;
 	}
 
-	m_model->kill_candidate(m_candidate);
+	_model->kill_candidate(_candidate);
 
 	//Transfer parameters to coord structure
 	m_coord = coord(_cur_x,_cur_y,_cur_scale,_cur_expanded_scale);
 
 
 	//Return whether target is still good (true) or has been lost (false), note we accept lost scales
-	if(m_limits.s_maxNbIterAll == nbIterAll || badLoc == true)
-	{
+	if(_limits.s_maxNbIterAll == nbIterAll || badLoc == true)
 		return false;		//Lost target
-	}
 	else
-	{
 		return true;		//Valid target
-	}
 }

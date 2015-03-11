@@ -22,9 +22,7 @@ public:
 	*/
 	void update_candidate(TrackMSTargetBase* dest, unsigned char* image, double x, double y,
 			std::vector<double> scale)
-	{
-
-	}
+	{}
 
 	/**
 		Destroy candidate

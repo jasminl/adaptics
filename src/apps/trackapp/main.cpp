@@ -86,23 +86,23 @@ int main(int argc, char *argv[], char *envp[])
 	TrackMSTargetRGB model(x, y, hx, hy, s, frame.data, hsize, vsize, 2);
 
 	//Create SIFT descriptor
-	trackSIFTFilter sift(noctaves, nlevels, o_min);	//Declare SIFT Filter object (which contains model features)
+	TrackSIFTFilter sift(noctaves, nlevels, o_min);	//Declare SIFT Filter object (which contains model features)
 	sift.compute(target.data, hx, hy, true, bw); //Create SIFT descriptor for model and prune boundaries
-//
-//	/***** 1C. Create Matching class for feature descriptors *****/
-//	trackMatchTri match(mt);
-//
-//	/***** 2. Create a meanshift tracking object and initialize it with above parameters *****/
-//	TrackMeanShift track1(&model,b,n,bounds,&sift,&match);
-////	trackMeanShift track1(&model,b,n,bounds);
-//
-//	/***** 3. Create a vector of tracking objects (for now we only use 1 meanshift object but this will be extended) *****/
-//	vector<TrackFlow*> tracker;
-//	tracker.push_back(&track1);							//Insert meanshift tracker in vector
-//
-//	/***** 4. Declare output parameters *****/
-//	pair<double,double> init(0,0);						//This one will contain the x and y coordinates of the target
-//	double sc = 0;										//This one will contain the scale "	"	"	"	"	"
+
+	//Create Matching class for feature descriptors
+	trackMatchTri match(mt);
+
+	//Create a meanshift tracking object and initialize it with above parameters
+	TrackMeanShift track1(&model, b, n, bounds, &sift, &match);
+
+
+	//Create a vector of tracking objects (for now we only use 1 meanshift object but this will be extended)
+	vector<TrackFlow*> tracker;
+	tracker.push_back(&track1);							//Insert meanshift tracker in vector
+
+	//Declare output parameters
+	auto init = make_pair(0,0);	//This one will contain the x and y coordinates of the target
+	double sc = 0;	//This one will contain the scale "	"	"	"	"	"
 
 #ifdef MATLAB_INTERFACE
 	for(int i = 0;i < me.nbIter(); i++)						//Track for as many iterations as specified by nbIter()

@@ -17,9 +17,9 @@ public:
 	{
 		double s_epsilonSpatial;
 		double s_epsilonScale;
-		unsigned int s_maxNbIterAll;
-		unsigned int s_maxNbIterSpatial;
-		unsigned int s_maxNbIterScale;
+		int s_maxNbIterAll;
+		int s_maxNbIterSpatial;
+		int s_maxNbIterScale;
 
 		/**
 			Copy constructor
@@ -38,8 +38,8 @@ public:
 		/**
 			Parametrized constructor
 		*/
-		_limits(double epsSpatial, double epsScale, unsigned int maxAll, unsigned int maxSpatial,
-				unsigned int maxScale)
+		_limits(double epsSpatial, double epsScale, int maxAll, int maxSpatial,
+				int maxScale)
 		: s_epsilonSpatial(epsSpatial), s_epsilonScale(epsScale), s_maxNbIterAll(maxAll),
 		  s_maxNbIterSpatial(maxSpatial), s_maxNbIterScale(maxScale)
 		{}
@@ -58,7 +58,7 @@ public:
 		\param Optional feature descriptor filter
 	*/
 	TrackMeanShift(TrackMSTargetBase* model, double b, int n, limits bounds,
-			trackFilter* filt = nullptr, TrackMatch* match = nullptr);
+			TrackFilter* filt = nullptr, TrackMatch* match = nullptr);
 
 	/**
 		Copy constructor, useful since tracker objects are passed in std::vector (therefore are copied)
@@ -79,12 +79,11 @@ public:
 
 protected:
 
-	TrackMSTargetBase*	m_model;		/*<< Pointer to meanshift target (includes derived classes): this determines the type of meanshift performed */
-	TrackMSTargetBase*  m_candidate;	/*<< Pointer to current candidate */
+	TrackMSTargetBase*	_model;		/*<< Pointer to meanshift target (includes derived classes): this determines the type of meanshift performed */
+	TrackMSTargetBase*  _candidate;	/*<< Pointer to current candidate */
 
-	double m_b;							/*<< Scale range factor */
-	int m_n;							/*<< Nb of scales tracked */
+	double _scale_range;		    /*<< Scale range factor */
+	int _nb_scales;						/*<< Nb of scales tracked */
 
-	limits m_limits;					/*<< Stopping parameters */
-
+	limits _limits;					/*<< Stopping parameters */
 };

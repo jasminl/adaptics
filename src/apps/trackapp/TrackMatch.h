@@ -11,12 +11,6 @@ class TrackMatch
 public:
 
 	/**
-		Default constructor, perform no allocation
-	*/	
-	TrackMatch()
-	{}
-
-	/**
 		Destructor, deallocates no memory
 	*/
 	virtual
@@ -29,7 +23,7 @@ public:
 		\param target Target matched to the model
 	*/
 	virtual
-	void match(trackFeatArray* model, trackFeatArray* target) = 0;
+	void match(TrackFeatArray* model, TrackFeatArray* target) = 0;
 
 protected:
 
@@ -55,12 +49,12 @@ public:
 	/**
 		Main matching function
 	*/
-	void match(trackFeatArray* model, trackFeatArray* target);
+	void match(TrackFeatArray* model, TrackFeatArray* target);
 
 	/**
 		Find 1st and 2nd nearest neighbors
 	*/
-	std::pair<std::pair<unsigned int, double>, std::pair<unsigned int, double> > firstSecond(TrackFeature* modelPt, trackFeatArray* target);
+	std::pair<std::pair<unsigned int, double>, std::pair<unsigned int, double> > firstSecond(TrackFeature* modelPt, TrackFeatArray* target);
 
 public:
 

@@ -56,7 +56,7 @@ std::pair<double,double> TrackFeature::spatial() const
 /**
 	SIFT feature descriptor: this may be useless
 */
-class   trackFeatureSIFT: public TrackFeature
+class TrackFeatureSIFT: public TrackFeature
 {
 
 public:
@@ -64,27 +64,25 @@ public:
 	/**
 		Default constructor
 	*/
-	trackFeatureSIFT()
-	: TrackFeature(0, 0), _desc(nullptr), _size(0)
+	TrackFeatureSIFT()
+	: TrackFeature(0, 0)
 	{}
 
 	/**
 		Constructor with descriptor array allocation and location initialization
 	*/
-	trackFeatureSIFT(double x, double y, unsigned int size)
-	: TrackFeature(x, y), _size(size)
+	TrackFeatureSIFT(double x, double y, unsigned int size)
+	: TrackFeature(x, y)
 	{
-		_desc = new vl_sift_pix[size];
+		_desc.resize(size);
 	}
 
 	/**
-		Destructor, deallocates m_desc
-	*/
+		Destructor
+	 */
 	virtual
-	~trackFeatureSIFT()
-	{
-		delete[] _desc;
-	}
+	~TrackFeatureSIFT()
+	{}
 
 	/**
 		Access histogram
@@ -97,53 +95,44 @@ public:
 	double compare(TrackFeature* x);
 
 protected:
- 	vl_sift_pix* _desc;	//!< Associated descriptor
- 	unsigned int _size; //!< Size of descriptor array
+	std::vector<vl_sift_pix> _desc;
 };
 
 inline
-vl_sift_pix* trackFeatureSIFT::desc()
+vl_sift_pix* TrackFeatureSIFT::desc()
 {
-	return _desc;
+	return &_desc[0];
 }
 
 /**
 	Feature point array
 */
-class   trackFeatArray
+class TrackFeatArray
 {
 
 public:
+
 	/**
 		Destructor
 	*/
 	virtual
-	~trackFeatArray()
+	~TrackFeatArray()
 	{}
 
 	/**
 		returns size
 	*/
-	unsigned int size() const
-	{
-		return _feature.size();
-	}
+	unsigned int size() const;
 
 	/**
 		returns array of features
 	*/
-	TrackFeature* operator[](unsigned int index)
-	{
-		return _feature[index];
-	}
+	TrackFeature* operator[](unsigned int index);
 
 	/**
 		Returns the vector of features
 	*/
-	std::vector<TrackFeature*>& feature()
-	{
-		return _feature;
-	}
+	std::vector<TrackFeature*>& feature();
 
 	/**
 		Show feature points in the array
@@ -153,24 +142,35 @@ public:
 protected:
 
 	std::vector<TrackFeature*> _feature; //!< Array of feature points
-//s	unsigned int _size; //!< Size of the array
 };
+
+inline
+unsigned int TrackFeatArray::size() const
+{
+	return _feature.size();
+}
+
+inline
+TrackFeature* TrackFeatArray::operator[](unsigned int index)
+{
+	return _feature[index];
+}
+
+inline
+std::vector<TrackFeature*>& TrackFeatArray::feature()
+{
+	return _feature;
+}
 
 /**
 	Base filter class
 */
-class  trackFilter
+class  TrackFilter
 {
 public:
 
-	/**
-		Default constructor
-	*/
-	trackFilter()
-	{}
-
 	virtual
-	~trackFilter()
+	~TrackFilter()
 	{}
 
 public:
@@ -197,15 +197,15 @@ public:
 	/**
 		Return feature array
 	*/
-	trackFeatArray* feature();
+	TrackFeatArray* feature();
 
 protected:
 
-	trackFeatArray _p_feat;		//!< Pointer to the feature array
+	TrackFeatArray _p_feat;		//!< Pointer to the feature array
 };
 
 inline
-trackFeatArray* trackFilter::feature()
+TrackFeatArray* TrackFilter::feature()
 {
 	return &_p_feat;
 }
@@ -214,19 +214,19 @@ trackFeatArray* trackFilter::feature()
 /**
 	SIFT Filter wrapper
 */
-class  trackSIFTFilter: public trackFilter
+class  TrackSIFTFilter: public TrackFilter
 {
 public:
 
 	/**
 		Constructor
 	*/
-	trackSIFTFilter(int noctaves, int nlevels, int o_min);
+	TrackSIFTFilter(int noctaves, int nlevels, int o_min);
 
 	/**
 		Copy constructor
 	*/
-	trackSIFTFilter(const trackSIFTFilter& source)
+	TrackSIFTFilter(const TrackSIFTFilter& source)
 	: _filter(nullptr), _kp(nullptr), _noctaves(source._noctaves), _nlevels(source._nlevels),
 	  _nomin(source._nomin)
 	{}
@@ -235,7 +235,7 @@ public:
 		Destructor
 	*/
 	virtual
-	~trackSIFTFilter();
+	~TrackSIFTFilter();
 
 	/**
 		SIFT transform on a particular image
@@ -269,19 +269,19 @@ protected:
 };
 
 inline
-int trackSIFTFilter::octaves() const
+int TrackSIFTFilter::octaves() const
 {
 	return _noctaves;
 }
 
 inline
-int trackSIFTFilter::levels() const
+int TrackSIFTFilter::levels() const
 {
 	return _nlevels;
 }
 
 inline
-int trackSIFTFilter::omin() const
+int TrackSIFTFilter::omin() const
 {
 	return _nomin;
 }

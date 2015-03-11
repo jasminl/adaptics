@@ -47,7 +47,7 @@ public:
 	/**
 	 * Base constructor
 	 */
-	TrackFlow(trackFilter* filt, TrackMatch* match);
+	TrackFlow(TrackFilter* filt, TrackMatch* match);
 
 public:
 
@@ -56,9 +56,9 @@ public:
 
 	coord currentCoordinates() const;
 
-	trackFilter* featFilter();
+	TrackFilter* featFilter();
 
-	trackFilter*& targetFilter();
+	TrackFilter*& targetFilter();
 
 	TrackMatch* matcher();
 
@@ -69,8 +69,8 @@ protected:
 	double _cur_y;							/*<<"	"	 y-"	"	"	"	"	"	"	"	"	"	"	"	"	"  */
 	double _cur_scale;						/*<<:	:	scale	"	"	"	"	"	"	"	"	"	"	"	"	"  */
 
-	trackFilter*   _feat_filter;				/*<< Feature filter for the model */
-	trackFilter*   _target_filter;				/*<< Feature filter for a particular target */
+	TrackFilter*   _feat_filter;				/*<< Feature filter for the model */
+	TrackFilter*   _target_filter;				/*<< Feature filter for a particular target */
 	TrackMatch*    _match;						/*<<Matching object */
 
 	std::vector<double> _cur_expanded_scale;		/*<< Current range of scales tracked */
@@ -90,13 +90,13 @@ TrackFlow::coord TrackFlow::currentCoordinates() const
 }
 
 inline
-trackFilter* TrackFlow::featFilter()
+TrackFilter* TrackFlow::featFilter()
 {
 	return _feat_filter;
 }
 
 inline
-trackFilter*& TrackFlow::targetFilter()
+TrackFilter*& TrackFlow::targetFilter()
 {
 	return _target_filter;
 }

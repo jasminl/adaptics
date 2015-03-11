@@ -15,7 +15,7 @@ void TrackFeature::show() const
 	cout<<"Feature point x: "<<_x<<", y:"<<_y<<endl;
 }
 
-void trackFeatArray::show() 
+void TrackFeatArray::show() 
 {
 	cout<<"Number of feature points: "<<_feature.size()<<endl;
 
@@ -26,11 +26,11 @@ void trackFeatArray::show()
 }
 
 
-double trackFeatureSIFT::compare(TrackFeature* x)
+double TrackFeatureSIFT::compare(TrackFeature* x)
 {
-	trackFeatureSIFT* px = dynamic_cast<trackFeatureSIFT*>(x);
-	double d = 0;
-	for(unsigned int i = 0; i < _size; i++)
+	TrackFeatureSIFT* px = dynamic_cast<TrackFeatureSIFT*>(x);
+	double d = 0; //todo check if gets caught by vectorizer
+	for(int i = 0; i < (int)_desc.size(); i++)
 		d += (_desc[i] - px->desc()[i]) * (_desc[i] - px->desc()[i]);
 	return d;
 }
@@ -46,13 +46,11 @@ void rgb2gray(unsigned char* image, unsigned char*& output, unsigned int width, 
 	unsigned char* pout = output;
 
 	for(unsigned int i=0;i<width*height;i++, pout++, pimage+=3)
-	{
 		*pout = static_cast<unsigned char>(.3 * *pimage + .59 * *(pimage+1) + .11 * *(pimage+2));	
-	}
 }
 
 
-void trackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned int height,
+void TrackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned int height,
 		bool isModel,unsigned char* bw)
 {
 	_filter = vl_sift_new(width, height, _noctaves, _nlevels, _nomin);
@@ -90,7 +88,7 @@ void trackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned
 	delete[] gsimage;
 }
 
-void trackSIFTFilter::process()
+void TrackSIFTFilter::process()
 {
 	vl_sift_detect(_filter);								//Detect keypoints
 	int nkp = vl_sift_get_nkeypoints(_filter) ;				//Get number of keypoints
@@ -105,15 +103,15 @@ void trackSIFTFilter::process()
 
 		for(int j=0;j<nangle;j++)
 		{
-			_p_feat.feature().push_back(new trackFeatureSIFT(_kp[i].x,_kp[i].y,size));
+			_p_feat.feature().push_back(new TrackFeatureSIFT(_kp[i].x,_kp[i].y,size));
 
 			//Here assign descriptor vector of proper length (see docs) which is part of a trackFeatureSIFT object 
-			vl_sift_calc_keypoint_descriptor(_filter,((trackFeatureSIFT*)_p_feat.feature().back())->desc(),&_kp[i],angles[j]);
+			vl_sift_calc_keypoint_descriptor(_filter,((TrackFeatureSIFT*)_p_feat.feature().back())->desc(),&_kp[i],angles[j]);
 		}
 	}
 }
 
-void trackSIFTFilter::prune(unsigned char* validity, unsigned int width)
+void TrackSIFTFilter::prune(unsigned char* validity, unsigned int width)
 {	
 	auto& ref = _p_feat.feature();
 	cout<<_p_feat.size()<<endl;
@@ -121,7 +119,7 @@ void trackSIFTFilter::prune(unsigned char* validity, unsigned int width)
 	{
 		//Get a feature point
 
-		auto xy = ((trackFeatureSIFT*)*p)->spatial();	//TODO: check that this works
+		auto xy = ((TrackFeatureSIFT*)*p)->spatial();	//TODO: check that this works
 		cout<<xy.first<<" "<<xy.second;
 
 		if(validity[(int)floor(xy.first + xy.second * width)] != 1)
@@ -141,10 +139,10 @@ void trackSIFTFilter::prune(unsigned char* validity, unsigned int width)
 	}
 }
 
-trackSIFTFilter::trackSIFTFilter(int noctaves, int nlevels, int o_min)
+TrackSIFTFilter::TrackSIFTFilter(int noctaves, int nlevels, int o_min)
 : _filter(nullptr), _kp(nullptr), _noctaves(noctaves), _nlevels(nlevels),
   _nomin(o_min)
 {}
 
-trackSIFTFilter::~trackSIFTFilter()
+TrackSIFTFilter::~TrackSIFTFilter()
 {}
