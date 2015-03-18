@@ -23,15 +23,13 @@ public: //Typedefs
 		std::vector<double> s_scaleRange;
 
 		/**
-			Default constructor
-		*/
-		_coord(){}
-
-		/**
 			Constructor
 		*/
 		_coord(double x, double y, double scale, std::vector<double> scaleRange)
 		: s_x(x), s_y(y), s_scale(scale), s_scaleRange(scaleRange)
+		{}
+
+		_coord(): s_x(0.0), s_y(0.0), s_scale(0.0), s_scaleRange(std::vector<double>())
 		{}
 
 		/**
@@ -41,13 +39,15 @@ public: //Typedefs
 
 	}coord;
 
-
 public:
 
 	/**
 	 * Base constructor
 	 */
-	TrackFlow(TrackFilter* filt, TrackMatch* match);
+	TrackFlow(TrackFilter* filt, TrackMatch* match)
+	: _cur_x(0), _cur_y(0), _cur_scale(0), _feat_filter(filt),
+	  _target_filter(filt), _match(match)
+	{}
 
 public:
 
@@ -74,7 +74,7 @@ protected:
 	TrackMatch*    _match;						/*<<Matching object */
 
 	std::vector<double> _cur_expanded_scale;		/*<< Current range of scales tracked */
-	coord m_coord;								/*<< To return coordinates */
+	coord _coord;								/*<< To return coordinates */
 };
 
 inline
@@ -86,7 +86,7 @@ bool TrackFlow::track(unsigned char* image)
 inline
 TrackFlow::coord TrackFlow::currentCoordinates() const
 {
-	return m_coord;
+	return _coord;
 }
 
 inline

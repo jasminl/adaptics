@@ -160,12 +160,10 @@ bool TrackMeanShift::track(unsigned char* image)
 	_model->kill_candidate(_candidate);
 
 	//Transfer parameters to coord structure
-	m_coord = coord(_cur_x,_cur_y,_cur_scale,_cur_expanded_scale);
-
+	_coord = coord(_cur_x,_cur_y,_cur_scale,_cur_expanded_scale);
 
 	//Return whether target is still good (true) or has been lost (false), note we accept lost scales
 	if(_limits.s_maxNbIterAll == nbIterAll || badLoc == true)
 		return false;		//Lost target
-	else
-		return true;		//Valid target
+	return true;		//Valid target
 }

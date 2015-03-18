@@ -31,11 +31,6 @@ public:
 		{}
 
 		/**
-			Default constructor
-		*/
-		_limits(){};
-
-		/**
 			Parametrized constructor
 		*/
 		_limits(double epsSpatial, double epsScale, int maxAll, int maxSpatial,
@@ -46,11 +41,9 @@ public:
 
 	}limits;
 
-
 public:
 
 	/**
-		Default constructor
 		\param model Pointer to previously acquired target model
 		\param b Scale range step (usually 1.1)
 		\param n Scale range radius (usually 2)
