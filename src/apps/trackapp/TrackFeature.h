@@ -179,14 +179,14 @@ public:
 		To remove keypoints that are not in the model shape.
 	*/
 	virtual
-	void prune(unsigned char* validity, unsigned int width) = 0;
+	void prune(std::vector<unsigned char>& validity, unsigned int width) = 0;
 
 	/**
 		Computes feature descriptors
 	*/
 	virtual
 	void compute(unsigned char* image, unsigned int width, unsigned int height,
-			bool isModel = false, unsigned char* bw = nullptr) = 0;
+			bool isModel, std::vector<unsigned char>& bw) = 0;
 
 	/**
 		Additional feature descriptor processing
@@ -241,7 +241,7 @@ public:
 		SIFT transform on a particular image
 	*/
 	void compute(unsigned char* image, unsigned int width, unsigned int height,
-			bool isModel = 0, unsigned char* bw = nullptr);
+			bool isModel, std::vector<unsigned char>& bw);
 	
 	/**
 		Process keypoints
@@ -251,7 +251,7 @@ public:
 	/**
 		To remove keypoints that are not in the model shape.
 	*/
-	void prune(unsigned char* validity, unsigned int width);
+	void prune(std::vector<unsigned char>& validity, unsigned int width);
 
 	int octaves() const;
 

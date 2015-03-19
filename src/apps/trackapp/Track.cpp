@@ -10,7 +10,7 @@
 using namespace std;
 
 
-vector<bool> track1Frame(pair<double,double>& location, double& scale, unsigned char* image,
+vector<bool> track_one_frame(pair<double,double>& location, double& scale, unsigned char* image,
 		vector<TrackFlow*> tracker, double hx, double hy, unsigned int width, unsigned int height)
 {
 	//Create boolean vector indicating whether the tracked object is valid, for each tracking object
@@ -20,14 +20,14 @@ vector<bool> track1Frame(pair<double,double>& location, double& scale, unsigned 
 	double denominator = 0, numerator = 0;				//Qties used to average output
 	location.first = location.second = scale = 0;	//Initialize output variables to zero
 
-	for(auto p = tracker.begin(); p != tracker.end(); p++, q++)
+	for(auto p: tracker)
 	{
-		*q = (*p)->track(image);
+		*q = p->track(image);
 
 		if(*q == true)
 		{
 			//If this a valid target, include it in the fused x,y,scale estimates.
-			TrackFlow::coord current = (*p)->currentCoordinates();		
+			TrackFlow::coord current = p->currentCoordinates();
 			location.first += current.s_x;
 			location.second += current.s_y;
 			scale += current.s_scale;
@@ -52,7 +52,8 @@ vector<bool> track1Frame(pair<double,double>& location, double& scale, unsigned 
 		if((*p)->featFilter() == nullptr) continue;		//Skip this step if no feature descriptor has been defined
 
 		//Use target filter to compute and process keypoints
-		(*p)->targetFilter()->compute(cropped,scale*hx,scale*hy);
+		vector<unsigned char> empty; //todo remove this..
+		(*p)->targetFilter()->compute(cropped, scale * hx, scale * hy, false, empty);
 	//	(*p)->targetFilter()->process();
 		
 		//DEBUGGIN

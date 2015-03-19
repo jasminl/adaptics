@@ -28,7 +28,8 @@ int main(int argc, char *argv[], char *envp[])
 	double hx, hy;						//width and height of the selected object
 	int vsize, hsize;					//Vertical and horizontal sizes of frames
 	unsigned char* roi = nullptr;		//Buffer for roi containing the model returned by mli::getTarget
-	unsigned char* bw = nullptr;		//Non-rectangular model region within roi
+	//unsigned char* bw = nullptr;		//Non-rectangular model region within roi
+	vector<unsigned char> bw;
 
 #ifdef MATLAB_INTERFACE
 	unsigned char* frame = nullptr;	//Buffer for current frame
@@ -60,6 +61,9 @@ int main(int argc, char *argv[], char *envp[])
 	Mat target = resized_frame(Range(x - hx/2, x + hx/2), Range(y - hy/2, y + hy/2));
 	imshow("target", target);
 	waitKey();
+
+	bw.resize(hx * hy);
+	memcpy(&bw[0], target.data, hx * hy);
 #endif
 
 	vector<double> s = {0.8, 0.9, 1.0, 1.1, 1.2};	//Default tracking scales. These should be centered on 1.0. Here we use: 0.8, 0.9, 1.0, 1.1 and 1.2.
@@ -101,7 +105,7 @@ int main(int argc, char *argv[], char *envp[])
 	tracker.push_back(&track1);							//Insert meanshift tracker in vector
 
 	//Declare output parameters
-	auto init = make_pair(0,0);	//This one will contain the x and y coordinates of the target
+	auto init = make_pair(0.0, 0.0);	//This one will contain the x and y coordinates of the target
 	double sc = 0;	//This one will contain the scale "	"	"	"	"	"
 
 #ifdef MATLAB_INTERFACE
@@ -124,8 +128,8 @@ int main(int argc, char *argv[], char *envp[])
 		waitKey(30);
 #endif
 
-//		/***** 5. Track 1 frame: current x,y coordinates and scale are returned in 'init' and 'sc' *****/
-//		track1Frame(init,sc,frame,tracker,hx,hy,hsize,vsize);
+		// Track 1 frame: current x,y coordinates and scale are returned in 'init' and 'sc'
+		track_one_frame(init, sc, frame.data, tracker, hx, hy, hsize, vsize);
 //
 //		tracker[0]->currentCoordinates().show();		//Output current x,y location and scale to stdout (for testing)
 
@@ -144,9 +148,9 @@ int main(int argc, char *argv[], char *envp[])
 
 #ifdef MATLAB_INTERFACE
 	delete[] frame;
+	delete[] bw;
 #endif
 	delete[] roi;
-	delete[] bw;
 
 #ifdef OPENCV_INTERFACE
 	vid.release();

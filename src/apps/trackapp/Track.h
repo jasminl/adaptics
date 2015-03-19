@@ -6,7 +6,7 @@
 /**
 	Function to track 1 frame
 */
- std::vector<bool> track1Frame(std::pair<double,double>& location,			//Output location
+ std::vector<bool> track_one_frame(std::pair<double,double>& location,			//Output location
 						   double& scale,										//Output scale
 						   unsigned char* image,								//image frame
 						   std::vector<TrackFlow*> tracker,							//trackFlow objects

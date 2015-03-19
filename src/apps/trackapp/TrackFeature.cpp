@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include <cmath>
+#include <algorithm>
 
 extern "C" {
 #include <vl/generic.h>
@@ -18,11 +19,8 @@ void TrackFeature::show() const
 void TrackFeatArray::show() 
 {
 	cout<<"Number of feature points: "<<_feature.size()<<endl;
-
-	for(vector<TrackFeature*>::iterator p = _feature.begin() ; p != _feature.end(); p++)
-	{
-		(*p)->show();
-	}
+	for_each(_feature.begin(), _feature.end(),
+			[&](const TrackFeature* e){e->show();});
 }
 
 
@@ -51,7 +49,7 @@ void rgb2gray(unsigned char* image, unsigned char*& output, unsigned int width, 
 
 
 void TrackSIFTFilter::compute(unsigned char* image, unsigned int width, unsigned int height,
-		bool isModel,unsigned char* bw)
+		bool isModel, vector<unsigned char>& bw)
 {
 	_filter = vl_sift_new(width, height, _noctaves, _nlevels, _nomin);
 
@@ -111,7 +109,7 @@ void TrackSIFTFilter::process()
 	}
 }
 
-void TrackSIFTFilter::prune(unsigned char* validity, unsigned int width)
+void TrackSIFTFilter::prune(vector<unsigned char>& validity, unsigned int width)
 {	
 	auto& ref = _p_feat.feature();
 	cout<<_p_feat.size()<<endl;
@@ -119,23 +117,17 @@ void TrackSIFTFilter::prune(unsigned char* validity, unsigned int width)
 	{
 		//Get a feature point
 
-		auto xy = ((TrackFeatureSIFT*)*p)->spatial();	//TODO: check that this works
-		cout<<xy.first<<" "<<xy.second;
+		auto xy = ((TrackFeatureSIFT*)*p)->spatial();
 
 		if(validity[(int)floor(xy.first + xy.second * width)] != 1)
 		{	//This is not a valid point
-			//note: this was a reference before, does it still work?
-			cout<<" invalid "<<endl;
 			vector<TrackFeature*>::iterator q = p - 1;	//Store current iterator in buffer
 			_p_feat.feature().erase(p);			//Erase current iterator
 			p = q;									//Assign previous location
 			p++;									//Go to next location
 		}
 		else
-		{   //This is a valid one
-			cout<<" valid"<<endl;
 			p++;
-		}
 	}
 }
 
