@@ -1,6 +1,7 @@
 #include "TrackMeanShift.h"
 #include <cmath>
 
+inline
 double TrackMeanShift::norm(double loc1[2], double x, double y)
 {
 	return sqrt((loc1[0] - x)*(loc1[0] - x) + (loc1[1] - y)*(loc1[1] - y));
@@ -138,7 +139,7 @@ bool TrackMeanShift::track(unsigned char* image)
 
 				meanShiftIter++;
 
-				if(meanShiftIter> _limits.s_maxNbIterScale)
+				if(meanShiftIter > _limits.s_maxNbIterScale)
 				{
 					badScale = true;
 					break;

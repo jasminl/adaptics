@@ -41,8 +41,6 @@ public:
 
 	}limits;
 
-public:
-
 	/**
 		\param model Pointer to previously acquired target model
 		\param b Scale range step (usually 1.1)
@@ -64,6 +62,8 @@ public:
 		Main tracking function for meanShift, parameters are returned in base data members of trackFlow.
 	*/
 	bool track(unsigned char* image);
+
+private:
 
 	/**
 		Norm function
