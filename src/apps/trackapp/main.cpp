@@ -99,7 +99,6 @@ int main(int argc, char *argv[], char *envp[])
 	//Create a meanshift tracking object and initialize it with above parameters
 	TrackMeanShift track1(&model, b, n, bounds, &sift, &match);
 
-
 	//Create a vector of tracking objects (for now we only use 1 meanshift object but this will be extended)
 	vector<TrackFlow*> tracker;
 	tracker.push_back(&track1);							//Insert meanshift tracker in vector
@@ -116,7 +115,7 @@ int main(int argc, char *argv[], char *envp[])
 
 #ifdef OPENCV_INTERFACE
 	namedWindow("image", 1);
-	for(int i = 0; i < vid.get(CAP_PROP_FRAME_COUNT); i++)						//Track for as many iterations as specified by nbIter()
+	for(int i = 0; i < /*vid.get(cv::CAP_PROP_FRAME_COUNT)*/ 10; i++)						//Track for as many iterations as specified by nbIter()
 	{
 		cout<<"Frame "<<i<<endl;
 		//Mat frame;

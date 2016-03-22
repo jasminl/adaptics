@@ -29,12 +29,12 @@ bool TrackMeanShift::track(unsigned char* image)
 {
 	double s1 = 1000;            //Initial conditions for scale test in while loop
 	double y1[2] = {1000,1000};  //"  "   "   "   "   "   location test " "   "
-	unsigned int nbIterAll=0;    //Number of iterations of entire algorithm
+	int nbIterAll=0;             //Number of iterations of entire algorithm
 	bool badLoc   = false;       //Indicator to see if location shift has converged
-	bool badScale = false;       //"  "   "   "   "   " scale "   "   "   "   "   "
 
 	//General tracking
-	while(((_cur_scale-s1)>=_limits.s_epsilonScale || norm(y1,_cur_x,_cur_y)>=_limits.s_epsilonSpatial) && (nbIterAll<_limits.s_maxNbIterAll))
+	while(((_cur_scale - s1) >= _limits.s_epsilonScale || norm(y1, _cur_x, _cur_y) >= _limits.s_epsilonSpatial)
+			&& (nbIterAll < _limits.s_maxNbIterAll))
 	{
 
 		//Track in space
@@ -71,7 +71,7 @@ bool TrackMeanShift::track(unsigned char* image)
 			_model->update_candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
 			rho1 = _candidate->bhattacharyya_distance(_model,_cur_scale);
 
-			unsigned int meanShiftIter=1;
+			int meanShiftIter = 1;
 			while(rho1<rho0)
 			{
 				y1[0] = 0.5*(_cur_x + y1[0]);
@@ -125,7 +125,7 @@ bool TrackMeanShift::track(unsigned char* image)
 			_model->update_candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);
 			double rho2 = _candidate->bhattacharyya_distance(_model,_candidate->current_scale());
 
-			unsigned int meanShiftIter = 1;
+			int meanShiftIter = 1;
 
 			while(rho2<rho1)
 			{
@@ -140,10 +140,7 @@ bool TrackMeanShift::track(unsigned char* image)
 				meanShiftIter++;
 
 				if(meanShiftIter > _limits.s_maxNbIterScale)
-				{
-					badScale = true;
 					break;
-				}
 			}
 
 			if (sqrt((_cur_scale-s1)*(_cur_scale-s1))<_limits.s_epsilonScale)
