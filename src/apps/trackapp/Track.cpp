@@ -17,7 +17,7 @@ vector<bool> track_one_frame(pair<double,double>& location, double& scale, unsig
  	vector<bool> validTrack(tracker.size());
 	auto q = validTrack.begin();
 
-	double denominator = 0, numerator = 0;				//Qties used to average output
+	double denominator = 0;				//Qties used to average output
 	location.first = location.second = scale = 0;	//Initialize output variables to zero
 
 	for(auto p: tracker)

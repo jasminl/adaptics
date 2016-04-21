@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string.h>
+#include <stdexcept>
 
 /**
 	std::map where key is not const
@@ -15,7 +16,7 @@ protected:
 
 	std::vector<unsigned int> m_size;			/*<<Number of entries in the array */
 
-	std::vector<unsigned int> m_maxSize;			/*<<Actual space occupied */
+	std::vector<unsigned int> m_max_size;			/*<<Actual space occupied */
 
 
 public:
@@ -44,7 +45,7 @@ public:
 		m_data.push_back(new Q[size]);
 		m_size.push_back(size);
 
-		m_maxSize.push_back(size);
+		m_max_size.push_back(size);
 	}
 
 	/**
@@ -77,16 +78,16 @@ public:
 	/**
 		Gives max size for a given scale
 	*/
-	unsigned& maxSize(T index)
+	unsigned& max_size(T index)
 	{
-		std::vector<unsigned int>::iterator q = m_maxSize.begin();
+		auto q = m_max_size.begin();
 		for(auto p = m_key.begin() ; p != m_key.end(); p++,q++)
 		{
 			if(index == *p)
-			{
 				return *q;
-			}
 		}
+
+		throw std::runtime_error("fastmap::max_size: invalid index");
 	}
 
 	/**
@@ -99,7 +100,7 @@ public:
 		{
 			if(index == *q)
 			{
-				if(maxSize(index) < minSize)
+				if(max_size(index) < minSize)
 				{
 					delete *p;
 
@@ -110,8 +111,8 @@ public:
 					Q* arr = *p;
 					memset(arr,0,sizeof(Q)*minSize);
 
-					maxSize(index) = minSize;
-					actualSize(index) = minSize;
+					max_size(index) = minSize;
+					actual_size(index) = minSize;
 				}
 
 				return *p;	//Always exit function with current array, whether or not it was reassigned
@@ -121,7 +122,7 @@ public:
 		//Not found so add it
 		m_key.push_back(index);
 		m_size.push_back(minSize);
-		m_maxSize.push_back(minSize);
+		m_max_size.push_back(minSize);
 		m_data.push_back(new Q[minSize]);
 
 		return m_data[m_data.size()-1];
@@ -138,7 +139,7 @@ public:
 			m_key.push_back(value);
 
 			m_size.push_back(0);
-			m_maxSize.push_back(0);
+			m_max_size.push_back(0);
 			m_data.push_back(nullptr);
 		}
 
@@ -173,16 +174,16 @@ public:
 
 	}
 
-	unsigned int& actualSize(T index)
+	unsigned int& actual_size(T index)
 	{
-		std::vector<unsigned int>::iterator q = m_size.begin();
+		auto q = m_size.begin();
 		for(auto p = m_key.begin() ; p != m_key.end() ; p++, q++)
 		{
 			if(*p == index)
-			{
 				return *q;
-			}
 		}
+
+		throw std::runtime_error("fastmap::actual_size: invalid index");
 	}
 
 };

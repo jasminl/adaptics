@@ -83,7 +83,6 @@ void TrackMSTargetColor::makeHistogram(vector<double>& scale)
 		unsigned int i,j,bin;
 		double nx,ny,dist,kx;
 
-		int nb = 0;
 		unsigned int new_size = 0;
 		//First check it's in the background, and then whether it's in the target area
 		for(i = _vertical1; i <= _vertical2; i++)
@@ -130,10 +129,10 @@ void TrackMSTargetColor::makeHistogram(vector<double>& scale)
 		}
 
 		//Resize m_bin given the actual number of pixels in the target ellipse, and allocate m_w accordingly
-		_bin2.actualSize(*ps) = new_size;
+		_bin2.actual_size(*ps) = new_size;
 		_w2.realloc(*ps,new_size);
-		_cenPix2.actualSize(*ps) = new_size;
-		_dist2.actualSize(*ps) = new_size;
+		_cenPix2.actual_size(*ps) = new_size;
+		_dist2.actual_size(*ps) = new_size;
 
 		if(_back_size>0 && backSum!=0)
 		{
@@ -229,7 +228,8 @@ void TrackMSTargetColor::allocateHistograms(vector<double> scale, bool backgroun
 {
 
 	//Calculate total number of bins (product of each dimension)
-	unsigned int histogramSize = accumulate(_bins_per_dim.begin(),_bins_per_dim.end(),1,multiplies<unsigned int>());
+	unsigned int histogramSize = accumulate(_bins_per_dim.begin(),_bins_per_dim.end(),
+			1, multiplies<unsigned int>());
 
 	//For each scale, allocate one histogram
 	unsigned int i = 0;
@@ -239,6 +239,7 @@ void TrackMSTargetColor::allocateHistograms(vector<double> scale, bool backgroun
 		_hist.realloc(p, histogramSize);
 		 i++;
 	}
+
 
 	if(backgroundWeight == true)	//Allocate background histogram
 		_back_hist = vector<double>(histogramSize);
