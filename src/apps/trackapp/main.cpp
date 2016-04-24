@@ -97,7 +97,8 @@ int main(int argc, char *argv[], char *envp[])
 	trackMatchTri match(mt);
 
 	//Create a meanshift tracking object and initialize it with above parameters
-	TrackMeanShift track1(&model, b, n, bounds, &sift, &match);
+	int unique_id = 0;
+	TrackMeanShift track1(unique_id, &sift, &match, &model, b, n, bounds);
 
 	//Create a vector of tracking objects (for now we only use 1 meanshift object but this will be extended)
 	vector<TrackFlow*> tracker;

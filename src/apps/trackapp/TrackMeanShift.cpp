@@ -7,9 +7,9 @@ double TrackMeanShift::norm(double loc1[2], double x, double y)
 	return sqrt((loc1[0] - x)*(loc1[0] - x) + (loc1[1] - y)*(loc1[1] - y));
 }
 
-TrackMeanShift::TrackMeanShift(TrackMSTargetBase* model, double b, int n, limits bounds,
-		TrackFilter* filt, TrackMatch* match)
-: TrackFlow(filt, match), _model(model), _candidate(nullptr), _scale_range(b), _nb_scales(n),
+TrackMeanShift::TrackMeanShift(int id, TrackFilter* filt, TrackMatch* match,
+		TrackMSTargetBase* model, double b, int n, limits bounds)
+: TrackFlow(id, filt, match), _model(model), _candidate(nullptr), _scale_range(b), _nb_scales(n),
   _limits(bounds)
 {
 	//Obtain current scale-space locations (for scale, always middle scale in vector
@@ -21,16 +21,17 @@ TrackMeanShift::TrackMeanShift(TrackMSTargetBase* model, double b, int n, limits
 
 
 TrackMeanShift::TrackMeanShift(const TrackMeanShift& source):
-		TrackFlow(source._feat_filter,source._match),_model(source._model), _candidate(nullptr),
-		_scale_range(source._scale_range), _nb_scales(source._nb_scales), _limits(source._limits)
+		TrackFlow(source.id(), source._feat_filter,source._match),_model(source._model),
+		_candidate(nullptr), _scale_range(source._scale_range),
+		_nb_scales(source._nb_scales), _limits(source._limits)
 {}
 
 bool TrackMeanShift::track(unsigned char* image)
 {
 	double s1 = 1000;            //Initial conditions for scale test in while loop
-	double y1[2] = {1000,1000};  //"  "   "   "   "   "   location test " "   "
-	int nbIterAll=0;             //Number of iterations of entire algorithm
-	bool badLoc   = false;       //Indicator to see if location shift has converged
+	double y1[2] = {1000, 1000}; //"  "   "   "   "   "   location test " "   "
+	int nbIterAll = 0;           //Number of iterations of entire algorithm
+	bool badLoc = false;         //Indicator to see if location shift has converged
 
 	//General tracking
 	while(((_cur_scale - s1) >= _limits.s_epsilonScale || norm(y1, _cur_x, _cur_y) >= _limits.s_epsilonSpatial)
@@ -40,9 +41,9 @@ bool TrackMeanShift::track(unsigned char* image)
 		//Track in space
 		_model->expand_scale(_scale_range, _nb_scales);
 
-		_model->candidate(_candidate,image,_cur_x,_cur_y,_cur_expanded_scale);		//Instantiation of candidate representation
+		_model->candidate(_candidate,image, _cur_x, _cur_y, _cur_expanded_scale);	//Instantiation of candidate representation
 
-		double rho0 = _candidate->bhattacharyya_distance(_model,_cur_scale);	//Get initial rho
+		double rho0 = _candidate->bhattacharyya_distance(_model, _cur_scale);	//Get initial rho
 		double rho1;
 
 		bool shiftLeg = false, firstIteration = true;

@@ -26,7 +26,7 @@ vector<bool> track_one_frame(pair<double,double>& location, double& scale, unsig
 
 		if(*q == true)
 		{
-			//If this a valid target, include it in the fused x,y,scale estimates.
+			//If this a valid target, include it in the fused x, y, scale estimates.
 			TrackFlow::coord current = p->currentCoordinates();
 			location.first += current.s_x;
 			location.second += current.s_y;

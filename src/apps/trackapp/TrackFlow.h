@@ -10,7 +10,7 @@
 */
 class TrackFlow
 {
-public: //Typedefs
+public:
 
 	/**
 		Structure used to retrieve parameters
@@ -44,8 +44,8 @@ public:
 	/**
 	 * Base constructor
 	 */
-	TrackFlow(TrackFilter* filt, TrackMatch* match)
-	: _cur_x(0), _cur_y(0), _cur_scale(0), _feat_filter(filt),
+	TrackFlow(int id, TrackFilter* filt, TrackMatch* match)
+	: _id(id), _cur_x(0), _cur_y(0), _cur_scale(0), _feat_filter(filt),
 	  _target_filter(filt), _match(match)
 	{}
 
@@ -62,19 +62,24 @@ public:
 
 	TrackMatch* matcher();
 
+	/**
+	 * \return Track ID
+	 */
+	int id() const;
+
 protected:
 
-	/*<< The following variables are returned by tracking methods */
+	int _id; //!< Track ID
 	double _cur_x;							/*<< Current x-coordinates of center of target (for some methods only) */
 	double _cur_y;							/*<<"	"	 y-"	"	"	"	"	"	"	"	"	"	"	"	"	"  */
 	double _cur_scale;						/*<<:	:	scale	"	"	"	"	"	"	"	"	"	"	"	"	"  */
 
-	TrackFilter*   _feat_filter;				/*<< Feature filter for the model */
-	TrackFilter*   _target_filter;				/*<< Feature filter for a particular target */
-	TrackMatch*    _match;						/*<<Matching object */
+	TrackFilter*   _feat_filter;				//!<< Feature filter for the model
+	TrackFilter*   _target_filter;				//!<< Feature filter for a particular target
+	TrackMatch*    _match;						//!<<Matching object
 
-	std::vector<double> _cur_expanded_scale;		/*<< Current range of scales tracked */
-	coord _coord;								/*<< To return coordinates */
+	std::vector<double> _cur_expanded_scale;		//!<< Current range of scales tracked
+	coord _coord;									//!<< To return coordinates
 };
 
 inline
@@ -105,4 +110,10 @@ inline
 TrackMatch* TrackFlow::matcher()
 {
 	return _match;
+}
+
+inline
+int TrackFlow::id() const
+{
+	return _id;
 }

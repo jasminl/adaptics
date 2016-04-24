@@ -42,14 +42,15 @@ public:
 	}limits;
 
 	/**
+	  \param id Id of the track created
 		\param model Pointer to previously acquired target model
 		\param b Scale range step (usually 1.1)
 		\param n Scale range radius (usually 2)
 		\param bounds Convergence parameters
 		\param Optional feature descriptor filter
 	*/
-	TrackMeanShift(TrackMSTargetBase* model, double b, int n, limits bounds,
-			TrackFilter* filt = nullptr, TrackMatch* match = nullptr);
+	TrackMeanShift(int id, TrackFilter* filt, TrackMatch* match,
+			TrackMSTargetBase* model, double b, int n, limits bounds);
 
 	/**
 		Copy constructor, useful since tracker objects are passed in std::vector (therefore are copied)
